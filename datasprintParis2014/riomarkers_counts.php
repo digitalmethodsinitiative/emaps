@@ -16,26 +16,38 @@ $what = "specializationPerCustomRegion";
 $what = "specializationPerIncomeGroup";
 $what = "specializationPerUNFCCGroup";
 $what = "amountGivenPerGdpPerCountry"; // @todo (above average and below average 
-$what = "amountGivenPerGdpTotal"; // @todo (above average and below average 
-$what = "adaptationVsTotalReceived";
-$what = "adaptationVsTotalDonated";
-$what = "donorRecipientProjectAmount";
+//$what = "amountGivenPerGdpTotal"; // @todo (above average and below average 
+//$what = "adaptationVsTotalReceived";
+//$what = "adaptationVsTotalDonated";
+//$what = "donorRecipientProjectAmount";
 
 $inputfile = "RioMarkers_cleaned.txt";
 $file = file("data/" . $inputfile);
 $headers = explode("|", $file[0]);
 //var_dump($headers);
 // load extra data
-if (array_search($what, array("specializationPerCustomRegion", "specializationPerIncomeGroup", "specializationPerUNFCCGroup", "amountGivenPerGdpPerCountry", "amountGivenPerGdpTotal")) !== false) {
+if (array_search($what, array("specializationPerCustomRegion", "specializationPerIncomeGroup", "specializationPerPurposeName", "specializationPerUNFCCGroup", "amountGivenPerGdpPerCountry", "amountGivenPerGdpTotal")) !== false) {
     $edata = "Merged Countries - Sheet 1.tsv";
     $efile = file("data/" . $edata);
     // name = 0
+    // Tot Population 2010 2
+    // Tot Population 2011 3
+    // Tot Population 2012 4
+    // Tot Population Average2010-2012 5
+    // GDP 2010	6
+    // GDP 2011	7
+    // GDP 2012	8
+    // TotGHG Excluding LUCF 2010 9
+    // TotGHG Including LUCF 2010 10
     // region = 11  
     // incomeGroup = 12
     // ag 13, apg 14, grulac 15, eeg 16, weog 17, ddc 18, eit 19, 
     // dge 20, ocde 21, bric 22, g8 23, g20 24, g77 25, aocgcm 26, a1 27, na1 28, ldc 29, 
     // aosis 30, eu 31, ug 32, cfrn 33, cacam 34, opec 35, las 36, eig 37, ailac 38, alba 39,
     // oif 40
+    // GDP sum 2010-2012 41
+    // GHG per capita excluding LUCF 42
+    // GHG per capita including LUCF 43
     foreach ($efile as $ef) {
         $e = explode("\t", $ef);
         $eCountry = $e[0];
@@ -46,7 +58,7 @@ if (array_search($what, array("specializationPerCustomRegion", "specializationPe
         }
         $eUNFCCGroups[$eCountry] = array_unique($eUNFCCGroups[$eCountry]);
         asort($eUNFCCGroups[$eCountry]);
-        $eGdpAvg[$eCountry] = ($e[6] + $e[7] + $e[8]) / 3;
+        $eGdpSum[$eCountry] = ($e[6] + $e[7] + $e[8]);
     }
 }
 
@@ -311,31 +323,31 @@ switch ($what) {
         break;
     case "amountGivenPerGdpPerCountry":
         ksort($countries);
-        print "donor\trecipient\tnr of projects\ttotal amount\tamount per gdp (avg)\n";
+        print "donor\trecipient\tnr of projects\ttotal amount\tamount per gdp (amount / sum gdp 2010-2012)\n";
         foreach ($countries as $donor => $recipients) {
-            if (!isset($eGdpAvg[$donor])) {
-                print $donor . " not found in eGdpAvg\n";
+            if (!isset($eGdpSum[$donor])) {
+                print $donor . " not found in eGdpSum\n";
             } else {
                 ksort($recipients);
                 foreach ($recipients as $recipient => $ar) {
-                    print $donor . "\t" . $recipient . "\t" . $ar['count'] . "\t" . $ar['totalAmount'] . "\t" . ($ar['totalAmount'] / $eGdpAvg[$donor]) . "\n";
+                    print $donor . "\t" . $recipient . "\t" . $ar['count'] . "\t" . $ar['totalAmount'] . "\t" . ($ar['totalAmount'] / $eGdpSum[$donor]) . "\n";
                 }
             }
         }
         break;
     case "amountGivenPerGdpTotal":
         ksort($countries);
-        print "donor\tnr of projects\ttotal amount\tamount per gdp (avg)\n";
+        print "donor\tnr of projects\ttotal amount\tamount per gdp (amount / sum gdp 2010 - 2012)\n";
         foreach ($countries as $donor => $recipients) {
-            if (!isset($eGdpAvg[$donor])) {
-                print $donor . " not found in eGdpAvg\n";
+            if (!isset($eGdpSum[$donor])) {
+                print $donor . " not found in eGdpSum\n";
             } else {
                 $total = $count = 0;
                 foreach ($recipients as $ar) {
                     $count += $ar['count'];
                     $total += $ar['totalAmount'];
                 }
-                print $donor . "\t" . $count . "\t" . $total . "\t" . ($total / $eGdpAvg[$donor]) . "\n";
+                print $donor . "\t" . $count . "\t" . $total . "\t" . ($total / $eGdpSum[$donor]) . "\n";
             }
         }
         break;
