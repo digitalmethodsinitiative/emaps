@@ -3,10 +3,13 @@
 /*
  * script to transform OECD data to something useful
  * 
- * got data from http://stats.oecd.org> erc > export > Related files > 2010,2011,2012
- * transformed UTF-16 file to UTF-8 with: iconv -f UTF-16 -t UTF-8 'CRS 2010 data.txt' > CRS2010_UTF-8.txt
- * remove binary symbols: tr -cd '\11\12\40-\176' < CRS2010_UTF-8.txt > CRS2010_UTF-8_noBinary.txt
- * clean by running riomarkers_clean.php (results in CRS2010_cleaned.txt)
+ * All development aid data were retrieved from http://stats.oecd.org > Development > Individual Aid Projects (CRS) > Creditor Report System. 
+ * Then we exported the data as follows: Export > Related files > 2010,2011,2012
+ * We then transformed UTF-16 file to UTF-8 with: iconv -f UTF-16 -t UTF-8 'CRS 2010 data.txt' > CRS2010_UTF-8.txt
+ * We then removed binary symbols: tr -cd '\11\12\40-\176' < CRS2010_UTF-8.txt > CRS2010_UTF-8_noBinary.txt
+ * We then further cleaned the data by running oecd_clean.php (results in e.g. CRS2010_cleaned.txt)
+ * 
+ * The cleaned data can be found in the Google Drive > ParisSprintDataSets > Group 5 warehouse folder > data files
  * 
  * @author Erik Borra <erik@digitalmethods.net>
  *
