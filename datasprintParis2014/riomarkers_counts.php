@@ -20,7 +20,7 @@ $what = "sumofaid";
 //$what = "recipientSpecializationPerRegion";
 //$what = "recipientSpecializationPerCustomRegion"; // @todo, weird
 //$what = "recipientSpecializationPerIncomeGroup";
-$what = "recipientSpecializationPerUNFCCGroup";
+//$what = "recipientSpecializationPerUNFCCGroup";
 //$what = "amountGivenPerGdpPerCountry"; // @todo (above average and below average 
 //$what = "amountGivenPerGdpTotal"; // @todo (above average and below average 
 //$what = "adaptationVsTotalReceived";
@@ -32,7 +32,7 @@ $file = file("data/" . $inputfile);
 $headers = explode("|", $file[0]);
 //var_dump($headers);
 // load extra data
-if (array_search($what, array("donorSpecializationPerSector", "donorSpecializationPerCustomRegion", "donorSpecializationPerIncomeGroup", "donorSpecializationPerPurposeName", "donorSpecializationPerUNFCCGroup", "donorSpecializationPerRegion", "amountGivenPerGdpPerCountry", "amountGivenPerGdpTotal", "recipientSpecializationPerSector", "recipientSpecializationPerCustomRegion", "recipientSpecializationPerIncomeGroup", "recipientSpecializationPerPurposeName", "recipientSpecializationPerUNFCCGroup", "recipientSpecializationPerRegion")) !== false) {
+if (array_search($what, array("sumofaid", "donorSpecializationPerSector", "donorSpecializationPerCustomRegion", "donorSpecializationPerIncomeGroup", "donorSpecializationPerPurposeName", "donorSpecializationPerUNFCCGroup", "donorSpecializationPerRegion", "amountGivenPerGdpPerCountry", "amountGivenPerGdpTotal", "recipientSpecializationPerSector", "recipientSpecializationPerCustomRegion", "recipientSpecializationPerIncomeGroup", "recipientSpecializationPerPurposeName", "recipientSpecializationPerUNFCCGroup", "recipientSpecializationPerRegion")) !== false) {
     $edata = "Merged Countries - Sheet 1.tsv";
     $efile = file("data/" . $edata);
     // name = 0
@@ -272,11 +272,14 @@ switch ($what) {
     case "sumofaid":
         arsort($sums);
         $i = 0;
-        print "recipient\tamount\n";
+        print "recipient\tamount\tamount per capita (amount / capita average 2010-2012)\tamount per gdp (amount / sum gdp 2010 - 2012)\n";
         foreach ($sums as $recipient => $amount) {
-            if ($i >= 50)
-                continue;
-            print $recipient . "\t" . $amount . "\n";
+            $perCapita = $perGdp = "n/a";
+            if (isset($ePopulationAverage[$recipient]))
+                $perCapita = $amount / $ePopulationAverage[$recipient];
+            if (isset($eGdpSum[$recipient]) && $eGdpSum[$recipient] != 0)
+                $perGdp = $amount / $eGdpSum[$recipient];
+            print $recipient . "\t" . $amount . "\t" . $perCapita . "\t" . $perGdp . "\n";
             $i++;
         }
         break;
