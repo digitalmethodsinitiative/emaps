@@ -9,6 +9,9 @@
 ini_set('memory_limit', '2G');
 include_once('GEXF-library/Gexf.class.php');
 
+/*
+ *  choose what to output
+ */
 $whats = array("donor recipient", "donor sector", "recipient sector", "donor cluster", "recipient cluster");
 $whats = array("donor purposeName", "recipient purposeName");
 foreach ($whats as $what) {
@@ -18,6 +21,9 @@ foreach ($whats as $what) {
 function run($what) {
     $inputfile = "RioMarkers_cleaned.txt";
 
+    /*
+     * decide upon filename
+     */
     switch ($what) {
         case "donor recipient":
             $filename = "OECD RioMarkers - adaptation - 2 - Donors - Recipients";
@@ -44,7 +50,9 @@ function run($what) {
             break;
     }
 
-// create new graph
+    /*
+     * start new graph
+     */
     $gexf = new Gexf();
     $gexf->setTitle("RioMarkers 20140106 " . $filename);
     if ($what == "donor cluster" || $what == "recipient cluster")
@@ -53,7 +61,13 @@ function run($what) {
         $gexf->setEdgeType(GEXF_EDGE_DIRECTED);
     $gexf->setCreator("tools.digitalmethods.net");
 
+    /*
+     * Load OECD riomarkers data
+     */
     $file = file("data/" . $inputfile);
+    /*
+     * Loop over all rows and decide which links should be made
+     */
     for ($i = 1; $i < count($file); $i++) {
         $e = explode("|", $file[$i]);
         if (count($e) != 31) {  // check for errors and print what does not go right
@@ -69,7 +83,7 @@ function run($what) {
         $sector = $e[19];
         $purposeName = $e[7];
 
-        if ($climateAdaptation == 2) {
+        if ($climateAdaptation == 2) { // only use data for which the principle objective is climate adaptation
             switch ($what) {
                 case "donor recipient":
                     $node1 = new GexfNode($donor);
