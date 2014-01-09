@@ -9,13 +9,13 @@
 ini_set('memory_limit', '2G');
 
 $what = "sumofaid";
-$what = "specializationPerSector";
-$what = "specializationPerRegion";
-$what = "specializationPerPurposeName";
-$what = "specializationPerCustomRegion";
-$what = "specializationPerIncomeGroup";
-$what = "specializationPerUNFCCGroup";
-$what = "amountGivenPerGdpPerCountry"; // @todo (above average and below average 
+$what = "donorSpecializationPerSector";
+//$what = "donorSpecializationPerPurposeName";
+//$what = "donorSpecializationPerRegion";
+//$what = "donorSpecializationPerCustomRegion";
+//$what = "donorSpecializationPerIncomeGroup";
+//$what = "donorSpecializationPerUNFCCGroup";
+//$what = "amountGivenPerGdpPerCountry"; // @todo (above average and below average 
 //$what = "amountGivenPerGdpTotal"; // @todo (above average and below average 
 //$what = "adaptationVsTotalReceived";
 //$what = "adaptationVsTotalDonated";
@@ -26,7 +26,7 @@ $file = file("data/" . $inputfile);
 $headers = explode("|", $file[0]);
 //var_dump($headers);
 // load extra data
-if (array_search($what, array("specializationPerCustomRegion", "specializationPerIncomeGroup", "specializationPerPurposeName", "specializationPerUNFCCGroup", "amountGivenPerGdpPerCountry", "amountGivenPerGdpTotal")) !== false) {
+if (array_search($what, array("donorSpecializationPerSector","donorSpecializationPerCustomRegion", "donorSpecializationPerIncomeGroup", "donorSpecializationPerPurposeName", "donorSpecializationPerUNFCCGroup","donorSpecializationPerRegion", "amountGivenPerGdpPerCountry", "amountGivenPerGdpTotal")) !== false) {
     $edata = "Merged Countries - Sheet 1.tsv";
     $efile = file("data/" . $edata);
     // name = 0
@@ -58,7 +58,10 @@ if (array_search($what, array("specializationPerCustomRegion", "specializationPe
         }
         $eUNFCCGroups[$eCountry] = array_unique($eUNFCCGroups[$eCountry]);
         asort($eUNFCCGroups[$eCountry]);
+        $ePopulationAverage[$eCountry] = $e[5];
         $eGdpSum[$eCountry] = ($e[6] + $e[7] + $e[8]);
+        $eGhgExclLucf[$eCountry] = $e[9];  // only 2010 data
+        $eGhgInclLucf[$eCountry] = $e[10];  // only 2010 data
     }
 }
 
@@ -104,7 +107,7 @@ for ($i = 1; $i < count($file); $i++) {
                     $sums[$donor] = 0;
                 $sums[$donor] += $amount;
                 break;
-            case "specializationPerSector":
+            case "donorSpecializationPerSector":
                 if (!isset($countries[$donor][$sector])) {
                     $countries[$donor][$sector]['count'] = 0;
                     $countries[$donor][$sector]['totalAmount'] = 0;
@@ -112,7 +115,7 @@ for ($i = 1; $i < count($file); $i++) {
                 $countries[$donor][$sector]['count']++;
                 $countries[$donor][$sector]['totalAmount']+=$amount;
                 break;
-            case "specializationPerRegion":
+            case "donorSpecializationPerRegion":
                 if (!isset($countries[$donor][$region])) {
                     $countries[$donor][$region]['count'] = 0;
                     $countries[$donor][$region]['totalAmount'] = 0;
@@ -120,7 +123,7 @@ for ($i = 1; $i < count($file); $i++) {
                 $countries[$donor][$region]['count']++;
                 $countries[$donor][$region]['totalAmount']+=$amount;
                 break;
-            case "specializationPerPurposeName":
+            case "donorSpecializationPerPurposeName":
                 if (!isset($countries[$donor][$purposeName])) {
                     $countries[$donor][$purposeName]['count'] = 0;
                     $countries[$donor][$purposeName]['totalAmount'] = 0;
@@ -128,7 +131,7 @@ for ($i = 1; $i < count($file); $i++) {
                 $countries[$donor][$purposeName]['count']++;
                 $countries[$donor][$purposeName]['totalAmount']+=$amount;
                 break;
-            case "specializationPerCustomRegion":
+            case "donorSpecializationPerCustomRegion":
                 if (!isset($eRegions[$recipient]))
                     print $recipient . " not found in eRegions\n";
                 else {
@@ -141,7 +144,7 @@ for ($i = 1; $i < count($file); $i++) {
                     $countries[$donor][$region]['totalAmount']+=$amount;
                 }
                 break;
-            case "specializationPerIncomeGroup":
+            case "donorSpecializationPerIncomeGroup":
                 if (!isset($eIncomeGroups[$recipient]))
                     print $recipient . " not found in eIncomeGroups\n";
                 else {
@@ -154,7 +157,7 @@ for ($i = 1; $i < count($file); $i++) {
                     $countries[$donor][$ig]['totalAmount']+=$amount;
                 }
                 break;
-            case "specializationPerUNFCCGroup":
+            case "donorSpecializationPerUNFCCGroup":
                 if (!isset($eUNFCCGroups[$recipient]))
                     print $recipient . " not found in eUNFCCGroups\n";
                 else {
@@ -224,7 +227,7 @@ switch ($what) {
     case "adaptationVsTotalDonated":
         ksort($sums);
         $i = 0;
-        print "recipient\tadaptation donated\ttotal donated\tshare of adaptation\n";
+        print "donor\tadaptation donated\ttotal donated\tshare of adaptation\n";
         foreach ($sums as $donor => $amount) {
             if (!isset($edonated[$donor])) {
                 print "$donor not found in edonated\n";
@@ -238,57 +241,70 @@ switch ($what) {
             $i++;
         }
         break;
-    case "adaptationVsTotalReceived":
-    case "adaptationVsTotalDonated":
-    case "specializationPerSector":
+    case "donorSpecializationPerSector":
         ksort($countries);
-        print "donor\tsector\tnr of projects\ttotal amount\n";
+        print "donor\tsector\tnr of projects\ttotal amount\tamount per capita (amount / capita average 2010-2012)\tamount per gdp (amount / sum gdp 2010 - 2012)\n";
         foreach ($countries as $country => $sectors) {
             arsort($sectors);
-            foreach ($sectors as $sector => $ar)
-                print $country . "\t" . $sector . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\n";
+            foreach ($sectors as $sector => $ar) {
+                $perCapita = $ar['totalAmount'] / $ePopulationAverage[$country];
+                $perGdp = $ar['totalAmount'] / $eGdpSum[$country];
+                print $country . "\t" . $sector . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\t$perCapita\t$perGdp\n";
+            }
         }
         break;
-    case "specializationPerPurposeName":
+    case "donorSpecializationPerPurposeName":
         ksort($countries);
-        print "donor\tpurposeName\tnr of projects\ttotal amount\n";
+        print "donor\tpurposeName\tnr of projects\ttotal amount\tamount per capita (amount / capita average 2010-2012)\tamount per gdp (amount / sum gdp 2010 - 2012)\n";
         foreach ($countries as $country => $purposeNames) {
             arsort($purposeNames);
-            foreach ($purposeNames as $purposeName => $ar)
-                print $country . "\t" . $purposeName . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\n";
+            foreach ($purposeNames as $purposeName => $ar) {
+                $perCapita = $ar['totalAmount'] / $ePopulationAverage[$country];
+                $perGdp = $ar['totalAmount'] / $eGdpSum[$country];
+                print $country . "\t" . $purposeName . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\t$perCapita\t$perGdp\n";
+            }
         }
         break;
-    case "specializationPerRegion":
+    case "donorSpecializationPerRegion":
         ksort($countries);
-        print "donor\tregion\tnr of projects\ttotal amount\n";
+        print "donor\tregion\tnr of projects\ttotal amount\tamount per capita (amount / capita average 2010-2012)\tamount per gdp (amount / sum gdp 2010 - 2012)\n";
         foreach ($countries as $country => $regions) {
             arsort($regions);
-            foreach ($regions as $region => $ar)
-                print $country . "\t" . $region . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\n";
+            foreach ($regions as $region => $ar) {
+                $perCapita = $ar['totalAmount'] / $ePopulationAverage[$country];
+                $perGdp = $ar['totalAmount'] / $eGdpSum[$country];
+                print $country . "\t" . $region . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\t$perCapita\t$perGdp\n";
+            }
         }
         break;
-    case "specializationPerCustomRegion":
+    case "donorSpecializationPerCustomRegion":
         ksort($countries);
-        print "donor\tcustom region\tnr of projects\ttotal amount\n";
+        print "donor\tcustom region\tnr of projects\ttotal amount\tamount per capita (amount / capita average 2010-2012)\tamount per gdp (amount / sum gdp 2010 - 2012)\n";
         foreach ($countries as $country => $regions) {
             arsort($regions);
-            foreach ($regions as $region => $ar)
-                print $country . "\t" . $region . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\n";
+            foreach ($regions as $region => $ar) {
+                $perCapita = $ar['totalAmount'] / $ePopulationAverage[$country];
+                $perGdp = $ar['totalAmount'] / $eGdpSum[$country];
+                print $country . "\t" . $region . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\t$perCapita\t$perGdp\n";
+            }
         }
         break;
-    case "specializationPerIncomeGroup":
+    case "donorSpecializationPerIncomeGroup":
         ksort($countries);
-        print "donor\tIncome Group\tnr of projects\ttotal amount\n";
+        print "donor\tIncome Group\tnr of projects\ttotal amount\tamount per capita (amount / capita average 2010-2012)\tamount per gdp (amount / sum gdp 2010 - 2012)\n";
         foreach ($countries as $country => $igs) {
             arsort($igs);
-            foreach ($igs as $ig => $ar)
-                print $country . "\t" . $ig . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\n";
+            foreach ($igs as $ig => $ar) {
+                $perCapita = $ar['totalAmount'] / $ePopulationAverage[$country];
+                $perGdp = $ar['totalAmount'] / $eGdpSum[$country];
+                print $country . "\t" . $ig . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\t$perCapita\t$perGdp\n";
+            }
         }
         break;
-    case "specializationPerUNFCCGroup":
+    case "donorSpecializationPerUNFCCGroup":
         ksort($countries);
 
-        print "donor\tUNFCC Group\tnr of projects\ttotal amount\n";
+        print "donor\tUNFCC Group\tnr of projects\ttotal amount\tamount per capita (amount / capita average 2010-2012)\tamount per gdp (amount / sum gdp 2010 - 2012)\n";
 
         include_once('GEXF-library/Gexf.class.php');
 
@@ -301,7 +317,9 @@ switch ($what) {
         foreach ($countries as $country => $ugs) {
             arsort($ugs);
             foreach ($ugs as $ug => $ar) {
-                print $country . "\t" . $ug . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\n";
+                $perCapita = $ar['totalAmount'] / $ePopulationAverage[$country];
+                $perGdp = $ar['totalAmount'] / $eGdpSum[$country];
+                print $country . "\t" . $ug . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\t$perCapita\t$perGdp\n";
 
                 // also create network
                 $node1 = new GexfNode($country);
