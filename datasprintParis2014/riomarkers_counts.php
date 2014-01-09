@@ -9,12 +9,18 @@
 ini_set('memory_limit', '2G');
 
 $what = "sumofaid";
-$what = "donorSpecializationPerSector";
+//$what = "donorSpecializationPerSector";
 //$what = "donorSpecializationPerPurposeName";
 //$what = "donorSpecializationPerRegion";
 //$what = "donorSpecializationPerCustomRegion";
 //$what = "donorSpecializationPerIncomeGroup";
 //$what = "donorSpecializationPerUNFCCGroup";
+//$what = "recipientSpecializationPerSector";
+//$what = "recipientSpecializationPerPurposeName";
+//$what = "recipientSpecializationPerRegion";
+//$what = "recipientSpecializationPerCustomRegion"; // @todo, weird
+//$what = "recipientSpecializationPerIncomeGroup";
+$what = "recipientSpecializationPerUNFCCGroup";
 //$what = "amountGivenPerGdpPerCountry"; // @todo (above average and below average 
 //$what = "amountGivenPerGdpTotal"; // @todo (above average and below average 
 //$what = "adaptationVsTotalReceived";
@@ -26,7 +32,7 @@ $file = file("data/" . $inputfile);
 $headers = explode("|", $file[0]);
 //var_dump($headers);
 // load extra data
-if (array_search($what, array("donorSpecializationPerSector","donorSpecializationPerCustomRegion", "donorSpecializationPerIncomeGroup", "donorSpecializationPerPurposeName", "donorSpecializationPerUNFCCGroup","donorSpecializationPerRegion", "amountGivenPerGdpPerCountry", "amountGivenPerGdpTotal")) !== false) {
+if (array_search($what, array("donorSpecializationPerSector", "donorSpecializationPerCustomRegion", "donorSpecializationPerIncomeGroup", "donorSpecializationPerPurposeName", "donorSpecializationPerUNFCCGroup", "donorSpecializationPerRegion", "amountGivenPerGdpPerCountry", "amountGivenPerGdpTotal", "recipientSpecializationPerSector", "recipientSpecializationPerCustomRegion", "recipientSpecializationPerIncomeGroup", "recipientSpecializationPerPurposeName", "recipientSpecializationPerUNFCCGroup", "recipientSpecializationPerRegion")) !== false) {
     $edata = "Merged Countries - Sheet 1.tsv";
     $efile = file("data/" . $edata);
     // name = 0
@@ -189,6 +195,73 @@ for ($i = 1; $i < count($file); $i++) {
                 }
                 $countries[$donor][$recipient][$projecttitle] += $amount;
                 break;
+            case "recipientSpecializationPerSector":
+                if (!isset($countries[$recipient][$sector])) {
+                    $countries[$recipient][$sector]['count'] = 0;
+                    $countries[$recipient][$sector]['totalAmount'] = 0;
+                }
+                $countries[$recipient][$sector]['count']++;
+                $countries[$recipient][$sector]['totalAmount']+=$amount;
+                break;
+            case "recipientSpecializationPerRegion":
+                if (!isset($countries[$recipient][$region])) {
+                    $countries[$recipient][$region]['count'] = 0;
+                    $countries[$recipient][$region]['totalAmount'] = 0;
+                }
+                $countries[$recipient][$region]['count']++;
+                $countries[$recipient][$region]['totalAmount']+=$amount;
+                break;
+            case "recipientSpecializationPerPurposeName":
+                if (!isset($countries[$recipient][$purposeName])) {
+                    $countries[$recipient][$purposeName]['count'] = 0;
+                    $countries[$recipient][$purposeName]['totalAmount'] = 0;
+                }
+                $countries[$recipient][$purposeName]['count']++;
+                $countries[$recipient][$purposeName]['totalAmount']+=$amount;
+                break;
+            case "recipientSpecializationPerCustomRegion":
+                if (!isset($eRegions[$donor]))
+                    print $donor . " not found in eRegions\n";
+                else {
+                    $region = $eRegions[$donor];
+                    if (!isset($countries[$recipient][$region])) {
+                        $countries[$recipient][$region]['count'] = 0;
+                        $countries[$recipient][$region]['totalAmount'] = 0;
+                    }
+                    $countries[$recipient][$region]['count']++;
+                    $countries[$recipient][$region]['totalAmount']+=$amount;
+                }
+                break;
+            case "recipientSpecializationPerIncomeGroup":
+                if (!isset($eIncomeGroups[$donor]))
+                    print $donor . " not found in eIncomeGroups\n";
+                else {
+                    $ig = $eIncomeGroups[$donor];
+                    if (!isset($countries[$recipient][$ig])) {
+                        $countries[$recipient][$ig]['count'] = 0;
+                        $countries[$recipient][$ig]['totalAmount'] = 0;
+                    }
+                    $countries[$recipient][$ig]['count']++;
+                    $countries[$recipient][$ig]['totalAmount']+=$amount;
+                }
+                break;
+            case "recipientSpecializationPerUNFCCGroup":
+                if (!isset($eUNFCCGroups[$donor]))
+                    print $donor . " not found in eUNFCCGroups\n";
+                else {
+                    $ugs = $eUNFCCGroups[$donor];
+                    foreach ($ugs as $ug) {
+                        if ($ug == "")
+                            continue;
+                        if (!isset($countries[$recipient][$ug])) {
+                            $countries[$recipient][$ug]['count'] = 0;
+                            $countries[$recipient][$ug]['totalAmount'] = 0;
+                        }
+                        $countries[$recipient][$ug]['count']++;
+                        $countries[$recipient][$ug]['totalAmount']+=$amount;
+                    }
+                }
+                break;
             default:
                 break;
         }
@@ -309,7 +382,7 @@ switch ($what) {
         include_once('GEXF-library/Gexf.class.php');
 
         $gexf = new Gexf();
-        $filename = "OECD RioMarkers - adaptation - 2 - country - UNFCCGroup";
+        $filename = "OECD RioMarkers - adaptation - 2 - donor - UNFCCGroup";
         $gexf->setTitle("RioMarkers 20140106 " . $filename);
         $gexf->setEdgeType(GEXF_EDGE_DIRECTED);
         $gexf->setCreator("tools.digitalmethods.net");
@@ -323,7 +396,7 @@ switch ($what) {
 
                 // also create network
                 $node1 = new GexfNode($country);
-                $node1->addNodeAttribute("type", 'country', $type = "string");
+                $node1->addNodeAttribute("type", 'donor', $type = "string");
                 $gexf->addNode($node1);
 
                 $node2 = new GexfNode($ug);
@@ -381,6 +454,122 @@ switch ($what) {
                 }
             }
         }
+        break;
+    case "recipientSpecializationPerSector":
+        ksort($countries);
+        print "recipient\tsector\tnr of projects\ttotal amount\tamount per capita (amount / capita average 2010-2012)\tamount per gdp (amount / sum gdp 2010 - 2012)\n";
+        foreach ($countries as $country => $sectors) {
+            arsort($sectors);
+            foreach ($sectors as $sector => $ar) {
+                $perCapita = $perGdp = "n/a";
+                if (isset($ePopulationAverage[$country]))
+                    $perCapita = $ar['totalAmount'] / $ePopulationAverage[$country];
+                if (isset($eGdpSum[$country]) && $eGdpSum[$country] != 0)
+                    $perGdp = $ar['totalAmount'] / $eGdpSum[$country];
+                print $country . "\t" . $sector . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\t$perCapita\t$perGdp\n";
+            }
+        }
+        break;
+    case "recipientSpecializationPerPurposeName":
+        ksort($countries);
+        print "recipient\tpurposeName\tnr of projects\ttotal amount\tamount per capita (amount / capita average 2010-2012)\tamount per gdp (amount / sum gdp 2010 - 2012)\n";
+        foreach ($countries as $country => $purposeNames) {
+            arsort($purposeNames);
+            foreach ($purposeNames as $purposeName => $ar) {
+                $perCapita = $perGdp = "n/a";
+                if (isset($ePopulationAverage[$country]))
+                    $perCapita = $ar['totalAmount'] / $ePopulationAverage[$country];
+                if (isset($eGdpSum[$country]) && $eGdpSum[$country] != 0)
+                    $perGdp = $ar['totalAmount'] / $eGdpSum[$country];
+                print $country . "\t" . $purposeName . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\t$perCapita\t$perGdp\n";
+            }
+        }
+        break;
+    case "recipientSpecializationPerRegion":
+        ksort($countries);
+        print "recipient\tregion\tnr of projects\ttotal amount\tamount per capita (amount / capita average 2010-2012)\tamount per gdp (amount / sum gdp 2010 - 2012)\n";
+        foreach ($countries as $country => $regions) {
+            arsort($regions);
+            foreach ($regions as $region => $ar) {
+                $perCapita = $perGdp = "n/a";
+                if (isset($ePopulationAverage[$country]))
+                    $perCapita = $ar['totalAmount'] / $ePopulationAverage[$country];
+                if (isset($eGdpSum[$country]) && $eGdpSum[$country] != 0)
+                    $perGdp = $ar['totalAmount'] / $eGdpSum[$country];
+                print $country . "\t" . $region . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\t$perCapita\t$perGdp\n";
+            }
+        }
+        break;
+    case "recipientSpecializationPerCustomRegion":
+        ksort($countries);
+        print "recipient\tcustom region\tnr of projects\ttotal amount\tamount per capita (amount / capita average 2010-2012)\tamount per gdp (amount / sum gdp 2010 - 2012)\n";
+        foreach ($countries as $country => $regions) {
+            arsort($regions);
+            foreach ($regions as $region => $ar) {
+                $perCapita = $perGdp = "n/a";
+                if (isset($ePopulationAverage[$country]))
+                    $perCapita = $ar['totalAmount'] / $ePopulationAverage[$country];
+                if (isset($eGdpSum[$country]) && $eGdpSum[$country] != 0)
+                    $perGdp = $ar['totalAmount'] / $eGdpSum[$country];
+                print $country . "\t" . $region . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\t$perCapita\t$perGdp\n";
+            }
+        }
+        break;
+    case "recipientSpecializationPerIncomeGroup":
+        ksort($countries);
+        print "donor\tIncome Group\tnr of projects\ttotal amount\tamount per capita (amount / capita average 2010-2012)\tamount per gdp (amount / sum gdp 2010 - 2012)\n";
+        foreach ($countries as $country => $igs) {
+            arsort($igs);
+            foreach ($igs as $ig => $ar) {
+                $perCapita = $perGdp = "n/a";
+                if (isset($ePopulationAverage[$country]))
+                    $perCapita = $ar['totalAmount'] / $ePopulationAverage[$country];
+                if (isset($eGdpSum[$country]) && $eGdpSum[$country] != 0)
+                    $perGdp = $ar['totalAmount'] / $eGdpSum[$country];
+                print $country . "\t" . $ig . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\t$perCapita\t$perGdp\n";
+            }
+        }
+        break;
+    case "recipientSpecializationPerUNFCCGroup":
+        ksort($countries);
+
+        print "recipient\tUNFCC Group\tnr of projects\ttotal amount\tamount per capita (amount / capita average 2010-2012)\tamount per gdp (amount / sum gdp 2010 - 2012)\n";
+
+        include_once('GEXF-library/Gexf.class.php');
+
+        $gexf = new Gexf();
+        $filename = "OECD RioMarkers - adaptation - 2 - recipient - UNFCCGroup";
+        $gexf->setTitle("RioMarkers 20140106 " . $filename);
+        $gexf->setEdgeType(GEXF_EDGE_DIRECTED);
+        $gexf->setCreator("tools.digitalmethods.net");
+
+        foreach ($countries as $country => $ugs) {
+            arsort($ugs);
+            foreach ($ugs as $ug => $ar) {
+                $perCapita = $perGdp = "n/a";
+                if (isset($ePopulationAverage[$country]))
+                    $perCapita = $ar['totalAmount'] / $ePopulationAverage[$country];
+                if (isset($eGdpSum[$country]) && $eGdpSum[$country] != 0)
+                    $perGdp = $ar['totalAmount'] / $eGdpSum[$country];
+                print $country . "\t" . $ug . "\t" . $ar['count'] . "\t=ROUND(" . $ar['totalAmount'] . ",2)\t$perCapita\t$perGdp\n";
+
+                // also create network
+                $node1 = new GexfNode($country);
+                $node1->addNodeAttribute("type", 'recipient', $type = "string");
+                $gexf->addNode($node1);
+
+                $node2 = new GexfNode($ug);
+                $node2->addNodeAttribute("type", 'UNFCCGroup', $type = "string");
+                $gexf->addNode($node2);
+
+                $edge_id = $gexf->addEdge($node1, $node2, $ar['totalAmount']);
+            }
+        }
+        // render the file
+        $gexf->render();
+
+        // write out the file
+        file_put_contents("results/" . $filename . '.gexf', $gexf->gexfFile);
         break;
     default:
         break;
