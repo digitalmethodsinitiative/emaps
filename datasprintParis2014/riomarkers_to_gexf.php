@@ -2,7 +2,7 @@
 
 /*
  * makes various types of GEXF files (see first switch statement)
- * make sure to run riomarkers_clean.php first
+ * look at oecd_clean.php to generate the data necessary for this script, or take them from the Google Drive > ParisSprintDataSets > Group 5 warehouse folder > data files
  * @author Erik Borra <erik@digitalmethods.net>
  */
 
