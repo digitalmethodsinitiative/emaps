@@ -2,7 +2,7 @@
 
 /*
  * does various counts
- * make sure to run riomarkers_clean.php first
+ * look at riomarkers_clean.php to generate the data necessary for this script, or take them from the Google Drive > ParisSprintDataSets > Group 5 warehouse folder > data files
  * @author Erik Borra <erik@digitalmethods.net>
  */
 
@@ -19,6 +19,7 @@ $what = "amountGivenPerGdpPerCountry"; // @todo (above average and below average
 $what = "amountGivenPerGdpTotal"; // @todo (above average and below average 
 $what = "adaptationVsTotalReceived";
 $what = "adaptationVsTotalDonated";
+$what = "donorRecipientProjectAmount";
 
 $inputfile = "RioMarkers_cleaned.txt";
 $file = file("data/" . $inputfile);
@@ -65,7 +66,7 @@ if ($what == "adaptationVsTotalDonated") {
         $edonated[$e[0]] = trim($e[1]);
     }
 }
-
+//var_dump(explode("|",$file[0])); die;
 for ($i = 1; $i < count($file); $i++) {
     $e = explode("|", $file[$i]);
     $donor = $e[1];
@@ -76,6 +77,7 @@ for ($i = 1; $i < count($file); $i++) {
     $amount = $e[4]; //round($e[4] * 1000000,0); // usd_commitment_defl
     $sector = $e[19];
     $region = $e[14];
+    $projecttitle = $e[23];
 
     if ($climateAdaptation == 2) {
         switch ($what) {
@@ -165,6 +167,12 @@ for ($i = 1; $i < count($file); $i++) {
                 }
                 $countries[$donor][$recipient]['count']++;
                 $countries[$donor][$recipient]['totalAmount']+=$amount;
+                break;
+            case "donorRecipientProjectAmount":
+                if (!isset($countries[$donor][$recipient][$projecttitle])) {
+                    $countries[$donor][$recipient][$projecttitle] = 0;
+                }
+                $countries[$donor][$recipient][$projecttitle] += $amount;
                 break;
             default:
                 break;
@@ -328,6 +336,19 @@ switch ($what) {
                     $total += $ar['totalAmount'];
                 }
                 print $donor . "\t" . $count . "\t" . $total . "\t" . ($total / $eGdpAvg[$donor]) . "\n";
+            }
+        }
+        break;
+    case "donorRecipientProjectAmount":
+        ksort($countries);
+        print "donor\trecipient\tamount\tproject title\n";
+        foreach ($countries as $donor => $recipients) {
+            ksort($recipients);
+            foreach ($recipients as $recipient => $projects) {
+                foreach ($projects as $projecttitle => $amount) {
+                    $projecttitle = str_replace("\t", " ", $projecttitle);
+                    print "$donor\t$recipient\t$amount\t$projecttitle\n";
+                }
             }
         }
         break;
