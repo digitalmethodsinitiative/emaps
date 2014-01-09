@@ -8,6 +8,9 @@
 
 ini_set('memory_limit', '2G');
 
+/*
+ *  specify here what visualization to produce
+ */
 $what = "sumofaid";
 //$what = "donorSpecializationPerSector";
 //$what = "donorSpecializationPerPurposeName";
@@ -27,67 +30,15 @@ $what = "sumofaid";
 //$what = "adaptationVsTotalDonated";
 //$what = "donorRecipientProjectAmount";
 
+/*
+ * Load OECD riomaerks data
+ */
 $inputfile = "RioMarkers_cleaned.txt";
 $file = file("data/" . $inputfile);
-$headers = explode("|", $file[0]);
-//var_dump($headers);
-// load extra data
-if (array_search($what, array("sumofaid", "donorSpecializationPerSector", "donorSpecializationPerCustomRegion", "donorSpecializationPerIncomeGroup", "donorSpecializationPerPurposeName", "donorSpecializationPerUNFCCGroup", "donorSpecializationPerRegion", "amountGivenPerGdpPerCountry", "amountGivenPerGdpTotal", "recipientSpecializationPerSector", "recipientSpecializationPerCustomRegion", "recipientSpecializationPerIncomeGroup", "recipientSpecializationPerPurposeName", "recipientSpecializationPerUNFCCGroup", "recipientSpecializationPerRegion")) !== false) {
-    $edata = "Merged Countries - Sheet 1.tsv";
-    $efile = file("data/" . $edata);
-    // name = 0
-    // Tot Population 2010 2
-    // Tot Population 2011 3
-    // Tot Population 2012 4
-    // Tot Population Average2010-2012 5
-    // GDP 2010	6
-    // GDP 2011	7
-    // GDP 2012	8
-    // TotGHG Excluding LUCF 2010 9
-    // TotGHG Including LUCF 2010 10
-    // region = 11  
-    // incomeGroup = 12
-    // ag 13, apg 14, grulac 15, eeg 16, weog 17, ddc 18, eit 19, 
-    // dge 20, ocde 21, bric 22, g8 23, g20 24, g77 25, aocgcm 26, a1 27, na1 28, ldc 29, 
-    // aosis 30, eu 31, ug 32, cfrn 33, cacam 34, opec 35, las 36, eig 37, ailac 38, alba 39,
-    // oif 40
-    // GDP sum 2010-2012 41
-    // GHG per capita excluding LUCF 42
-    // GHG per capita including LUCF 43
-    foreach ($efile as $ef) {
-        $e = explode("\t", $ef);
-        $eCountry = $e[0];
-        $eRegions[$eCountry] = $e[11];
-        $eIncomeGroups[$eCountry] = $e[12];
-        for ($i = 13; $i < 41; $i++) {
-            $eUNFCCGroups[$eCountry][] = $e[$i];
-        }
-        $eUNFCCGroups[$eCountry] = array_unique($eUNFCCGroups[$eCountry]);
-        asort($eUNFCCGroups[$eCountry]);
-        $ePopulationAverage[$eCountry] = $e[5];
-        $eGdpSum[$eCountry] = ($e[6] + $e[7] + $e[8]);
-        $eGhgExclLucf[$eCountry] = $e[9];  // only 2010 data
-        $eGhgInclLucf[$eCountry] = $e[10];  // only 2010 data
-    }
-}
 
-if ($what == "adaptationVsTotalReceived") {
-    $edata = "data/oecd_received.tsv";
-    $efile = file($edata);
-    for ($i = 1; $i < count($efile); $i++) {
-        $e = explode("\t", $efile[$i]);
-        $ereceived[$e[0]] = trim($e[1]);
-    }
-}
-if ($what == "adaptationVsTotalDonated") {
-    $edata = "data/oecd_donated.tsv";
-    $efile = file($edata);
-    for ($i = 1; $i < count($efile); $i++) {
-        $e = explode("\t", $efile[$i]);
-        $edonated[$e[0]] = trim($e[1]);
-    }
-}
-//var_dump(explode("|",$file[0])); die;
+/*
+ * Loop over all rows and group the data according to the specified $what
+ */
 for ($i = 1; $i < count($file); $i++) {
     $e = explode("|", $file[$i]);
     $donor = $e[1];
@@ -100,7 +51,7 @@ for ($i = 1; $i < count($file); $i++) {
     $region = $e[14];
     $projecttitle = $e[23];
 
-    if ($climateAdaptation == 2) {
+    if ($climateAdaptation == 2) { // only use data for which the principle objective is climate adaptation
         switch ($what) {
             case "sumofaid":
             case "adaptationVsTotalReceived":
@@ -268,6 +219,69 @@ for ($i = 1; $i < count($file); $i++) {
     }
 }
 
+/*
+ * Load some extra information per country, if necessary
+ */
+if (array_search($what, array("sumofaid", "donorSpecializationPerSector", "donorSpecializationPerCustomRegion", "donorSpecializationPerIncomeGroup", "donorSpecializationPerPurposeName", "donorSpecializationPerUNFCCGroup", "donorSpecializationPerRegion", "amountGivenPerGdpPerCountry", "amountGivenPerGdpTotal", "recipientSpecializationPerSector", "recipientSpecializationPerCustomRegion", "recipientSpecializationPerIncomeGroup", "recipientSpecializationPerPurposeName", "recipientSpecializationPerUNFCCGroup", "recipientSpecializationPerRegion")) !== false) {
+    $edata = "Merged Countries - Sheet 1.tsv";
+    $efile = file("data/" . $edata);
+    // name = 0
+    // Tot Population 2010 2
+    // Tot Population 2011 3
+    // Tot Population 2012 4
+    // Tot Population Average2010-2012 5
+    // GDP 2010	6
+    // GDP 2011	7
+    // GDP 2012	8
+    // TotGHG Excluding LUCF 2010 9
+    // TotGHG Including LUCF 2010 10
+    // region = 11  
+    // incomeGroup = 12
+    // ag 13, apg 14, grulac 15, eeg 16, weog 17, ddc 18, eit 19, 
+    // dge 20, ocde 21, bric 22, g8 23, g20 24, g77 25, aocgcm 26, a1 27, na1 28, ldc 29, 
+    // aosis 30, eu 31, ug 32, cfrn 33, cacam 34, opec 35, las 36, eig 37, ailac 38, alba 39,
+    // oif 40
+    // GDP sum 2010-2012 41
+    // GHG per capita excluding LUCF 42
+    // GHG per capita including LUCF 43
+    foreach ($efile as $ef) {
+        $e = explode("\t", $ef);
+        $eCountry = $e[0];
+        $eRegions[$eCountry] = $e[11];
+        $eIncomeGroups[$eCountry] = $e[12];
+        for ($i = 13; $i < 41; $i++) {
+            $eUNFCCGroups[$eCountry][] = $e[$i];
+        }
+        $eUNFCCGroups[$eCountry] = array_unique($eUNFCCGroups[$eCountry]);
+        asort($eUNFCCGroups[$eCountry]);
+        $ePopulationAverage[$eCountry] = $e[5];
+        $eGdpSum[$eCountry] = ($e[6] + $e[7] + $e[8]);
+        $eGhgExclLucf[$eCountry] = $e[9];  // only 2010 data
+        $eGhgInclLucf[$eCountry] = $e[10];  // only 2010 data
+    }
+}
+
+if ($what == "adaptationVsTotalReceived") {
+    $edata = "data/oecd_received.tsv";
+    $efile = file($edata);
+    for ($i = 1; $i < count($efile); $i++) {
+        $e = explode("\t", $efile[$i]);
+        $ereceived[$e[0]] = trim($e[1]);
+    }
+}
+if ($what == "adaptationVsTotalDonated") {
+    $edata = "data/oecd_donated.tsv";
+    $efile = file($edata);
+    for ($i = 1; $i < count($efile); $i++) {
+        $e = explode("\t", $efile[$i]);
+        $edonated[$e[0]] = trim($e[1]);
+    }
+}
+
+/*
+ * Do normalizations if necessary
+ * and output in right format
+ */
 switch ($what) {
     case "sumofaid":
         arsort($sums);
