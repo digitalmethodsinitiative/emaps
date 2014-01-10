@@ -244,13 +244,16 @@ if (array_search($what, array("sumofaid", "donorSpecializationPerSector", "donor
     // GDP sum 2010-2012 41
     // GHG per capita excluding LUCF 42
     // GHG per capita including LUCF 43
-    foreach ($efile as $ef) {
+    $ef = explode("\t", $efile[0]);
+    $eUNFCCGroupNames[] = array_splice($ef, 13, 28);
+    for ($i = 1; $i < count($efile); $i++) {
+        $ef = $efile[$i];
         $e = explode("\t", $ef);
         $eCountry = $e[0];
         $eRegions[$eCountry] = $e[11];
         $eIncomeGroups[$eCountry] = $e[12];
-        for ($i = 13; $i < 41; $i++) {
-            $eUNFCCGroups[$eCountry][] = $e[$i];
+        for ($j = 13; $j < 41; $j++) {
+            $eUNFCCGroups[$eCountry][] = $e[$j];
         }
         $eUNFCCGroups[$eCountry] = array_unique($eUNFCCGroups[$eCountry]);
         asort($eUNFCCGroups[$eCountry]);
