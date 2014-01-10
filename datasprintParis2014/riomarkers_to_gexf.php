@@ -12,8 +12,8 @@ include_once('GEXF-library/Gexf.class.php');
 /*
  *  choose what to output
  */
-$whats = array("donor recipient", "donor sector", "recipient sector", "donor cluster", "recipient cluster");
-$whats = array("donor purposeName", "recipient purposeName");
+$whats = array("donor recipient", "donor sector", "recipient sector", "donor purposeName", "recipient purposeName");
+//$whats = array("donor cluster", "recipient cluster");
 foreach ($whats as $what) {
     run($what);
 }
@@ -105,7 +105,7 @@ function run($what) {
                     $node2->addNodeAttribute("type", 'sector', $type = "string");
                     $gexf->addNode($node2);
 
-                    $edge_id = $gexf->addEdge($node1, $node2, 1);
+                    $edge_id = $gexf->addEdge($node1, $node2, $amount);
                     break;
                 case "recipient sector":
                     $node1 = new GexfNode($sector);
@@ -116,7 +116,7 @@ function run($what) {
                     $node2->addNodeAttribute("type", 'recipient', $type = "string");
                     $gexf->addNode($node2);
 
-                    $edge_id = $gexf->addEdge($node1, $node2, 1);
+                    $edge_id = $gexf->addEdge($node1, $node2, $amount);
                     break;
                 case "donor cluster":
                     $recipients[$recipient][] = $donor;
@@ -133,7 +133,7 @@ function run($what) {
                     $node2->addNodeAttribute("type", 'purposeName', $type = "string");
                     $gexf->addNode($node2);
 
-                    $edge_id = $gexf->addEdge($node1, $node2, 1);
+                    $edge_id = $gexf->addEdge($node1, $node2, $amount);
                     break;
                 case "recipient purposeName":
                     $node1 = new GexfNode($purposeName);
@@ -144,7 +144,7 @@ function run($what) {
                     $node2->addNodeAttribute("type", 'recipient', $type = "string");
                     $gexf->addNode($node2);
 
-                    $edge_id = $gexf->addEdge($node1, $node2, 1);
+                    $edge_id = $gexf->addEdge($node1, $node2, $amount);
                     break;
                 default:
                     break;
