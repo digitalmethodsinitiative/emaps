@@ -12,8 +12,9 @@ include_once('GEXF-library/Gexf.class.php');
 /*
  *  choose what to output
  */
-$whats = array("donor recipient", "donor sector", "recipient sector", "donor purposeName", "recipient purposeName");
+//$whats = array("donor recipient", "donor sector", "recipient sector", "donor purposeName", "recipient purposeName");
 //$whats = array("donor cluster", "recipient cluster");
+$whats = array("donor purposeName", "recipient purposeName");
 foreach ($whats as $what) {
     run($what);
 }
@@ -51,6 +52,28 @@ function run($what) {
     }
 
     /*
+     * Load some extra information per country, if necessary
+     */
+    if (array_search($what, array("donor purposeName", "recipient purposeName")) !== false) {
+        print "loading extra data\n";
+        $edata = "Merged Countries - Sheet 1.tsv";
+        $efile = file("data/" . $edata);
+        $ef = explode("\t", $efile[0]);
+        $eheaders = $ef;
+        $eUNFCCGroupNames = array_splice($ef, 13, 28);
+        for ($i = 1; $i < count($efile); $i++) {
+            $ef = $efile[$i];
+            $e = explode("\t", $ef);
+            $eCountry = $e[0];
+            for ($j = 13; $j < 41; $j++) {
+                $eUNFCCGroups[$eCountry][$eheaders[$j]] = 0;
+                if ($e[$j] != "")
+                    $eUNFCCGroups[$eCountry][$eheaders[$j]] = 1;
+            }
+        }
+    }
+
+    /*
      * start new graph
      */
     $gexf = new Gexf();
@@ -68,6 +91,7 @@ function run($what) {
     /*
      * Loop over all rows and decide which links should be made
      */
+    print "starting loop\n";
     for ($i = 1; $i < count($file); $i++) {
         $e = explode("|", $file[$i]);
         if (count($e) != 31) {  // check for errors and print what does not go right
@@ -127,6 +151,13 @@ function run($what) {
                 case "donor purposeName":
                     $node1 = new GexfNode($donor);
                     $node1->addNodeAttribute("type", 'donor', $type = "string");
+                    if (!isset($eUNFCCGroups[$donor])) {
+                        foreach ($eUNFCCGroupNames as $groupName)
+                            $node1->addNodeAttribute($groupName, -1, "integer");
+                    } else {
+                        foreach ($eUNFCCGroups[$donor] as $groupName => $val)
+                            $node1->addNodeAttribute($groupName, $val, "integer");
+                    }
                     $gexf->addNode($node1);
 
                     $node2 = new GexfNode($purposeName);
@@ -142,6 +173,13 @@ function run($what) {
 
                     $node2 = new GexfNode($recipient);
                     $node2->addNodeAttribute("type", 'recipient', $type = "string");
+                    if (!isset($eUNFCCGroups[$recipient])) {
+                        foreach ($eUNFCCGroupNames as $groupName)
+                            $node2->addNodeAttribute($groupName, -1, "integer");
+                    } else {
+                        foreach ($eUNFCCGroups[$recipient] as $groupName => $val)
+                            $node2->addNodeAttribute($groupName, $val, "integer");
+                    }
                     $gexf->addNode($node2);
 
                     $edge_id = $gexf->addEdge($node1, $node2, $amount);
