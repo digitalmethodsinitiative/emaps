@@ -61,44 +61,57 @@ if (isset($_GET['issues'])) {
         }
     }
 
-
+    $rows = 1000;
     foreach ($queries as $q) {
 
         $query_url = 'http://jiminy.medialab.sciences-po.fr/solr/hyphe-emaps2/select?';
         $query_url .= 'q=' . urlencode($q);
-        $query_url .= '&wt=json&indent=true';
+        $query_url .= '&wt=json&indent=true&rows=' . $rows . '&fl=url';
 
-        if ($debug)
-            print "doing <a href='$query_url'>$q</a><bR>";
 
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => $query_url,
-            CURLOPT_USERAGENT => 'hypheToLippmann',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_USERPWD => $GLOBALS["user"] . ':' . $GLOBALS["password"],
-            CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
-        ));
-        $r = json_decode(curl_exec($curl), TRUE);
-        curl_close($curl);
 
-        if (array_key_exists('response', $r)) {
-            $found = $r['response']['numFound'];
+        $start = $numFound = 0;
+        while ($start <= $numFound) {
+            if ($start > 0)
+                $query_url_offset = $query_url . "&start=$start";
+            else
+                $query_url_offset = $query_url;
+
             if ($debug) {
-                echo "found $found<br>";
+                print "doing <a href='$query_url_offset'>$query_url_offset</a><bR>";
+                flush();
             }
-            foreach ($r['response']['docs'] as $doc) {
-                $url = $doc['url'];
-                list($host, $hostProtocol) = getHost($url);
-                if (!isset($issuesPerSite[$host][$issue]))
-                    $issuesPerSite[$host][$issue] = 0;
-                if (!isset($sitesPerIssue[$issue][$host]))
-                    $sitesPerIssue[$issue][$host] = 0;
-                $issuesPerSite[$host][$issue]++;
-                $sitesPerIssue[$issue][$host]++;
+
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => $query_url_offset,
+                CURLOPT_USERAGENT => 'hypheToLippmann',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_USERPWD => $GLOBALS["user"] . ':' . $GLOBALS["password"],
+                CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
+            ));
+            $r = json_decode(curl_exec($curl), TRUE);
+            curl_close($curl);
+
+            if (array_key_exists('response', $r)) {
+                $numFound = $r['response']['numFound'];
+                if ($debug) {
+                    echo "found $numFound<br>";
+                }
+                foreach ($r['response']['docs'] as $doc) {
+                    $url = $doc['url'];
+                    list($host, $hostProtocol) = getHost($url);
+                    if (!isset($issuesPerSite[$host][$issue]))
+                        $issuesPerSite[$host][$issue] = 0;
+                    if (!isset($sitesPerIssue[$issue][$host]))
+                        $sitesPerIssue[$issue][$host] = 0;
+                    $issuesPerSite[$host][$issue]++;
+                    $sitesPerIssue[$issue][$host]++;
+                }
+            } elseif ($debug) {
+                echo "found nothing<br>";
             }
-        } elseif ($debug) {
-            echo "found nothing<br>";
+            $start += $rows;
         }
     }
 
