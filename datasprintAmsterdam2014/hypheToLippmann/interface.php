@@ -69,7 +69,7 @@ if ($facets) {
                       /> Use facets to speed up queries (recommended).
                 </div>
                 <div id="performance" class="input_areas">
-                    <div id="perfestimate">Some queries take a while to run. Please be patient and do not refresh your browser window during progress.</div><br />
+                    <div id="perfestimate">Some queries take a long while to run. Please be patient and do not refresh your browser window during progress.</div><br />
                     <?php
                     if ($warning) {
                         echo '<div id="warning"><em>You really need to accept to run the query!</em></div><br/>';

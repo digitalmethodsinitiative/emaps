@@ -226,6 +226,38 @@ if ($accept && isset($_GET['issues'])) {
 
     include_start_clouds();
 
+    // Source clouds
+
+    include_header_source_clouds();
+
+    foreach ($sitesPerIssue as $issue => $null) {
+        echo "<em>Source cloud for issue/query: $issue</em><br>";
+        $cloud = '';
+        foreach ($sitesPerIssue[$issue] as $site => $found) {
+            $cloud .= "$site:$found\r\n";
+        }
+        javascript_produce_cloud($cloud);
+    }
+
+    echo "<em>Cummulative source cloud for all issues/queries</em><br>";
+    $cloud = '';
+    $cloudSources = array();
+    foreach ($sitesPerIssue as $issue => $null) {
+        foreach ($sitesPerIssue[$issue] as $site => $found) {
+            if (!array_key_exists($site, $cloudSources)) {
+                $cloudSources[$site] = $found;
+            } else {
+                $cloudSources[$site] += $found;
+            }
+        }
+    }
+    foreach ($cloudSources as $site => $found) {
+        $cloud .= "$site:$found\r\n";
+    }
+    javascript_produce_cloud($cloud);
+
+    echo "<br>";
+
     // Issue clouds
     include_header_issue_clouds();
 
@@ -259,36 +291,7 @@ if ($accept && isset($_GET['issues'])) {
 
     echo "<br>";
 
-    // Source clouds
-    include_header_source_clouds();
 
-    foreach ($sitesPerIssue as $issue => $null) {
-        echo "<em>Source cloud for issue/query: $issue</em><br>";
-        $cloud = '';
-        foreach ($sitesPerIssue[$issue] as $site => $found) {
-            $cloud .= "$site:$found\r\n";
-        }
-        javascript_produce_cloud($cloud);
-    }
-
-    echo "<em>Cummulative source cloud for all issues/queries</em><br>";
-    $cloud = '';
-    $cloudSources = array();
-    foreach ($sitesPerIssue as $issue => $null) {
-        foreach ($sitesPerIssue[$issue] as $site => $found) {
-            if (!array_key_exists($site, $cloudSources)) {
-                $cloudSources[$site] = $found;
-            } else {
-                $cloudSources[$site] += $found;
-            }
-        }
-    }
-    foreach ($cloudSources as $site => $found) {
-        $cloud .= "$site:$found\r\n";
-    }
-    javascript_produce_cloud($cloud);
-
-    echo "<br>";
 
     include_end_clouds();
 
