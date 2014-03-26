@@ -14,7 +14,7 @@
  * 
  */
 
-$folder = "/Users/erik/Downloads/lexisnexis/";
+$folder = "";
 
 date_default_timezone_set('EST');
 error_reporting(E_ALL);
