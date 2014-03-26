@@ -39,12 +39,12 @@ if ($accept && isset($_GET['issues'])) {
     foreach ($issues as $issue) {
         // example query
         //http://jiminy.medialab.sciences-po.fr/solr/hyphe-emaps2/select?q=text%3A%22solar+scientists%22&wt=json&indent=true
-        if (!preg_match("/\"/", $issue)) {
+        if (!preg_match('/"/', $issue)) {
             // simple, one line keyword
             $q = '(text:"' . $issue . '"';
         } else {
             $q = '(';
-            $q .= preg_replace("/\"(.*?)\"/", "text:\"$1\"", $issue);
+            $q .= preg_replace('/"(.*?)"/', 'text:"$1"', $issue);
         }
         $q .= ')';
 
@@ -228,8 +228,6 @@ function getHost($url) {
 
 function nicify($issue) {
     // this function can be used to manipulate the label of the issue before being printed
-
-    $issue = stripslashes($issue);
 
     /*
       Example: extract only the first keyword
