@@ -24,6 +24,10 @@ if (array_key_exists('usefacets', $_GET) && $_GET['usefacets'] == 'yes') {
 
 if ($accept && isset($_GET['urls'])) {
     $urls = preg_split("/\n/", $_GET['urls']);
+    if (!empty($urls)) {
+        // facets not supported here
+        $facets = FALSE;
+    }
     foreach ($urls as $url) {
         if (array_key_exists($url, $doneUrl)) {
             continue;
