@@ -123,6 +123,8 @@ if ($accept && isset($_GET['issues'])) {
 
     start_html(TRUE);
     include_javascript();
+    // copy input interface
+    include_input_interface();
     include_interface();
 
     include_start_clouds();
@@ -196,8 +198,6 @@ if ($accept && isset($_GET['issues'])) {
     // store the number of clouds in the DOM
     javascript_store_cloudnum();
 
-    // copy input interface
-    include_input_interface();
     end_html();
 
     exit();
