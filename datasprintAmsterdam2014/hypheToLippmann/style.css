@@ -5,6 +5,13 @@ body,html {
     margin:0px;
 }
 
+#inputform {
+    font:normal 1.4em/2em Georgia, "Times New Roman", Times, serif;
+    border-bottom: 1px solid #C0C0C0;
+    float:left;
+    margin:0px 0px 10px 10px;
+}
+
 #title {
     font:normal 1.4em/2em Georgia, "Times New Roman", Times, serif;
     margin:10px;
@@ -13,7 +20,7 @@ body,html {
 #interface {
     border-bottom: 1px solid #C0C0C0;
     float:left;
-    margin:0px 0px 30px 10px;
+    margin:0px 0px 10px 10px;
 }
 
 .heading {
@@ -63,4 +70,11 @@ body,html {
 
 .inputfield {
     width:30px;
+}
+
+#clouds {
+    font:normal 1.4em/2em Georgia, "Times New Roman", Times, serif;
+    margin-top: 0px;
+    margin-left:10px;
+    float:left;
 }
