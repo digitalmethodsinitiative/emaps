@@ -12,7 +12,13 @@ $GLOBALS['cloudid'] = 0;            // increments on every new cloud printed
 
 $urls = $issues = $hostProtocol = $hosts = $sitesPerIssue = $issuesPerSite = $queries = $doneUrl = array();
 
-if (isset($_GET['urls'])) {
+$accept = FALSE;
+
+if (array_key_exists('performaccept', $_GET) && $_GET['performaccept'] == 'accept') {
+    $accept = TRUE;
+}
+
+if ($accept && isset($_GET['urls'])) {
     $urls = preg_split("/\n/", $_GET['urls']);
     foreach ($urls as $url) {
         if (array_key_exists($url, $doneUrl)) {
@@ -27,7 +33,7 @@ if (isset($_GET['urls'])) {
         $hostProtocol[$host] = $hostProtocol;
     }
 }
-if (isset($_GET['issues'])) {
+if ($accept && isset($_GET['issues'])) {
     $issues = preg_split("/\n/", $_GET['issues']);
 
     foreach ($issues as $issue) {
@@ -199,7 +205,11 @@ if (isset($_GET['issues'])) {
 
     start_html();
     include_javascript();
-    include_input_interface();
+    if (!$accept && isset($_GET['issues'])) {
+        include_input_interface(TRUE);
+    } else {
+        include_input_interface();
+    }
     end_html();
 
 }

@@ -43,7 +43,7 @@ function end_html() {
     <?php
 }
 
-function include_input_interface() {
+function include_input_interface($warning = FALSE) {
     ?>
    <div id="inputinterface">
 
@@ -53,8 +53,17 @@ function include_input_interface() {
 
             <form method="GET">
                 <div id="layout" class="input_areas">
-                Enter URLs, or leave empty to query the entire database:<br><textarea name="urls" cols="80" rows="7"><?php if (array_key_exists('urls', $_GET)) { echo $_GET['urls']; }?></textarea><br>
-                Enter queries:<br><textarea type="textarea" name="issues" cols="80" rows="7"><?php if (array_key_exists('issues', $_GET)) { echo $_GET['issues']; }?></textarea><br><br>
+                Enter URLs, or leave empty to query the entire database:<br><textarea id="urls" name="urls" cols="80" rows="7"><?php if (array_key_exists('urls', $_GET)) { echo $_GET['urls']; }?></textarea><br>
+                Enter queries:<br><textarea type="textarea" id="issues" name="issues" cols="80" rows="7"><?php if (array_key_exists('issues', $_GET)) { echo $_GET['issues']; }?></textarea><br><br>
+                <div id="performance" class="input_areas">
+                    <div id="perfestimate">Estimated time for query to complete (without warrenty): n/a</div><br />
+                    <?php
+                    if ($warning) {
+                        echo '<div id="warning"><em>You really need to accept to run the query!</em></div><br/>';
+                    }
+                    ?>
+                    <input type="checkbox" id="performaccept" name="performaccept" value="accept"/> I patiently accept to run this query
+                </div><br/>
                 <input type="submit" value="Submit">
 		</div>
             </form>

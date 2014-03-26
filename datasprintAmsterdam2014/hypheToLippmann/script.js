@@ -162,3 +162,50 @@ function createCloud(_order,_layout,_width,_case,num) {
         $(".tag").css("padding-top","8px");
     }
 }
+
+function countlines(id) {
+    var text = $(id).val();   
+    if (text === '') { return 0; }
+    var lines = text.split(/\r|\r\n|\n/);
+    return lines.length;
+}
+
+function update_estimate() {
+    //var g_urls = encodeURIComponent($("#urls").val());
+    //var g_issues = encodeURIComponent($("#issues").val());
+    var g_urls = $("#urls").val();
+    var g_issues = $("#issues").val();
+    $.get( "estimate.php", { urls: g_urls, issues: g_issues } )
+		.done(function( estimate_seconds ) {
+    		estimate_minutes = Math.floor(estimate_seconds / 60);
+    		estimate_seconds -= (estimate_minutes * 60);
+    		$("#perfestimate").html('Estimated time for query to complete (no guarantees!): ' + estimate_minutes + ' minutes and ' + estimate_seconds + ' seconds');
+	});  
+}
+
+function update_estimate_debugdev() {
+    urls = countlines("#urls");
+    issues = countlines("#issues");
+    if (urls > 0) {
+    	estimate_seconds = Math.floor(0.075 * 60 * issues);
+    } else {
+        estimate_seconds = 60 * issues;
+    }
+    estimate_minutes = Math.floor(estimate_seconds / 60);
+    estimate_seconds -= (estimate_minutes * 60);
+    //<div id="perfestimate">Estimated time for query to complete (without warrenty): n/a</div><br />
+    $("#perfestimate").html('Estimated time for query to complete (no guarantees!): ' + estimate_minutes + ' minutes and ' + estimate_seconds + ' seconds');
+}
+
+$( document ).ready(function() {
+
+$('#issues').change(function() {
+		update_estimate();
+});
+$('#urls').change(function() {
+		update_estimate();
+});
+
+     update_estimate();
+
+});
