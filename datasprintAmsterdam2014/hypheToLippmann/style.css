@@ -72,6 +72,12 @@ body,html {
     width:30px;
 }
 
+#inputinterface {
+    border-bottom: 1px solid #C0C0C0;
+    float:left;
+    margin:0px 0px 10px 10px;
+}
+
 #clouds {
     font:normal 1.4em/2em Georgia, "Times New Roman", Times, serif;
     margin-top: 0px;

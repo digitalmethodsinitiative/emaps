@@ -125,7 +125,7 @@ if (isset($_GET['issues'])) {
     include_header_issue_clouds();
 
     foreach ($issuesPerSite as $site => $null) {
-        echo "Issue cloud for site $site<br>";
+        echo "<em>Issue cloud for site $site</em><br>";
         $cloud = '';
         foreach ($issuesPerSite[$site] as $issue => $found) {
             $nice = nicify($issue);
@@ -134,7 +134,7 @@ if (isset($_GET['issues'])) {
         javascript_produce_cloud($cloud);
     }
 
-    echo "Cummulative issue cloud for all sites<br>";
+    echo "<em>Cummulative issue cloud for all sites</em><br>";
     $cloud = '';
     $cloudIssues = array();
     foreach ($issuesPerSite as $site => $null) {
@@ -158,7 +158,7 @@ if (isset($_GET['issues'])) {
     include_header_source_clouds();
 
     foreach ($sitesPerIssue as $issue => $null) {
-        echo "Source cloud for issue/query: $issue<br>";
+        echo "<em>Source cloud for issue/query: $issue</em><br>";
         $cloud = '';
         foreach ($sitesPerIssue[$issue] as $site => $found) {
             $cloud .= "$site:$found\r\n";
@@ -166,7 +166,7 @@ if (isset($_GET['issues'])) {
         javascript_produce_cloud($cloud);
     }
 
-    echo "Cummulative source cloud for all issues/queries<br>";
+    echo "<em>Cummulative source cloud for all issues/queries</em><br>";
     $cloud = '';
     $cloudSources = array();
     foreach ($sitesPerIssue as $issue => $null) {
@@ -190,6 +190,8 @@ if (isset($_GET['issues'])) {
     // store the number of clouds in the DOM
     javascript_store_cloudnum();
 
+    // copy input interface
+    include_input_interface();
     end_html();
 
     exit();
@@ -215,8 +217,15 @@ function getHost($url) {
 }
 
 function nicify($issue) {
-    $issue = preg_replace("/^.*?\"/", "", $issue);
-    $issue = preg_replace("/\".*$/", "", $issue);
-    return $issue;
+    // this function can be used to manipulate the label of the issue before being printed
+
+    /*
+      Example: extract only the first keyword
+
+      $issue = preg_replace("/^.*?\"/", "", $issue);
+      $issue = preg_replace("/\".*$/", "", $issue);
+     */ 
+
+   return $issue;
 }
 

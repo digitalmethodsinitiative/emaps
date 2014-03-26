@@ -45,7 +45,7 @@ function end_html() {
 
 function include_input_interface() {
     ?>
-   <div id="interface">
+   <div id="inputinterface">
 
         <fieldset id="if_input">
 
@@ -53,8 +53,8 @@ function include_input_interface() {
 
             <form method="GET">
                 <div id="layout" class="input_areas">
-                Enter URLs, or leave empty to query the entire database:<br><textarea name="urls" cols="80" rows="7"></textarea><br>
-                Enter queries:<br><textarea type="textarea" name="issues" cols="80" rows="7"></textarea><br><br>
+                Enter URLs, or leave empty to query the entire database:<br><textarea name="urls" cols="80" rows="7"><?php if (array_key_exists('urls', $_GET)) { echo $_GET['urls']; }?></textarea><br>
+                Enter queries:<br><textarea type="textarea" name="issues" cols="80" rows="7"><?php if (array_key_exists('issues', $_GET)) { echo $_GET['issues']; }?></textarea><br><br>
                 <input type="submit" value="Submit">
 		</div>
             </form>
@@ -106,7 +106,7 @@ function include_javascript() {
 function include_header_source_clouds() {
     // four identifiers for the unique tag clouds, css class output
     ?>
-    <em>Source clouds</em>
+    <h3>Source clouds</h3>
 
     <p>
         Shows the partisanship or commitment of sources to issues. The cloud displays sources, each resized according to the number of mentions of a particular issue. 
@@ -116,7 +116,7 @@ function include_header_source_clouds() {
 
 function include_header_issue_clouds() {
     ?>        
-    <em>Issue clouds</em>
+    <h3>Issue clouds</h3>
 
     <p>
         Shows the issue commitment or partisanship of a single source or multiple sources. The cloud displays issues, each resized according to the number of mentions by one or more sources. 
