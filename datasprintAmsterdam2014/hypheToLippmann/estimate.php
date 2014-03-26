@@ -52,7 +52,7 @@ if (isset($_GET['issues'])) {
 
     if (isset($_GET['urls'])) {
         $urls = preg_split("/\n/", $_GET['urls']);
-        if (count($urls) > 1) {
+        if (count($urls) > 1 || strlen($_GET['urls'])) {
            $totalrows /= 900;
            $totalrows *= count($urls);
            if ($totalrows < 1) {

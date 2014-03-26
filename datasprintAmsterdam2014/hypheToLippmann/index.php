@@ -229,6 +229,8 @@ function getHost($url) {
 function nicify($issue) {
     // this function can be used to manipulate the label of the issue before being printed
 
+    $issue = stripslashes($issue);
+
     /*
       Example: extract only the first keyword
 
