@@ -54,9 +54,22 @@ function include_input_interface($warning = FALSE) {
             <form method="GET">
                 <div id="layout" class="input_areas">
                 Enter URLs, or leave empty to query the entire database:<br><textarea id="urls" name="urls" cols="80" rows="7"><?php if (array_key_exists('urls', $_GET)) { echo $_GET['urls']; }?></textarea><br>
-                Enter queries:<br><textarea type="textarea" id="issues" name="issues" cols="80" rows="7"><?php if (array_key_exists('issues', $_GET)) { echo $_GET['issues']; }?></textarea><br><br>
+                Enter queries:<br><textarea type="textarea" id="issues" name="issues" cols="80" rows="7"><?php if (array_key_exists('issues', $_GET)) { echo $_GET['issues']; }?></textarea><br>
+                <div id="facets" class="input_areas">
+                      <input type="checkbox" id="usefacets" name="usefacets" value="yes" 
+<?php
+$facets = TRUE;
+if (array_key_exists('issues', $_GET) && array_key_exists('usefacets', $_GET) && $_GET['usefacets'] !== 'yes') {
+    $facets = FALSE;
+}
+if ($facets) {
+    echo ' checked ';
+}
+?>
+                      /> Use facets to speed up queries (recommended).
+                </div>
                 <div id="performance" class="input_areas">
-                    <div id="perfestimate">Estimated time for query to complete (without warrenty): n/a</div><br />
+                    <div id="perfestimate">Some queries take a while to run. Please be patient and do not refresh your browser window during progress.</div><br />
                     <?php
                     if ($warning) {
                         echo '<div id="warning"><em>You really need to accept to run the query!</em></div><br/>';

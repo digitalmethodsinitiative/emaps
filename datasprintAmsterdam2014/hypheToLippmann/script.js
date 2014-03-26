@@ -171,8 +171,6 @@ function countlines(id) {
 }
 
 function update_estimate() {
-    //var g_urls = encodeURIComponent($("#urls").val());
-    //var g_issues = encodeURIComponent($("#issues").val());
     var g_urls = $("#urls").val();
     var g_issues = $("#issues").val();
     $.get( "estimate.php", { urls: g_urls, issues: g_issues } )
@@ -183,20 +181,7 @@ function update_estimate() {
 	});  
 }
 
-function update_estimate_debugdev() {
-    urls = countlines("#urls");
-    issues = countlines("#issues");
-    if (urls > 0) {
-    	estimate_seconds = Math.floor(0.075 * 60 * issues);
-    } else {
-        estimate_seconds = 60 * issues;
-    }
-    estimate_minutes = Math.floor(estimate_seconds / 60);
-    estimate_seconds -= (estimate_minutes * 60);
-    //<div id="perfestimate">Estimated time for query to complete (without warrenty): n/a</div><br />
-    $("#perfestimate").html('Estimated time for query to complete (no guarantees!): ' + estimate_minutes + ' minutes and ' + estimate_seconds + ' seconds');
-}
-
+/*
 $( document ).ready(function() {
 
 $('#issues').change(function() {
@@ -209,3 +194,4 @@ $('#urls').change(function() {
      update_estimate();
 
 });
+*/

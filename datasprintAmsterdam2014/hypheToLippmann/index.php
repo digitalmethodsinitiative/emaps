@@ -13,9 +13,13 @@ $GLOBALS['cloudid'] = 0;            // increments on every new cloud printed
 $urls = $issues = $hostProtocol = $hosts = $sitesPerIssue = $issuesPerSite = $queries = $doneUrl = array();
 
 $accept = FALSE;
+$facets = FALSE;
 
 if (array_key_exists('performaccept', $_GET) && $_GET['performaccept'] == 'accept') {
     $accept = TRUE;
+}
+if (array_key_exists('usefacets', $_GET) && $_GET['usefacets'] == 'yes') {
+    $facets = TRUE;
 }
 
 if ($accept && isset($_GET['urls'])) {
@@ -36,87 +40,176 @@ if ($accept && isset($_GET['urls'])) {
 if ($accept && isset($_GET['issues'])) {
     $issues = preg_split("/\n/", $_GET['issues']);
 
-    foreach ($issues as $issue) {
-        // example query
-        //http://jiminy.medialab.sciences-po.fr/solr/hyphe-emaps2/select?q=text%3A%22solar+scientists%22&wt=json&indent=true
-        if (!preg_match('/"/', $issue)) {
-            // simple, one line keyword
-            $q = '(text:"' . $issue . '"';
-        } else {
-            $q = '(';
-            $q .= preg_replace('/"(.*?)"/', 'text:"$1"', $issue);
-        }
-        $q .= ')';
+    if ($facets) {
+	// example query
+	//http://jiminy.medialab.sciences-po.fr/solr/hyphe-emaps2/select?q=text%3A%22polar+bear%22+AND+text%3A%22climate%22&rows=10&fl=web_entity+url&wt=json&indent=true&facet=true&facet.field=web_entity
+    	foreach ($issues as $issue) {
+		if (!preg_match('/"/', $issue)) {
+		    // simple, one line keyword
+		    $q = '(text:"' . $issue . '"';
+		} else {
+		    $q = '(';
+		    $q .= preg_replace('/"(.*?)"/', 'text:"$1"', $issue);
+		}
+		$q .= ')';
+		$query_url = 'http://jiminy.medialab.sciences-po.fr/solr/hyphe-emaps2/select?';
+		$query_url .= 'q=' . urlencode($q);
+		$query_url .= '&wt=json&indent=true&rows=0&facet=true&facet.field=web_entity';
+		   $curl = curl_init();
+		    curl_setopt_array($curl, array(
+			CURLOPT_URL => $query_url,
+			CURLOPT_USERAGENT => 'hypheToLippmann',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_USERPWD => $GLOBALS["user"] . ':' . $GLOBALS["password"],
+			CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
+		    ));
+		    $r = json_decode(curl_exec($curl), TRUE);
+		    curl_close($curl);
 
-        if (!empty($hosts)) {
-            foreach ($hosts as $host) {
-                $issuesPerSite[$host][$issue] = 0;
-                $sitesPerIssue[$issue][$host] = 0;
+		if (!array_key_exists('response', $r)) {
+			continue;
+		}
+		// match hosts to web entities
+		/*
+		$lookup = array();
+		if (array_key_exists('response', $r)) {
+			foreach ($r['response']['docs'] as $doc) {
+				$url = $doc['url'];
+			        list($host, $hostProtocol) = getHost($url);
+				if ($host === false) { continue; }
+				$web_entity = $doc['web_entity'];
+				$lookup[$host] = $web_entity;
+			}
+		}
+		*/
+                // make assoc array from comma-seperated facet results
+		$results = array();
+		if (isset($r['facet_counts']['facet_fields']['web_entity'])) {
+			$assign = false;
+			$k = '';
+			foreach ($r['facet_counts']['facet_fields']['web_entity'] as $element) {
+				if ($assign) {
+					$results[$k] = $element;
+					$assign = false;
+				} else {
+					$k = preg_replace("/ /", ".", strtolower($element));
+					$assign = true;
+				}
+			}
+		}
+		// register counts for all hosts
+		foreach ($results as $host => $count) {
+			if ($count > 0) {
 
-                $q .= ' AND url:*' . $host . '*';
-                // more precise but results in API syntax error?
-                //$q = 'url:*' . urlencode($hostProtocol[$host] . '://' . $host . '*');
-                if ($debug)
-                    echo "query: $q<br>";
-                $queries[] = $q;
-            }
-        } else {
-            if ($debug)
-                echo "query: $q<br>";
-            $queries[] = $q;
-        }
-    }
+				// add to issues per site
 
-    $rows = 1000;
-    foreach ($queries as $q) {
+				if (!array_key_exists($host, $issuesPerSite)) {
+					$issuesPerSite[$host] = array();
+				}
+				if (!array_key_exists($issue, $issuesPerSite[$host])) {
+					$issuesPerSite[$host][$issue] = $count;
+				} else {
+					$issuesPerSite[$host][$issue] += $count;
+				}
 
-        $query_url = 'http://jiminy.medialab.sciences-po.fr/solr/hyphe-emaps2/select?';
-        $query_url .= 'q=' . urlencode($q);
-        $query_url .= '&wt=json&indent=true&rows=' . $rows . '&fl=url';
+				// add to sites per issue
 
-        $start = $numFound = 0;
-        while ($start <= $numFound) {
-            if ($start > 0)
-                $query_url_offset = $query_url . "&start=$start";
-            else
-                $query_url_offset = $query_url;
+				if (!array_key_exists($issue, $sitesPerIssue)) {
+					$sitesPerIssue[$issue] = array();
+				}
+				if (!array_key_exists($host, $sitesPerIssue[$issue])) {
+					$sitesPerIssue[$issue][$host] = $count;
+				} else {
+					$sitesPerIssue[$issue][$host] += $count;
+				}
 
-            if ($debug) {
-                print "doing <a href='$query_url_offset'>$query_url_offset</a><bR>";
-                flush();
-            }
+			}
+		}
+	}
+    } else { 
+    	foreach ($issues as $issue) {
+		// example query
+		//http://jiminy.medialab.sciences-po.fr/solr/hyphe-emaps2/select?q=text%3A%22solar+scientists%22&wt=json&indent=true
+		if (!preg_match('/"/', $issue)) {
+		    // simple, one line keyword
+		    $q = '(text:"' . $issue . '"';
+		} else {
+		    $q = '(';
+		    $q .= preg_replace('/"(.*?)"/', 'text:"$1"', $issue);
+		}
+		$q .= ')';
 
-            $curl = curl_init();
-            curl_setopt_array($curl, array(
-                CURLOPT_URL => $query_url_offset,
-                CURLOPT_USERAGENT => 'hypheToLippmann',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_USERPWD => $GLOBALS["user"] . ':' . $GLOBALS["password"],
-                CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
-            ));
-            $r = json_decode(curl_exec($curl), TRUE);
-            curl_close($curl);
+		if (!empty($hosts)) {
+		    foreach ($hosts as $host) {
+			$issuesPerSite[$host][$issue] = 0;
+			$sitesPerIssue[$issue][$host] = 0;
 
-            if (array_key_exists('response', $r)) {
-                $numFound = $r['response']['numFound'];
-                if ($debug) {
-                    echo "found $numFound<br>";
-                }
-                foreach ($r['response']['docs'] as $doc) {
-                    $url = $doc['url'];
-                    list($host, $hostProtocol) = getHost($url);
-                    if (!isset($issuesPerSite[$host][$issue]))
-                        $issuesPerSite[$host][$issue] = 0;
-                    if (!isset($sitesPerIssue[$issue][$host]))
-                        $sitesPerIssue[$issue][$host] = 0;
-                    $issuesPerSite[$host][$issue]++;
-                    $sitesPerIssue[$issue][$host]++;
-                }
-            } elseif ($debug) {
-                echo "found nothing<br>";
-            }
-            $start += $rows;
-        }
+			$q .= ' AND url:*' . $host . '*';
+			// more precise but results in API syntax error?
+			//$q = 'url:*' . urlencode($hostProtocol[$host] . '://' . $host . '*');
+			if ($debug)
+			    echo "query: $q<br>";
+			$queries[] = $q;
+		    }
+		} else {
+		    if ($debug)
+			echo "query: $q<br>";
+		    $queries[] = $q;
+		}
+	    }
+
+	    $rows = 1000;
+	    foreach ($queries as $q) {
+
+		$query_url = 'http://jiminy.medialab.sciences-po.fr/solr/hyphe-emaps2/select?';
+		$query_url .= 'q=' . urlencode($q);
+		$query_url .= '&wt=json&indent=true&rows=' . $rows . '&fl=url';
+
+		$start = $numFound = 0;
+		while ($start <= $numFound) {
+		    if ($start > 0)
+			$query_url_offset = $query_url . "&start=$start";
+		    else
+			$query_url_offset = $query_url;
+
+		    if ($debug) {
+			print "doing <a href='$query_url_offset'>$query_url_offset</a><bR>";
+			flush();
+		    }
+
+		    $curl = curl_init();
+		    curl_setopt_array($curl, array(
+			CURLOPT_URL => $query_url_offset,
+			CURLOPT_USERAGENT => 'hypheToLippmann',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_USERPWD => $GLOBALS["user"] . ':' . $GLOBALS["password"],
+			CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
+		    ));
+		    $r = json_decode(curl_exec($curl), TRUE);
+		    curl_close($curl);
+
+		    if (array_key_exists('response', $r)) {
+			$numFound = $r['response']['numFound'];
+			if ($debug) {
+			    echo "found $numFound<br>";
+			}
+			foreach ($r['response']['docs'] as $doc) {
+			    $url = $doc['url'];
+			    list($host, $hostProtocol) = getHost($url);
+			    if (!isset($issuesPerSite[$host][$issue]))
+				$issuesPerSite[$host][$issue] = 0;
+			    if (!isset($sitesPerIssue[$issue][$host]))
+				$sitesPerIssue[$issue][$host] = 0;
+			    $issuesPerSite[$host][$issue]++;
+			    $sitesPerIssue[$issue][$host]++;
+			}
+		    } elseif ($debug) {
+			echo "found nothing<br>";
+		    }
+		    $start += $rows;
+		}
+	    }
+
     }
 
     // Generate tag clouds
