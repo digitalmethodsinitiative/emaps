@@ -277,8 +277,10 @@ if ($accept && isset($_GET['issues'])) {
 		echo "<em>Issue cloud for site $site</em><br>";
 		$cloud = '';
 		foreach ($issuesPerSite[$site] as $issue => $found) {
-		    $nice = nicify($issue);
-		    $cloud .= "$nice:$found\r\n";
+		    if ($found) {
+		       $nice = nicify($issue);
+		       $cloud .= "$nice:$found\r\n";
+                    }
 		}
 		javascript_produce_cloud($cloud);
 	    }
@@ -290,12 +292,14 @@ if ($accept && isset($_GET['issues'])) {
 	    $cloudIssues = array();
 	    foreach ($issuesPerSite as $site => $null) {
 		foreach ($issuesPerSite[$site] as $issue => $found) {
-		    $nice = nicify($issue);
-		    if (!array_key_exists($nice, $cloudIssues)) {
-			$cloudIssues[$nice] = $found;
-		    } else {
-			$cloudIssues[$nice] += $found;
-		    }
+                    if ($found) {
+		       $nice = nicify($issue);
+		       if (!array_key_exists($nice, $cloudIssues)) {
+			   $cloudIssues[$nice] = $found;
+		       } else {
+	   		   $cloudIssues[$nice] += $found;
+		       }
+                    }
 		}
 	    }
 	    foreach ($cloudIssues as $nice => $found) {
@@ -352,6 +356,6 @@ function nicify($issue) {
       $issue = preg_replace("/\".*$/", "", $issue);
      */ 
 
-   return $issue;
+   return rtrim($issue);
 }
 
