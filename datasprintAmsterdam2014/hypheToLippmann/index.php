@@ -276,12 +276,21 @@ if ($accept && isset($_GET['issues'])) {
 	    foreach ($issuesPerSite as $site => $null) {
 		echo "<em>Issue cloud for site $site</em><br>";
 		$cloud = '';
+		$handled = array();
 		foreach ($issuesPerSite[$site] as $issue => $found) {
 		    if ($found) {
 		       $nice = nicify($issue);
 		       $cloud .= "$nice:$found\r\n";
+                       $handled[$nice] = TRUE;
                     }
 		}
+                // display missing issues as (0)
+                foreach ($issues as $i) {
+                    $n = nicify($i);
+                    if (!array_key_exists($n, $handled)) {
+		       $cloud .= "$n:0\r\n";
+                    }
+                } 
 		javascript_produce_cloud($cloud);
 	    }
     }
@@ -290,6 +299,7 @@ if ($accept && isset($_GET['issues'])) {
 	    echo "<em>Cummulative issue cloud for all sites</em><br>";
 	    $cloud = '';
 	    $cloudIssues = array();
+	    $handled = array();
 	    foreach ($issuesPerSite as $site => $null) {
 		foreach ($issuesPerSite[$site] as $issue => $found) {
                     if ($found) {
@@ -299,12 +309,19 @@ if ($accept && isset($_GET['issues'])) {
 		       } else {
 	   		   $cloudIssues[$nice] += $found;
 		       }
+                       $handled[$nice] = TRUE;
                     }
 		}
 	    }
 	    foreach ($cloudIssues as $nice => $found) {
 		$cloud .= "$nice:$found\r\n";
 	    }
+            foreach ($issues as $i) {
+                $n = nicify($i);
+                if (!array_key_exists($n, $handled)) {
+	            $cloud .= "$n:0\r\n";
+                }
+            } 
 	    javascript_produce_cloud($cloud);
     }
 
