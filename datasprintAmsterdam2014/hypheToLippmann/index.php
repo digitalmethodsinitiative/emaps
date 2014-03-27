@@ -24,7 +24,7 @@ if (array_key_exists('usefacets', $_GET) && $_GET['usefacets'] == 'yes') {
 
 if ($accept && isset($_GET['urls'])) {
     $urls = preg_split("/\n/", $_GET['urls']);
-    if (!empty($urls)) {
+    if (!empty($urls) && $urls[0] !== '') {
         // facets not supported here
         $facets = FALSE;
     }
@@ -41,6 +41,7 @@ if ($accept && isset($_GET['urls'])) {
         $hostProtocol[$host] = $hostProtocol;
     }
 }
+
 if ($accept && isset($_GET['issues'])) {
     $issues = preg_split("/\n/", $_GET['issues']);
 
