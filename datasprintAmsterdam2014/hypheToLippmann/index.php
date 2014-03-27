@@ -27,7 +27,10 @@ if ($accept && isset($_GET['urls'])) {
     if (!empty($urls) && $urls[0] !== '') {
         // facets not supported here
         $facets = FALSE;
-    }
+    } else {
+        // @todo: currently we enforce facets on all queries not specifying urls
+        $facets = TRUE;
+     }
     foreach ($urls as $url) {
         if (array_key_exists($url, $doneUrl)) {
             continue;
@@ -231,55 +234,75 @@ if ($accept && isset($_GET['issues'])) {
         javascript_produce_cloud($cloud);
     }
 
-    echo "<em>Cummulative source cloud for all issues/queries</em><br>";
-    $cloud = '';
-    $cloudSources = array();
-    foreach ($sitesPerIssue as $issue => $null) {
-        foreach ($sitesPerIssue[$issue] as $site => $found) {
-            if (!array_key_exists($site, $cloudSources)) {
-                $cloudSources[$site] = $found;
-            } else {
-                $cloudSources[$site] += $found;
-            }
+    foreach ($issues as $i) {
+        if (!array_key_exists($i, $sitesPerIssue)) {
+            echo "<em>Issue $issue did not yield any results</em><br>";
         }
     }
-    foreach ($cloudSources as $site => $found) {
-        $cloud .= "$site:$found\r\n";
-    }
-    javascript_produce_cloud($cloud);
 
-    echo "<br>";
+    if (empty($sitesPerIssue)) {
+
+        echo "<em>No results available to make a cummulative source cloud</em><br>";
+
+    } else {
+
+	    echo "<em>Cummulative source cloud for all issues/queries</em><br>";
+	    $cloud = '';
+	    $cloudSources = array();
+	    foreach ($sitesPerIssue as $issue => $null) {
+		foreach ($sitesPerIssue[$issue] as $site => $found) {
+		    if (!array_key_exists($site, $cloudSources)) {
+			$cloudSources[$site] = $found;
+		    } else {
+			$cloudSources[$site] += $found;
+		    }
+		}
+	    }
+	    foreach ($cloudSources as $site => $found) {
+		$cloud .= "$site:$found\r\n";
+	    }
+	    javascript_produce_cloud($cloud);
+
+	    echo "<br>";
+
+    }
 
     // Issue clouds
     include_header_issue_clouds();
 
-    foreach ($issuesPerSite as $site => $null) {
-        echo "<em>Issue cloud for site $site</em><br>";
-        $cloud = '';
-        foreach ($issuesPerSite[$site] as $issue => $found) {
-            $nice = nicify($issue);
-            $cloud .= "$nice:$found\r\n";
-        }
-        javascript_produce_cloud($cloud);
+    if (empty($sitesPerIssue)) {
+            echo '<em>No sites found in query</em>';
+    } else {
+	    foreach ($issuesPerSite as $site => $null) {
+		echo "<em>Issue cloud for site $site</em><br>";
+		$cloud = '';
+		foreach ($issuesPerSite[$site] as $issue => $found) {
+		    $nice = nicify($issue);
+		    $cloud .= "$nice:$found\r\n";
+		}
+		javascript_produce_cloud($cloud);
+	    }
     }
 
-    echo "<em>Cummulative issue cloud for all sites</em><br>";
-    $cloud = '';
-    $cloudIssues = array();
-    foreach ($issuesPerSite as $site => $null) {
-        foreach ($issuesPerSite[$site] as $issue => $found) {
-            $nice = nicify($issue);
-            if (!array_key_exists($nice, $cloudIssues)) {
-                $cloudIssues[$nice] = $found;
-            } else {
-                $cloudIssues[$nice] += $found;
-            }
-        }
+    if (!empty($sitesPerIssue)) {
+	    echo "<em>Cummulative issue cloud for all sites</em><br>";
+	    $cloud = '';
+	    $cloudIssues = array();
+	    foreach ($issuesPerSite as $site => $null) {
+		foreach ($issuesPerSite[$site] as $issue => $found) {
+		    $nice = nicify($issue);
+		    if (!array_key_exists($nice, $cloudIssues)) {
+			$cloudIssues[$nice] = $found;
+		    } else {
+			$cloudIssues[$nice] += $found;
+		    }
+		}
+	    }
+	    foreach ($cloudIssues as $nice => $found) {
+		$cloud .= "$nice:$found\r\n";
+	    }
+	    javascript_produce_cloud($cloud);
     }
-    foreach ($cloudIssues as $nice => $found) {
-        $cloud .= "$nice:$found\r\n";
-    }
-    javascript_produce_cloud($cloud);
 
     echo "<br>";
 
