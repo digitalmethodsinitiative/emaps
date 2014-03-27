@@ -236,7 +236,7 @@ if ($accept && isset($_GET['issues'])) {
 
     foreach ($issues as $i) {
         if (!array_key_exists($i, $sitesPerIssue)) {
-            echo "<em>Issue $issue did not yield any results</em><br>";
+            echo "<em>Issue $i did not yield any results</em><br>";
         }
     }
 
