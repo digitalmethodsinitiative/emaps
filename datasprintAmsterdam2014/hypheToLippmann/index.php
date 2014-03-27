@@ -93,7 +93,11 @@ if ($accept && isset($_GET['issues'])) {
 			$k = '';
 			foreach ($r['facet_counts']['facet_fields']['web_entity'] as $element) {
 				if ($assign) {
-					$results[$k] = $element;
+					if (isset($results[$k])) {
+						$results[$k] += $element;
+					} else {
+						$results[$k] = $element;
+					}
 					$assign = false;
 				} else {
 					$k = preg_replace("/ /", ".", strtolower($element));
