@@ -73,19 +73,6 @@ if ($accept && isset($_GET['issues'])) {
 		if (!array_key_exists('response', $r)) {
 			continue;
 		}
-		// match hosts to web entities
-		/*
-		$lookup = array();
-		if (array_key_exists('response', $r)) {
-			foreach ($r['response']['docs'] as $doc) {
-				$url = $doc['url'];
-			        list($host, $hostProtocol) = getHost($url);
-				if ($host === false) { continue; }
-				$web_entity = $doc['web_entity'];
-				$lookup[$host] = $web_entity;
-			}
-		}
-		*/
                 // make assoc array from comma-seperated facet results
 		$results = array();
 		if (isset($r['facet_counts']['facet_fields']['web_entity'])) {
@@ -321,6 +308,7 @@ if ($accept && isset($_GET['issues'])) {
 /* support functions */
 
 function getHost($url) {
+    if ($url == '') { return false; }
     $parse = parse_url($url);
     if (!array_key_exists('host', $parse)) {
         echo 'Attention! malformed url: "' . $url . '"<br>';
