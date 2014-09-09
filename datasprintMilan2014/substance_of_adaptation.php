@@ -4,6 +4,9 @@
  * This script combines various adaptation funding databases into one JSON file
  * see https://docs.google.com/document/d/1s0HVBtVG9ZVVFOhwS-n3PMdgzlwNTiMUyvrNYjGv8Mc/edit for more info
  * 
+ * @todo, update sources
+ * @todo, put amounts in same format (float vs int) + check whether they are adjusted for inflation etc
+ * 
  * @author Erik Borra <erik@digitalmethods.net>
  */
 
@@ -27,24 +30,83 @@ function load_databases() {
 
 /*
  * UNDP adaptation learning mechanism (http://www.undp-alm.org/) 
+ * 
+ * methodology https://drive.google.com/?usp=folder&authuser=0#folders/0B3e-HpGNh9BwcVpPUHlJNkpnVWs
+ * data file https://docs.google.com/file/d/0B3e-HpGNh9BwRnYzQVJpTE5HMjQ/edit
+ * 
+ * @todo: old source
+ * 
  */
 
 function load_undp() {
     global $jsons, $datadir;
 
-    $inputfile = "";
-    $file = file($datadir . "/" . $inputfile);
+    $inputfile = "undp.json";
+    $file = file_get_contents($datadir . "/" . $inputfile);
+
+    $data = json_decode($file);
+    foreach ($data as $d) {
+        $obj = new StdClass();
+        $obj->source = "undp";
+        $obj->year = "n/a";
+        $obj->donor = "n/a";
+        if (isset($d->data->partners)) {
+            if (is_array($d->data->partners))
+                $obj->donor = implode(",", $d->data->partners);
+            else
+                $obj->donor = $d->data->partners;
+        }
+        $obj->recipient = $d->location;
+        $obj->purpose = "n/a";
+        if (isset($d->data->{'climate-hazards'})) {
+            if (is_array($d->data->{'climate-hazards'}))
+                $obj->purpose = implode(",", $d->data->{'climate-hazards'});
+            else
+                $obj->purpose = $d->data->{'climate-hazards'};
+        }
+        $obj->amount = "n/a";
+        if (isset($d->data->normalized_costs))
+            $obj->amount = $d->data->normalized_costs;
+        $obj->sector = $d->theme;
+        $obj->projecttitle = $d->title;
+        $jsons[] = $obj;
+    }
 }
 
 /*
  * Ci-Grasp (http://www.pik-potsdam.de/~wrobel/ci_2/)
+ * 
+ * methodology https://drive.google.com/?usp=folder&authuser=0#folders/0B3e-HpGNh9BwcVpPUHlJNkpnVWs
+ * json https://docs.google.com/file/d/0B3e-HpGNh9BwZzF0V2VnWmNrazA/edit
+ * 
+ * @todo: old source
  */
 
 function load_ci_grasp() {
     global $jsons, $datadir;
 
-    $inputfile = "";
-    $file = file($datadir . "/" . $inputfile);
+    $inputfile = "cigrasp.json";
+    $file = file_get_contents($datadir . "/" . $inputfile);
+
+    $data = json_decode($file);
+    foreach ($data as $d) {
+        $obj = new StdClass();
+        $obj->source = "cigrasp";
+        $obj->year = "n/a";
+        $obj->donor = "n/a";
+        $obj->recipient = $d->country;
+        $obj->purpose = "n/a";
+        if (isset($d->overview->stimuli)) {
+            if (is_array($d->overview->stimuli))
+                $obj->purpose = implode(",", $d->overview->stimuli);
+            else
+                $obj->purpose = $d->overview->stimuli;
+        }
+        $obj->amount = $d->project_costs->normalized_costs;
+        $obj->sector = $d->overview->sector;
+        $obj->projecttitle = $d->title;
+        $jsons[] = $obj;
+    }
 }
 
 /*
@@ -59,14 +121,37 @@ function load_psi() {
 }
 
 /*
- *  ClimateWise on insurance industry (http://www.climatewise.org.uk/)
+ * ClimateWise on insurance industry (http://www.climatewise.org.uk/)
+ * 
+ * methodology, https://docs.google.com/document/d/1aOIi0ofmjfl-haOt-hbHYGZjDnKBPxzxN6-5SpmuH-0/edit
+ * json, https://docs.google.com/file/d/0B94tyKAcHuHBWnRscVUzWUpWTDg/edit, 
+ * 
+ * @todo: old source, add amount of money and year
  */
 
 function load_climate_wise() {
     global $jsons, $datadir;
 
-    $inputfile = "";
-    $file = file($datadir . "/" . $inputfile);
+    $inputfile = "adaptation_projects.json";
+    $file = file_get_contents($datadir . "/" . $inputfile);
+
+    $data = json_decode($file);
+    foreach ($data as $d) {
+        if ($d->source == "climatewise") {
+            $obj = new StdClass();
+            $obj->source = $d->source;
+            $obj->year = "n/a";
+            $obj->donor = "n/a";
+            $obj->recipient = implode(",", $d->countries);
+            $obj->purpose = implode(",", $d->{'climate-hazards'});
+            $obj->amount = "n/a";
+            $obj->sector = "n/a";
+            if (!empty($d->themes))
+                $obj->sector = implode(",", $d->themes);
+            $obj->projecttitle = $d->name;
+            $jsons[] = $obj;
+        }
+    }
 }
 
 /*
