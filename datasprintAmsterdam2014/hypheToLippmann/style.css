@@ -1,0 +1,86 @@
+
+body,html {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    margin:0px;
+}
+
+#inputform {
+    font:normal 1.4em/2em Georgia, "Times New Roman", Times, serif;
+    border-bottom: 1px solid #C0C0C0;
+    float:left;
+    margin:0px 0px 10px 10px;
+}
+
+#title {
+    font:normal 1.4em/2em Georgia, "Times New Roman", Times, serif;
+    margin:10px;
+}
+
+#interface {
+    border-bottom: 1px solid #C0C0C0;
+    float:left;
+    margin:0px 0px 10px 10px;
+}
+
+.heading {
+    font-family:Georgia, "Times New Roman", Times, serif;
+    font-size: 14px;
+}
+
+#if_input {
+    float:left;
+    display: inline;
+    margin:auto;
+    padding:5px;
+    margin:10px 10px 20px 0px;
+    background-color:#F4F1E9;
+    border:1px solid #C0C0C0;
+}
+
+#if_howto {
+    float:left;
+    display: inline;
+    padding:5px;
+    margin:10px 10px 20px 10px;
+    border:1px solid #C0C0C0;
+    width:350px;
+}
+
+#textinput {
+    width:550px;
+    height:100px;
+}
+
+.output {
+    margin:10px;
+    text-align:justify;
+    line-height: 30px;
+}
+
+.tag {
+
+}
+
+.input_areas {
+    margin:8px;
+    font-family:Georgia, "Times New Roman", Times, serif;
+}
+
+
+.inputfield {
+    width:30px;
+}
+
+#inputinterface {
+    border-bottom: 1px solid #C0C0C0;
+    float:left;
+    margin:0px 0px 10px 10px;
+}
+
+#clouds {
+    font:normal 1.4em/2em Georgia, "Times New Roman", Times, serif;
+    margin-top: 0px;
+    margin-left:10px;
+    float:left;
+}
