@@ -32,9 +32,9 @@ function load_databases() {
  * UNDP adaptation learning mechanism (http://www.undp-alm.org/) 
  * 
  * methodology https://drive.google.com/?usp=folder&authuser=0#folders/0B3e-HpGNh9BwcVpPUHlJNkpnVWs
- * data file https://docs.google.com/file/d/0B3e-HpGNh9BwRnYzQVJpTE5HMjQ/edit
+ * json https://docs.google.com/file/d/0B3e-HpGNh9BwRnYzQVJpTE5HMjQ/edit
  * 
- * @todo: old source
+ * @todo: old source, there is also another source used in the combined file (adaptation_projects.json) and referenced from https://docs.google.com/document/d/1aOIi0ofmjfl-haOt-hbHYGZjDnKBPxzxN6-5SpmuH-0/edit# section IV
  * 
  */
 
@@ -67,7 +67,9 @@ function load_undp() {
         $obj->amount = "n/a";
         if (isset($d->data->normalized_costs))
             $obj->amount = $d->data->normalized_costs;
-        $obj->sector = $d->theme;
+        $obj->sector = "n/a";
+        if (!empty($d->theme))
+            $obj->sector = $d->theme;
         $obj->projecttitle = $d->title;
         $jsons[] = $obj;
     }
@@ -111,13 +113,34 @@ function load_ci_grasp() {
 
 /*
  * UNFCCC Private Sector Initiative (http://unfccc.int/adaptation/workstreams/nairobi_work_programme/items/6547.php)
+ * 
+ * methodology, https://docs.google.com/document/d/1aOIi0ofmjfl-haOt-hbHYGZjDnKBPxzxN6-5SpmuH-0/edit
+ * json, https://docs.google.com/file/d/0B94tyKAcHuHBWnRscVUzWUpWTDg/edit, 
  */
 
 function load_psi() {
     global $jsons, $datadir;
 
-    $inputfile = "";
-    $file = file($datadir . "/" . $inputfile);
+    $inputfile = "adaptation_projects.json";
+    $file = file_get_contents($datadir . "/" . $inputfile);
+
+    $data = json_decode($file);
+    foreach ($data as $d) {
+        if ($d->source == "psi") {
+            $obj = new StdClass();
+            $obj->source = $d->source;
+            $obj->year = "n/a";
+            $obj->donor = "n/a";
+            $obj->recipient = implode(",", $d->countries);
+            $obj->purpose = implode(",", $d->{'climate-hazards'});
+            $obj->amount = "n/a";
+            $obj->sector = "n/a";
+            if (!empty($d->themes))
+                $obj->sector = implode(",", $d->themes);
+            $obj->projecttitle = $d->name;
+            $jsons[] = $obj;
+        }
+    }
 }
 
 /*
