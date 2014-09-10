@@ -73,7 +73,8 @@ function load_databases() {
  * 
  * methodology for project7,8,9 can be found on https://drive.google.com/?usp=folder&authuser=0#folders/0B3e-HpGNh9BwcVpPUHlJNkpnVWs
  * data 
- *      @todo extracted from which URL with which filters exactly?
+ *      date of retrieval {DATE TO BE DETERMINED} 
+ *      http://www.undp-alm.org/explore was queried with empty fields and the resulting URLs were retrieved to get at the project pages, which were then parsed.
  *      encoded in undp.json  found here https://docs.google.com/file/d/0B3e-HpGNh9BwRnYzQVJpTE5HMjQ/edit
  *      code available at https://github.com/digitalmethodsinitiative/emaps/tree/master/code_project_7%2C8%2C9
  * 
