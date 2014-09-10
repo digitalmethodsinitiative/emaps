@@ -16,6 +16,47 @@ $datadir = "data";
 $jsons = array();
 load_databases();
 file_put_contents($datadir . "/" . "substance_of_adaptation.json", json_encode($jsons, JSON_PRETTY_PRINT));
+generateListOfPurposesAndThemes();
+
+function generateListOfPurposesAndThemes() {
+    global $jsons, $datadir;
+    $sectors = $purposes = array();
+    foreach ($jsons as $obj) {
+        foreach ($obj->sector as $s)
+            $sectors[$obj->source][] = $s;
+        foreach ($obj->purpose as $p)
+            $purposes[$obj->source][] = $p;
+        foreach ($obj->recipient as $r)
+            $recipients[$obj->source][] = $r;
+    }
+    $handle = fopen($datadir . "/substance_of_adaptation_unique_sources.csv", "w");
+    fwrite($handle, "source,sector\n");
+    foreach ($sectors as $source => $s) {
+        $ss = array_unique($s);
+        sort($ss);
+        foreach ($ss as $si)
+            fwrite($handle, "$source,$si\n");
+    }
+    fclose($handle);
+    $handle = fopen($datadir . "/substance_of_adaptation_unique_purposes.csv", "w");
+    fwrite($handle, "source,purpose\n");
+    foreach ($purposes as $source => $p) {
+        $pp = array_unique($p);
+        sort($pp);
+        foreach ($pp as $pi)
+            fwrite($handle, "$source,$pi\n");
+    }
+    fclose($handle);
+    $handle = fopen($datadir . "/substance_of_adaptation_unique_recipients.csv", "w");
+    fwrite($handle, "source,recipient\n");
+    foreach ($recipients as $source => $r) {
+        $rr = array_unique($r);
+        sort($rr);
+        foreach ($rr as $ri)
+            fwrite($handle, "$source,$ri\n");
+    }
+    fclose($handle);
+}
 
 function load_databases() {
     load_undp_alm();
@@ -100,8 +141,9 @@ function load_ci_grasp() {
         $obj->source = "cigrasp";
         $obj->addAmount($d->project_costs->normalized_costs);
         $obj->projecttitle = $d->title;
-
-        $obj->addRecipient($d->country);
+        $countries = preg_split("/[;,]/", $d->country);
+        foreach ($countries as $c)
+            $obj->addRecipient($c);
         if (isset($d->overview->stimuli)) {
             if (is_array($d->overview->stimuli)) {
                 foreach ($d->overview->stimuli as $s)
