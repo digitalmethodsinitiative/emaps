@@ -4,8 +4,7 @@
  * This script combines various adaptation funding databases into one JSON file
  * see https://docs.google.com/document/d/1s0HVBtVG9ZVVFOhwS-n3PMdgzlwNTiMUyvrNYjGv8Mc/edit for more info
  * 
- * @todo, update sources
- * @todo, put amounts in same format (float vs int) + check whether they are adjusted for inflation etc
+ * @todo are all amounts in million?
  * 
  * @author Erik Borra <erik@digitalmethods.net>
  */
@@ -16,10 +15,10 @@ $datadir = "data";
 
 $jsons = array();
 load_databases();
-print json_encode($jsons, JSON_PRETTY_PRINT);
+file_put_contents($datadir . "/" . "substance_of_adaptation.json", json_encode($jsons, JSON_PRETTY_PRINT));
 
 function load_databases() {
-    load_undp();
+    load_undp_alm();
     load_ci_grasp();
     load_psi();
     load_climate_wise();
@@ -31,14 +30,16 @@ function load_databases() {
 /*
  * UNDP adaptation learning mechanism (http://www.undp-alm.org/) 
  * 
- * methodology https://drive.google.com/?usp=folder&authuser=0#folders/0B3e-HpGNh9BwcVpPUHlJNkpnVWs
- * json https://docs.google.com/file/d/0B3e-HpGNh9BwRnYzQVJpTE5HMjQ/edit
+ * methodology for project7,8,9 can be found on https://drive.google.com/?usp=folder&authuser=0#folders/0B3e-HpGNh9BwcVpPUHlJNkpnVWs
+ * data 
+ *      @todo extracted from which URL with which filters exactly?
+ *      encoded in undp.json  found here https://docs.google.com/file/d/0B3e-HpGNh9BwRnYzQVJpTE5HMjQ/edit
+ *      code available at https://github.com/digitalmethodsinitiative/emaps/tree/master/code_project_7%2C8%2C9
  * 
- * @todo: old source, there is also another source used in the combined file (adaptation_projects.json) and referenced from https://docs.google.com/document/d/1aOIi0ofmjfl-haOt-hbHYGZjDnKBPxzxN6-5SpmuH-0/edit# section IV
- * 
+ * @todo The first 31 rows in the UNDP-ALM database were dropped and not used data calculations as they contain different records to the rest of the database and do not include details of projects.  Instead, they outline country-level NAP processes (for 24 countries) and details of P-CBA, at the  country-level (for 7 countries), with varying levels of detail.  They do not contain the same variables as the rest of the database.
  */
 
-function load_undp() {
+function load_undp_alm() {
     global $jsons, $datadir;
 
     $inputfile = "undp.json";
@@ -47,7 +48,7 @@ function load_undp() {
     $data = json_decode($file);
     foreach ($data as $d) {
         $obj = new fund();
-        $obj->source = "undp";
+        $obj->source = "undp_alm";
         if (isset($d->data->normalized_costs))
             $obj->addAmount($d->data->normalized_costs);
         $obj->projecttitle = $d->title;
@@ -68,9 +69,7 @@ function load_undp() {
         }
 
         if (!empty($d->theme)) {
-            $sectors = explode("/", $d->theme);
-            foreach ($sectors as $s)
-                $obj->addSector($s);
+            $obj->addSector($d->theme);
         }
         $jsons[] = $obj;
     }
@@ -78,11 +77,14 @@ function load_undp() {
 
 /*
  * Ci-Grasp (http://www.pik-potsdam.de/~wrobel/ci_2/)
+ * @todo description
  * 
- * methodology https://drive.google.com/?usp=folder&authuser=0#folders/0B3e-HpGNh9BwcVpPUHlJNkpnVWs
+ * methodology https://drive.google.com/?usp=folder&authuser=0#folders/0B3e-HpGNh9BwcVpPUHlJNkpnVWs 
+ *
+ * data retrieved from http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/
  * json https://docs.google.com/file/d/0B3e-HpGNh9BwZzF0V2VnWmNrazA/edit
+ * code available at https://github.com/digitalmethodsinitiative/emaps/tree/master/code_project_7%2C8%2C9
  * 
- * @todo: old source
  */
 
 function load_ci_grasp() {
@@ -119,9 +121,32 @@ function load_ci_grasp() {
 
 /*
  * UNFCCC Private Sector Initiative (http://unfccc.int/adaptation/workstreams/nairobi_work_programme/items/6547.php)
+ * case studies submitted by private sector organizations and other stakeholders that show innovative activities of adaptation to climate change. 
  * 
  * methodology, https://docs.google.com/document/d/1aOIi0ofmjfl-haOt-hbHYGZjDnKBPxzxN6-5SpmuH-0/edit
  * json, https://docs.google.com/file/d/0B94tyKAcHuHBWnRscVUzWUpWTDg/edit, 
+ * data
+ *      retrieved from http://unfccc.int/adaptation/workstreams/nairobi_work_programme/items/6547.php   
+ *      url was scraped for title of project and country. From the listing non-specific countries (e.g. ALL and regions) were removed.
+ *      Recoded the variables listed under ‘Main adaptation area relevant to case study’ to correspond with the UNDP ALM database’ ‘thematic areas’ categories. I.e. 
+ *          ' Agriculture, forestry and fisheries' => 'Agriculture/Food Security',
+ *           'Food' => 'Agriculture/Food Security',
+ *           'Food security' => 'Agriculture/Food Security',
+ *           'Capacity building' => 'Disaster Risk Reduction',
+ *           'Education and training' => 'Disaster Risk Reduction',
+ *           'Capacity building, education and training' => 'Disaster Risk Reduction',
+ *           'Science, assessment, monitoring and early warning' => 'Disaster Risk Reduction',
+ *           'Technology and Information & Communications Technology (ICT)' => 'Infrastructure/Climate Change Risk Management',
+ *           'Construction and Engineering' => 'Infrastructure/Climate Change Risk Management',
+ *           'Energy and Utilities' => 'Infrastructure/Climate Change Risk Management',
+ *           'Transport, infrastructure and human settlements' => 'Infrastructure/Climate Change Risk Management',
+ *           'Infrastructure and human settlements' => 'Infrastructure/Climate Change Risk Management',
+ *           'Finance and insurance' => 'Infrastructure/Climate Change Risk Management',
+ *           'Human health' => 'Health',
+ *           'Oceans and coastal areas' => 'Coastal Zone Development',
+ *           'Renewable energy systems' => 'Natural Resource Management',
+ *           'Terrestrial ecosystems' => 'Rural Development',
+ *           'Water resources' => 'Water Resources'
  */
 
 function load_psi() {
@@ -142,9 +167,7 @@ function load_psi() {
                 $obj->addPurpose($c);
             if (!empty($d->themes)) {
                 foreach ($d->themes as $theme) {
-                    $sectors = explode("/", $theme);
-                    foreach ($sectors as $s)
-                        $obj->addSector($s);
+                    $obj->addSector($theme);
                 }
             }
             $jsons[] = $obj;
@@ -154,11 +177,23 @@ function load_psi() {
 
 /*
  * ClimateWise on insurance industry (http://www.climatewise.org.uk/)
+ * Documents existing initiatives in middle income and lower income countries that involve the transfer of risk associated to the occurrence of natural hazards, which are referred to as ‘schemes’. Includes over 120 schemes. 
  * 
  * methodology, https://docs.google.com/document/d/1aOIi0ofmjfl-haOt-hbHYGZjDnKBPxzxN6-5SpmuH-0/edit
  * json, https://docs.google.com/file/d/0B94tyKAcHuHBWnRscVUzWUpWTDg/edit, 
  * 
- * does not have amount of money and year
+ * data
+ *      retrieved from http://www.climatewise.org.uk/storage/climatewise-docs/ClimateWise%20Compendium%20of%20disaster%20risk%20transfer%20initiatives%20in%20the%20developing%20world.xlsm
+ *      See https://docs.google.com/document/d/1aOIi0ofmjfl-haOt-hbHYGZjDnKBPxzxN6-5SpmuH-0/edit# section IV for a detailed description of how the data was cleaned
+ *      @todo Theme was derived by recoding the variables listed under ‘risk reduction and adaptation’ (‘stages of risk management involved in initiative’’) to correspond with the UNDP ALM database’ ‘thematic areas’ categories. I.e. 
+ *          Agriculture/Food Security
+ *          Coastal Zone Development
+ *          Disaster Risk Reduction
+ *          Health
+ *          Infrastructure/Climate Change Risk Management
+ *          Natural Resource Management
+ *          Rural Development
+ *          Water Resources
  */
 
 function load_climate_wise() {
@@ -193,7 +228,10 @@ function load_climate_wise() {
  * Load OECD riomarkers data
  * 
  * to generate the data necessary for this script, see https://github.com/digitalmethodsinitiative/emaps/blob/master/datasprintParis2014/riomarkers_clean.php 
- * or take them from the Google Drive > ParisSprintDataSets > Group 5 warehouse folder > data files
+ * no special cleaning was done
+ * only projects which have climateAdaptation as their primary goal are included in this data
+ * 
+ * @todo usd deflated (or should/could we use actual USD), go from 0. to actual milions
  */
 
 function load_oecd_riomarkers() {
@@ -227,9 +265,10 @@ function load_oecd_riomarkers() {
  * 
  * Retrieved data from http://www.climatefundsupdate.org/data
  * filtered out all projects that were not funded through the MLFs
- * tagged with categories or key  words: To fill in this data we manually added this information by using the words in the title plus doing some desk research to find project reports and other sources of information to get a sense of what the projects were about.
+ * tagged with categories or keywords: To fill in this data we manually added this information by using the words in the title plus doing some desk research to find project reports and other sources of information to get a sense of what the projects were about.
  * resulting csv: climatefundsupdate-multilateral.csv
  * 
+ * * @todo: are keywords same as purpose, are categories same as sector?
  */
 
 function load_climatefundsupdate() {
@@ -270,7 +309,9 @@ function load_climatefundsupdate() {
  * From the NAPA priorities database (http://unfccc.int/adaptation/workstreams/national_adaptation_programmes_of_action/items/4583txt.php) 
  * the data by sector (http://unfccc.int/files/cooperation_support/least_developed_countries_portal/napa_priorities_database/application/pdf/napa_index_by_sector.pdf) was downloaded and 
  * parsed into a csv (data/napa-full-categories.csv) with the following 
- * fields: Title of project, country, indicative cost of project in USD or AUD, order of priority of project, sector component (basically, key words). 
+ * fields: Title of project, country, indicative cost of project in USD or AUD, order of priority of project, sector component (basically, key words).
+ * 
+ * @todo: USD vs AUD, are offical keywords same as purpose, are categories same as sector? 
  */
 
 function load_napa() {
