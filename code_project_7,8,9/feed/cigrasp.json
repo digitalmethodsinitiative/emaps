@@ -1,0 +1,3260 @@
+[
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/325.html",
+    "title": "A Weather-based Farming Model for Communities (WFMC)",
+    "continent": "Asia",
+    "country": "India",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "325"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/250.html",
+    "title": "Adaptation for small farmers of coffee and tea",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "training",
+    "scale": "regional",
+    "identifier": "250"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/556.html",
+    "title": "Adaptation measures as part of the Mahatma Gandhi National Rural Employment Guarantee Act (MNREGA) and Scheme",
+    "continent": "Asia",
+    "country": "India",
+    "type": "regulation / law",
+    "scale": "national",
+    "identifier": "556"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/104.html",
+    "title": "Adaptation of Water Management",
+    "continent": "Asia",
+    "country": "Yemen",
+    "type": "assessment report",
+    "scale": "national",
+    "identifier": "104"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/672.html",
+    "title": "Adaptation to Climate Change and Insurance (ACCI)",
+    "continent": "Africa",
+    "country": "Kenya",
+    "type": "agricultural management, natural resource management, technical advice",
+    "scale": "national",
+    "identifier": "672"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/687.html",
+    "title": "Adaptation to Climate Change in the Nile Delta through Integrated Coastal Zone Management",
+    "continent": "Africa",
+    "country": "Egypt",
+    "type": "agricultural management, building / installing structure, natural resource management",
+    "scale": "regional",
+    "identifier": "687"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/689.html",
+    "title": "Adaptation to Climate change of coastal cities",
+    "continent": "Africa",
+    "country": "Mauritania",
+    "type": "assessment report, building / installing structure",
+    "scale": "local",
+    "identifier": "689"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/260.html",
+    "title": "Adaptation to Climate Change Program (PACC)",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "training",
+    "scale": "national",
+    "identifier": "260"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/688.html",
+    "title": "Adaptation to Climate Change Project",
+    "continent": "Africa",
+    "country": "Morocco",
+    "type": "natural resource management, technical advice, training",
+    "scale": "regional",
+    "identifier": "688"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/99.html",
+    "title": "Adaptation to Climate Change through sustainable management in watersheds",
+    "continent": "Africa",
+    "country": "Benin",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "99"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/18.html",
+    "title": "Adaptation to Coastal Erosion - bulkheads and revetments",
+    "continent": "Asia",
+    "country": "Philippines",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "18"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/17.html",
+    "title": "Adaptation to Coastal Erosion - relocation",
+    "continent": "Asia",
+    "country": "Philippines",
+    "type": "relocation",
+    "scale": "local",
+    "identifier": "17"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/261.html",
+    "title": "Adaptation to the Impact of Expedited Glacial Retreat in the Tropical Andes Project (PRAA)",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "training",
+    "scale": "transboundary",
+    "identifier": "261"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/283.html",
+    "title": "Adapting to and reducing the risk of Future Extreme Rainfall on Urban Flooding",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "technical advice",
+    "scale": "regional",
+    "identifier": "283"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/341.html",
+    "title": "Adapting to climate change in China (ACCC)",
+    "continent": "Asia",
+    "country": "China",
+    "type": "communication",
+    "scale": "regional",
+    "identifier": "341"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/424.html",
+    "title": "Adaptive capacities of communities to cope with flood situations",
+    "continent": "Asia",
+    "country": "India",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "424"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/476.html",
+    "title": "Adaptive water management at a local scale",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "training",
+    "scale": "regional",
+    "identifier": "476"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/490.html",
+    "title": "Adjusting to Floods on the Brahmaputra Plains",
+    "continent": "Asia",
+    "country": "India",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "490"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/585.html",
+    "title": "Advancing Capacity to support Climate Change Adaptation (ACCCA): five pilot projects",
+    "continent": "",
+    "country": "null",
+    "type": "communication",
+    "scale": "transboundary",
+    "identifier": "585"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/464.html",
+    "title": "Advancing the Micronesia Challenge through New Protected Areas",
+    "continent": "Australia / Oceania",
+    "country": "Marshall Islands",
+    "type": "natural resource management",
+    "scale": "transboundary",
+    "identifier": "464"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/516.html",
+    "title": "Affordable Drip Irrigation Technology Intervention Program (ADITI) ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "516"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/334.html",
+    "title": "Agricultural Water Saving Technology in the Oasis ",
+    "continent": "Asia",
+    "country": "China",
+    "type": "training",
+    "scale": "regional",
+    "identifier": "334"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/218.html",
+    "title": "Agro-pastoral development and promotion of local initiatives",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "218"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/41.html",
+    "title": "Agroforestry",
+    "continent": "Asia",
+    "country": "Sri Lanka",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "41"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/271.html",
+    "title": "Agroforestry. Adaptation strategy to CC - Macroproject",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "training",
+    "scale": "local",
+    "identifier": "271"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/559.html",
+    "title": "Ajeevika - Livelihoods Improvement Project for the Himalayas",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "559"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/508.html",
+    "title": "Alternate Cropping Pattern for Tamil Nadu",
+    "continent": "Asia",
+    "country": "India",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "508"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/108.html",
+    "title": "Alternative management and exploitation of natural resources to reduce the effects of climate change on farming systems",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "108"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/302.html",
+    "title": "An evaluation of the sensitivity of socio-economic activities to climate change in climatically divergent South African catchments",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "302"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/566.html",
+    "title": "Artificial Recharge to Ground Water through dugwells",
+    "continent": "Asia",
+    "country": "India",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "566"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/679.html",
+    "title": "ASEAN-German Programme on Response to Climate Change (GAP-CC)",
+    "continent": "",
+    "country": "",
+    "type": "coordination, technical advice, training",
+    "scale": "transboundary",
+    "identifier": "679"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/534.html",
+    "title": "Asian Cities Climate Change Resilience Network (ACCCRN) in Viet Nam",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "534"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/587.html",
+    "title": "AsianCitiesAdapt",
+    "continent": "",
+    "country": "",
+    "type": "technical advice",
+    "scale": "local",
+    "identifier": "587"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/141.html",
+    "title": "Assessment of regions affected by tropical glacier retreat",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "141"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/435.html",
+    "title": "Assessment of small and medium scale hydropower plants: synergies and trade offs with rural development",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "435"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/604.html",
+    "title": "At Waters Edge: Coastal Resilience in Grenada and St. Vincent and the Grenadines",
+    "continent": "North America",
+    "country": "Grenada",
+    "type": "natural resource management",
+    "scale": "national",
+    "identifier": "604"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/447.html",
+    "title": "Babassu palms - Harvesting the fruits for oil and protein",
+    "continent": "South America",
+    "country": "Brazil",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "447"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/599.html",
+    "title": "BaltCICA: Impacts, Costs and Adaptation in the Baltic Sea Region, Hamburg",
+    "continent": "Europe",
+    "country": "Germany",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "599"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/597.html",
+    "title": "BaltCICA: Impacts, Costs and Adaptation in the Baltic Sea Region, Kaloundborg",
+    "continent": "Europe",
+    "country": "Denmark",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "597"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/598.html",
+    "title": "BaltCICA: Impacts, Costs and Adaptation in the Baltic Sea Region, Riga",
+    "continent": "Europe",
+    "country": "Latvia",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "598"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/292.html",
+    "title": "Biodiversity and Red meat initiative",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "292"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/181.html",
+    "title": "Biodiversity and Watershed Conservation and Restoration ",
+    "continent": "South America",
+    "country": "Brazil",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "181"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/507.html",
+    "title": "Building Community Resilience to Disasters in Upland Areas ",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "training",
+    "scale": "local",
+    "identifier": "507"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/457.html",
+    "title": "Building equitable resilience to the impacts of climate change and disasters.",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "training",
+    "scale": "local",
+    "identifier": "457"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/402.html",
+    "title": "Building Mangrove Greenbelts",
+    "continent": "Asia",
+    "country": "Bangladesh",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "402"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/284.html",
+    "title": "Building resilience small-scale farmers and artisinal fishers",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "284"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/685.html",
+    "title": "Building Resilient Food Security Systems to Benefit the Southern Egypt Region",
+    "continent": "Africa",
+    "country": "Egypt",
+    "type": "agricultural management, building / installing structure, technical advice",
+    "scale": "regional",
+    "identifier": "685"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/157.html",
+    "title": "Canapas recovery in the Municipality of Comanche",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "157"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/393.html",
+    "title": "Capacity building for adaptation to Climate Change in Vietnam (CACC project)",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "training",
+    "scale": "local",
+    "identifier": "393"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/82.html",
+    "title": "Capacity building of poor rural communities to reduce their vulnerability to drought and desertification problems",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "training",
+    "scale": "regional",
+    "identifier": "82"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/446.html",
+    "title": "Capacity Building on Climate Change for Civil Society  Organizations",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "training",
+    "scale": "national",
+    "identifier": "446"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/169.html",
+    "title": "Carbon fixation through community forestry and agroforestry in areas of colonization in the Chapare-Ivirgarzama-Puerto Villarroel",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "169"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/735.html",
+    "title": "Center and Artibonite Regional Development",
+    "continent": "North America",
+    "country": "Haiti",
+    "type": "building / installing structure, communication, training",
+    "scale": "regional",
+    "identifier": "735"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/338.html",
+    "title": "China?s National Climate Change Programme ",
+    "continent": "Asia",
+    "country": "China",
+    "type": "assessment report",
+    "scale": "national",
+    "identifier": "338"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/696.html",
+    "title": "Cities Component, Policy Advice for Environment and Climate Change (PAKLIM)",
+    "continent": "Asia",
+    "country": "Indonesia",
+    "type": "coordination, regulation / law",
+    "scale": "local",
+    "identifier": "696"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/547.html",
+    "title": "Climate Adaptation Centre",
+    "continent": "Asia",
+    "country": "India",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "547"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/695.html",
+    "title": "Climate adaptation modeling and capacity building in project conservation",
+    "continent": "Asia",
+    "country": "Indonesia",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "695"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/600.html",
+    "title": "Climate and Energy in a complex Transition Process towards Sustainable Hyderabad",
+    "continent": "Asia",
+    "country": "India",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "600"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/239.html",
+    "title": "Climate Change Adaptation in the Swartland",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "239"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/340.html",
+    "title": "Climate Change adaptation strategies in Jiangxi province ",
+    "continent": "Asia",
+    "country": "China",
+    "type": "training",
+    "scale": "regional",
+    "identifier": "340"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/708.html",
+    "title": "Climate change adaptation through climate-sensitive flood water management",
+    "continent": "Asia",
+    "country": "Laos; Cambodia; Vietnam; Thailand",
+    "type": "technical advice, training",
+    "scale": "transboundary",
+    "identifier": "708"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/713.html",
+    "title": "Climate change adaptation to protect water and soil resources",
+    "continent": "Africa",
+    "country": "Burundi",
+    "type": "agricultural management, communication, technical advice",
+    "scale": "national",
+    "identifier": "713"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/719.html",
+    "title": "Climate change and forests n the Congo Basin: Synergy between adaptation and mitigation",
+    "continent": "",
+    "country": "",
+    "type": "assessment report, communication, coordination",
+    "scale": "transboundary",
+    "identifier": "719"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/491.html",
+    "title": "Climate change and persistent droughts: Impacts, vulnerability and adaptation in rice growing",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "491"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/285.html",
+    "title": "Climate change and water ? risks, impacts and options for poor urban households",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "285"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/477.html",
+    "title": "Climate change impact and adaptation in the Mekong Delta",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "477"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/470.html",
+    "title": "Climate change impacts in Huong river basin and adaptation",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "470"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/495.html",
+    "title": "Climate Change Impacts on Coastal Biodiversity ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "495"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/290.html",
+    "title": "Climate Change Proofing Water Services",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "communication",
+    "scale": "local",
+    "identifier": "290"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/700.html",
+    "title": "Climate Change Scenarios for the Congo Basin",
+    "continent": "",
+    "country": "",
+    "type": "natural resource management, technical advice, training",
+    "scale": "transboundary",
+    "identifier": "700"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/502.html",
+    "title": "Climate Change Vulnerability of Mountain Ecosystems in the Eastern Himalayas ",
+    "continent": "Asia",
+    "country": "China",
+    "type": "assessment report",
+    "scale": "transboundary",
+    "identifier": "502"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/296.html",
+    "title": "Climate for Water: Using enhanced knowledge of climate variability for the benefit of water resource management",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "communication",
+    "scale": "national",
+    "identifier": "296"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/474.html",
+    "title": "Climate Insurance Systems",
+    "continent": "Asia",
+    "country": "China",
+    "type": "incentive structure",
+    "scale": "national",
+    "identifier": "474"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/668.html",
+    "title": "Climate Risk Adaptation and Insurance",
+    "continent": "",
+    "country": "",
+    "type": "technical advice, training",
+    "scale": "transboundary",
+    "identifier": "668"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/574.html",
+    "title": "CLIMATE, WATER AND AGRICULTURE: IMPACTS AND ADAPTATION OF AGRO-ECOLOGICAL SYSTEMS IN AFRICA",
+    "continent": "",
+    "country": "null",
+    "type": "communication",
+    "scale": "transboundary",
+    "identifier": "574"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/706.html",
+    "title": "ClimateAdaptationSantiago (CAS): Development of a Climate Change Adaptation Plan for the Metropolitan Region of Santiago de Chile",
+    "continent": "South America",
+    "country": "Chile",
+    "type": "coordination, regulation / law, technical advice",
+    "scale": "transboundary",
+    "identifier": "706"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/14.html",
+    "title": "Coast Protection constructing coastal structures",
+    "continent": "Asia",
+    "country": "Sri Lanka",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "14"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/15.html",
+    "title": "Coast Protection constructing revetment",
+    "continent": "Asia",
+    "country": "Sri Lanka",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "15"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/233.html",
+    "title": "Coastal Climate Change and Adaptation - A Sea-Level Rise Risk Assessment for Cape Town",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "233"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/176.html",
+    "title": "Coastal Management ",
+    "continent": "South America",
+    "country": "Brazil",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "176"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/7.html",
+    "title": "Coastal Resources Adaptation Project",
+    "continent": "Australia / Oceania",
+    "country": "Samoa",
+    "type": "coordination",
+    "scale": "local",
+    "identifier": "7"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/526.html",
+    "title": "Coastal vulnerability assessment and strategies for better preparedness towards impact of climate change and SLR along the West Bengal coast ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "526"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/294.html",
+    "title": "Collaborative governance: Managing the risks associated with flooding and sea-level rise",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "coordination",
+    "scale": "local",
+    "identifier": "294"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/289.html",
+    "title": "Community Based Adaptation in Africa ? The South African component",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "289"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/480.html",
+    "title": "Community Based Mangrove Reforestation and Management",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "480"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/314.html",
+    "title": "COMMUNITY GENE FUND",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "314"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/532.html",
+    "title": "Community Grain Bank ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "incentive structure",
+    "scale": "local",
+    "identifier": "532"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/523.html",
+    "title": "Community Grain Fund (CGF)",
+    "continent": "Asia",
+    "country": "India",
+    "type": "regulation / law",
+    "scale": "local",
+    "identifier": "523"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/419.html",
+    "title": "Community Managed Sustainable Agriculture (CMSA)",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "419"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/136.html",
+    "title": "Community model of rural water and climate risk management",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "136"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/174.html",
+    "title": "Community Reforestation",
+    "continent": "South America",
+    "country": "Brazil",
+    "type": "technical advice",
+    "scale": "local",
+    "identifier": "174"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/543.html",
+    "title": "Community Resilience with Natural Disaster in Mekong Delta ",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "technical advice",
+    "scale": "regional",
+    "identifier": "543"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/517.html",
+    "title": "Community Seed Bank Project ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "517"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/423.html",
+    "title": "Community water project",
+    "continent": "Asia",
+    "country": "India",
+    "type": "incentive structure",
+    "scale": "local",
+    "identifier": "423"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/19.html",
+    "title": "Community-based Afforestation",
+    "continent": "Asia",
+    "country": "Bangladesh",
+    "type": "training",
+    "scale": "regional",
+    "identifier": "19"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/391.html",
+    "title": "Community-Based Disaster Management Project in Priority Environmentally Critical Areas in the Davao River Watershed",
+    "continent": "Asia",
+    "country": "Philippines",
+    "type": "training",
+    "scale": "local",
+    "identifier": "391"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/273.html",
+    "title": "Conflict management over the use of natural resources, generated or exacerbated by CC - Macroproject",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "training",
+    "scale": "regional",
+    "identifier": "273"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/11.html",
+    "title": "Conservancy Adaptation Project with integration of advanced mapping and engineering analysis",
+    "continent": "South America",
+    "country": "Guyana",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "11"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/544.html",
+    "title": "Conservation and development of local grape-fruit varieties in the flooding area of Day River",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "544"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/479.html",
+    "title": "Conservation and Development of the Kien Giang Biosphere Reserve",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "479"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/461.html",
+    "title": "Conserving Biological Diversity",
+    "continent": "Asia",
+    "country": "Philippines",
+    "type": "training",
+    "scale": "national",
+    "identifier": "461"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/36.html",
+    "title": "Conserving grazing and fodder lands through reforestation",
+    "continent": "Africa",
+    "country": "Tanzania, United Republic of",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "36"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/154.html",
+    "title": "Construction and management of multipurpose lakes",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "154"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/331.html",
+    "title": "Construction technique of the Qingzang railway",
+    "continent": "Asia",
+    "country": "China",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "331"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/10.html",
+    "title": "Coral gardening",
+    "continent": "Australia / Oceania",
+    "country": "Fiji",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "10"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/462.html",
+    "title": "Coral Triangle Initiative",
+    "continent": "",
+    "country": "null",
+    "type": "natural resource management",
+    "scale": "transboundary",
+    "identifier": "462"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/153.html",
+    "title": "Dam and irrigation system Ch?iyara Qhochi",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "153"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/710.html",
+    "title": "Database for the management of information and data on climate change adaptation (DATACLIM)",
+    "continent": "Asia",
+    "country": "Indonesia",
+    "type": "technical advice, training",
+    "scale": "national",
+    "identifier": "710"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/295.html",
+    "title": "DBSA Ledi sustainable communities",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "295"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/492.html",
+    "title": "Deficit Rainfall Insurance (DFRI)",
+    "continent": "Asia",
+    "country": "India",
+    "type": "incentive structure",
+    "scale": "local",
+    "identifier": "492"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/503.html",
+    "title": "Demarcation and erection of stone pillars on the HTL (High Tide Line) on the Tamil Nadu coast ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "503"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/188.html",
+    "title": "Demonstration of Integrated Ecosystem and Watershed management in the Caatinga",
+    "continent": "South America",
+    "country": "Brazil",
+    "type": "technical advice",
+    "scale": "regional",
+    "identifier": "188"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/460.html",
+    "title": "Developing a model in applying technologies addressing flash floods and droughts",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "460"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/303.html",
+    "title": "Developing water related climate change adaptation options to support implementation of policy and strategies for Water for Growth and Development",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "assessment report",
+    "scale": "national",
+    "identifier": "303"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/31.html",
+    "title": "Development of a Risk Management Strategy against SLR",
+    "continent": "South America",
+    "country": "Chile",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "31"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/194.html",
+    "title": "Development of forest areas (PDZF)",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "194"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/197.html",
+    "title": "Development of maintainous and forest  zones ",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "197"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/510.html",
+    "title": "Development of Regional Flood Formula Using L-Moments for North Brahmaputra River System",
+    "continent": "Asia",
+    "country": "China",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "510"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/191.html",
+    "title": "Development of salinised and drought tolerant rice varieties",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "191"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/557.html",
+    "title": "Documentation of traditional knowledge about early warning indicators for weather change",
+    "continent": "Asia",
+    "country": "India",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "557"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/332.html",
+    "title": "Domestic use of sea water",
+    "continent": "Asia",
+    "country": "China",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "332"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/458.html",
+    "title": "Drought-Management Considerations for Climate Change Adaptation: Focus on the Mekong Region",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "458"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/519.html",
+    "title": "Earthen dams - A Community Based Watershed Development Approach",
+    "continent": "Asia",
+    "country": "India",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "519"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/524.html",
+    "title": "East Kolkata Wetlands ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "524"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/533.html",
+    "title": "Economics of Adaptation to Climate Change",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "assessment report",
+    "scale": "national",
+    "identifier": "533"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/633.html",
+    "title": "Ecosystem-based adaptation for smallholder subsistence and coffee farming communities in Central America",
+    "continent": "",
+    "country": "Costa Rica, Guatemala, Honduras",
+    "type": "assessment report, communication, training",
+    "scale": "national",
+    "identifier": "633"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/634.html",
+    "title": "Ecosystem-based Adaptation in marine, terrestrial and coastal regions in Brazil, Philippines and South Africa",
+    "continent": "South America",
+    "country": "Brazil, Philippines, South Africa",
+    "type": "assessment report, communication, training",
+    "scale": "local",
+    "identifier": "634"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/709.html",
+    "title": "Ecosystem-based Adaptation in Mountain Ecosystems",
+    "continent": "Asia",
+    "country": "Nepal, Peru, Uganda",
+    "type": "coordination, natural resource management, technical advice",
+    "scale": "transboundary",
+    "identifier": "709"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/697.html",
+    "title": "Ecosystem-based Adaptation through Mangrove Restoration and Sustainable Use ",
+    "continent": "",
+    "country": "Thailand, Vietnam",
+    "type": "natural resource management, regulation / law, training",
+    "scale": "regional",
+    "identifier": "697"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/704.html",
+    "title": "Ecosystems Protecting Infrastructure and Communities (EPIC)",
+    "continent": "Asia",
+    "country": "Nepal; Thailand; China; Chile; Burkina Faso; Senegal",
+    "type": "coordination, natural resource management, technical advice",
+    "scale": "global",
+    "identifier": "704"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/178.html",
+    "title": "Effective Conservation and Sustainable Use of Mangrove Ecosystems",
+    "continent": "South America",
+    "country": "Brazil",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "178"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/347.html",
+    "title": "Enhanced strategies for climate-proofed and environmentally sound agricultural production (C-PESAP): Agricultural development",
+    "continent": "Asia",
+    "country": "China",
+    "type": "training",
+    "scale": "regional",
+    "identifier": "347"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/504.html",
+    "title": "Enhancing Carbon Credit for Greater Resilience to Vulnerability ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "504"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/12.html",
+    "title": "Enhancing Coping and Adaptation Capacity of the Community to Reduce Vulnerability to Climate Change",
+    "continent": "Asia",
+    "country": "Bangladesh",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "12"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/400.html",
+    "title": "Enhancing Human Security through Environment and Disaster Management ",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "training",
+    "scale": "local",
+    "identifier": "400"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/22.html",
+    "title": "Enhancing Resilience of Vulnerable Coastal Areas to Climate Change Risks",
+    "continent": "Africa",
+    "country": "Liberia",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "22"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/277.html",
+    "title": "ENSO index insurance",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "incentive structure",
+    "scale": "regional",
+    "identifier": "277"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/126.html",
+    "title": "Evaluation of tendencies in water balance as an indicator of climate change",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "126"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/422.html",
+    "title": "Experience in promoting micro irrigation technologies",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "422"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/6.html",
+    "title": "Farm-Dike Establishment",
+    "continent": "Asia",
+    "country": "Indonesia",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "6"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/443.html",
+    "title": "Financing Adaptation by carbon credits for air travel",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "443"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/227.html",
+    "title": "Financing framework of watershed management",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "227"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/542.html",
+    "title": "Five Percent Technique - On farm pond using five percent of the field area to store run off water ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "542"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/350.html",
+    "title": "Flood and Watershed Management",
+    "continent": "Asia",
+    "country": "China",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "350"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/301.html",
+    "title": "Freshwater / Marine Modelling",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "technical advice",
+    "scale": "local",
+    "identifier": "301"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/263.html",
+    "title": "Future Climate Scenarios and Water Resource Availability - PROCLIM",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "263"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/172.html",
+    "title": "Gender and adaptation to climate change in watershed areas",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "172"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/304.html",
+    "title": "Global Climate Change and Water Resources in Southern Africa: Potential Impacts of Climate Change and Mitigation Strategies",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "assessment report",
+    "scale": "national",
+    "identifier": "304"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/344.html",
+    "title": "Ground water management (Under 'Shanxi Integrated Agricultural Development Project')",
+    "continent": "Asia",
+    "country": "China",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "344"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/349.html",
+    "title": "Guangxi Nanning Urban Environmental Upgrading (Guangxi Nanning Urban Infrastructure Development)",
+    "continent": "Asia",
+    "country": "China",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "349"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/337.html",
+    "title": "Harnessing slope farmlands and demonstration of effective ecological agriculture key techniques in the upper Yangtze ",
+    "continent": "Asia",
+    "country": "China",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "337"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/561.html",
+    "title": "Haryana Community Forestry Project",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "561"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/550.html",
+    "title": "Hydrological Mangrove Rehabilitation",
+    "continent": "Asia",
+    "country": "Indonesia",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "550"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/413.html",
+    "title": "ICICI-BASIX  weather indexed insurance",
+    "continent": "Asia",
+    "country": "India",
+    "type": "incentive structure",
+    "scale": "regional",
+    "identifier": "413"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/514.html",
+    "title": "Impact of Climate Change and food insecurity on poverty",
+    "continent": "Asia",
+    "country": "India",
+    "type": "assessment report",
+    "scale": "transboundary",
+    "identifier": "514"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/466.html",
+    "title": "Impacts of climate change on water resources and adaptation measures",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "assessment report",
+    "scale": "national",
+    "identifier": "466"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/23.html",
+    "title": "Implementation of pilot adaptation measures in selected wetlands highly vulnerable to the effects of climate change",
+    "continent": "North America",
+    "country": "Mexico",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "23"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/20.html",
+    "title": "Implementing NAPA Priority Interventions to Build Resilience in Coastal Zones (Pilot measures part)",
+    "continent": "Africa",
+    "country": "Djibouti",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "20"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/21.html",
+    "title": "Implementing NAPA Priority Interventions to Build Resilience in Coastal Zones (Planning, Policy & Prediction part)",
+    "continent": "Africa",
+    "country": "Djibouti",
+    "type": "assessment report",
+    "scale": "national",
+    "identifier": "21"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/38.html",
+    "title": "Improving Agricultural Productivity through Photovoltaic Water Pumping",
+    "continent": "South America",
+    "country": "Brazil",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "38"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/213.html",
+    "title": "Improving irrigated lands in the Oasis : phase 2",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "coordination",
+    "scale": "regional",
+    "identifier": "213"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/270.html",
+    "title": "Improving the capacities of rural communities to reduce their vulnerability and adapt their livelihoods to CC - Macroproject",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "training",
+    "scale": "local",
+    "identifier": "270"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/712.html",
+    "title": "Improving Water Management and Irrigation Productivity",
+    "continent": "Africa",
+    "country": "Ethiopia",
+    "type": "building / installing structure, natural resource management, training",
+    "scale": "regional",
+    "identifier": "712"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/569.html",
+    "title": "INCA - Adaptation and Mitigation Strategies of Andean People",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "agricultural management, communication, natural resource management",
+    "scale": "transboundary",
+    "identifier": "569"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/29.html",
+    "title": "Incorporation of climate change risks into national level policies",
+    "continent": "South America",
+    "country": "Uruguay",
+    "type": "regulation / law",
+    "scale": "national",
+    "identifier": "29"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/404.html",
+    "title": "Increase adaptive capacity in addressing drought and salt water intrusion issues in agricultural development",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "training",
+    "scale": "local",
+    "identifier": "404"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/224.html",
+    "title": "Increased use of treated wastewater in agriculture",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "224"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/329.html",
+    "title": "Increased Water Harvesting and Diminished Desertification",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "329"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/680.html",
+    "title": "Increasing climate change resilience of vulnerable communities",
+    "continent": "Asia",
+    "country": "Nepal",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "680"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/25.html",
+    "title": "Increasing Resilience of Coastal areas and Community Settlements to Climate Change",
+    "continent": "Australia / Oceania",
+    "country": "Tuvalu",
+    "type": "natural resource management",
+    "scale": "national",
+    "identifier": "25"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/236.html",
+    "title": "Increasing the resilience of small-scale tea farmers in responding to climate change",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "236"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/488.html",
+    "title": "Information and Communication Technology (e-choupal)",
+    "continent": "Asia",
+    "country": "India",
+    "type": "communication",
+    "scale": "regional",
+    "identifier": "488"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/501.html",
+    "title": "Information and Communication Technology (iKisan) ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "communication",
+    "scale": "regional",
+    "identifier": "501"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/272.html",
+    "title": "Information systems and early warning proposal as a local adaptation strategy to CC - Macroproject",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "technical advice",
+    "scale": "regional",
+    "identifier": "272"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/698.html",
+    "title": "Innovative insurance products for adaptation to climate change",
+    "continent": "Africa",
+    "country": "Ghana",
+    "type": "",
+    "scale": "national",
+    "identifier": "698"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/675.html",
+    "title": "Institutional Strengthening for Integrated Water Resources Management (CITARUM)",
+    "continent": "Asia",
+    "country": "Indonesia",
+    "type": "coordination, natural resource management, regulation / law",
+    "scale": "regional",
+    "identifier": "675"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/677.html",
+    "title": "Insurance for climate change adaptation",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "technical advice",
+    "scale": "national",
+    "identifier": "677"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/276.html",
+    "title": "Integral and Adaptive Management of Environmental Resources to Minimize Vulnerability to CC in High Andean micro-watersheds (GIACCA-MAC)",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "communication",
+    "scale": "regional",
+    "identifier": "276"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/215.html",
+    "title": "Integrated Agriculture Development",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "215"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/701.html",
+    "title": "Integrated Climate Change Management in Communal Reserves",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "coordination, natural resource management, training",
+    "scale": "regional",
+    "identifier": "701"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/705.html",
+    "title": "Integrated Climate Change Management in Communal Reserves in the Peruvian Amazon (ICCMA)",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "coordination, natural resource management, technical advice",
+    "scale": "regional",
+    "identifier": "705"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/564.html",
+    "title": "Integrated Coastal Zone Management (ICZM)",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "national",
+    "identifier": "564"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/545.html",
+    "title": "Integrated farming of coffee plants for adaptation and reduction of greenhouse gas emissions",
+    "continent": "South America",
+    "country": "Brazil",
+    "type": "training",
+    "scale": "regional",
+    "identifier": "545"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/499.html",
+    "title": "Integrated Land Use Management to Combat Land Degradation and Deforestation in Madhya Pradesh ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "499"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/253.html",
+    "title": "Integrated Local Assessment  of the Santa River Basin - SNC",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "253"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/264.html",
+    "title": "Integrated local assessment and adaptation strategy to CC - PROCLIM",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "264"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/255.html",
+    "title": "Integrated Local Assessment: Evaluation of Natural Hazards - SNC",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "assessment report",
+    "scale": "national",
+    "identifier": "255"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/254.html",
+    "title": "Integrated Local Assessment: Evaluation of the Deterioration of the Natural Resources due to CC - SNC",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "254"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/208.html",
+    "title": "Integrated management of forests  (PGIF) - Second phase",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "208"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/326.html",
+    "title": "Integrated National Adaptation to strengthen the Resilience of Coastal Wetlands",
+    "continent": "North America",
+    "country": "Mexico",
+    "type": "technical advice",
+    "scale": "regional",
+    "identifier": "326"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/117.html",
+    "title": "Integrated Watershed Management",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "117"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/484.html",
+    "title": "Integration of climate change into existing disaster preparedness programs",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "communication",
+    "scale": "national",
+    "identifier": "484"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/671.html",
+    "title": "Integration of Gender into climate change adaptation and low carbon development: raising awareness, building capacity, supporting national and international policy processes",
+    "continent": "Australia / Oceania",
+    "country": "Nauru",
+    "type": "communication, training",
+    "scale": "regional",
+    "identifier": "671"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/226.html",
+    "title": "Investment Program for water sector second Phase ? PISEAU II",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "national",
+    "identifier": "226"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/313.html",
+    "title": "Jal Abhishek Abhiyaan ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "technical advice",
+    "scale": "regional",
+    "identifier": "313"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/37.html",
+    "title": "Jessour to collect water runoff ",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "37"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/44.html",
+    "title": "Johads - Rainwater harvesting",
+    "continent": "Asia",
+    "country": "India",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "44"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/683.html",
+    "title": "Joint Climate Change Risk Management Program (CCRM)",
+    "continent": "Africa",
+    "country": "Egypt",
+    "type": "communication, natural resource management, technical advice",
+    "scale": "regional",
+    "identifier": "683"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/505.html",
+    "title": "Joint Forest Management (JFM) ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "regulation / law",
+    "scale": "national",
+    "identifier": "505"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/33.html",
+    "title": "Kalpsar Seawall Project",
+    "continent": "Asia",
+    "country": "India",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "33"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/16.html",
+    "title": "Khazan technology",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "16"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/411.html",
+    "title": "Kisan Credit Card Scheme (KCC) ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "regulation / law",
+    "scale": "national",
+    "identifier": "411"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/330.html",
+    "title": "Kutch Drought Proofing Project",
+    "continent": "Asia",
+    "country": "India",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "330"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/293.html",
+    "title": "KwaZulu Natal Forest Restoration Project",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "293"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/369.html",
+    "title": "Laguna de Bay Community Watershed Rehabilitation Project",
+    "continent": "Asia",
+    "country": "Philippines",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "369"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/560.html",
+    "title": "Land and Water Management leading towards Biodiversity Conservation",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "560"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/39.html",
+    "title": "Land and Water Optimization Project",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "39"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/426.html",
+    "title": "Land shaping promotes crop irrigation and prevents water stagnation ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "technical advice",
+    "scale": "local",
+    "identifier": "426"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/237.html",
+    "title": "Learning about Adaptation in Eco Schools",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "communication",
+    "scale": "national",
+    "identifier": "237"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/297.html",
+    "title": "Legislation",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "regulation / law",
+    "scale": "local",
+    "identifier": "297"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/214.html",
+    "title": "Local Action Plan for fighting against desertification ",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "214"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/299.html",
+    "title": "Local Authority Partnerships",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "communication",
+    "scale": "national",
+    "identifier": "299"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/268.html",
+    "title": "Macroproject: Adaptation and mitigation technologies for climate change",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "technical advice",
+    "scale": "regional",
+    "identifier": "268"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/343.html",
+    "title": "Mainstreaming climate change adaptation in irrigated agriculture project",
+    "continent": "Asia",
+    "country": "China",
+    "type": "communication",
+    "scale": "regional",
+    "identifier": "343"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/43.html",
+    "title": "Maize initiative",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "assessment report",
+    "scale": "transboundary",
+    "identifier": "43"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/155.html",
+    "title": "Management and conservation of soils and degraded areas",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "155"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/219.html",
+    "title": "Management and valorization of draining water in the oasis",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "219"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/192.html",
+    "title": "Management of natural resources ",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "192"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/485.html",
+    "title": "Management of natural resources in the coastal zone",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "485"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/251.html",
+    "title": "Managing Escalating Wildfires",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "coordination",
+    "scale": "regional",
+    "identifier": "251"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/442.html",
+    "title": "Mangrove Forest Restoration in Andhra Pradesh ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "442"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/535.html",
+    "title": "Mangrove plantation, Joint Forest Management and Revenue Sharing in Sundarban Reserve Forest",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "535"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/27.html",
+    "title": "Mangrove planting",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "27"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/489.html",
+    "title": "Mangrove Restoration at Lake Pulicat",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "489"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/482.html",
+    "title": "Megacity Research Project ? Ho Chi Minh City - Integrative Urban and Environmental Planning Framework Adaptation to Climate Change",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "482"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/327.html",
+    "title": "Meteorologic Early Warming System",
+    "continent": "North America",
+    "country": "Mexico",
+    "type": "coordination",
+    "scale": "regional",
+    "identifier": "327"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/450.html",
+    "title": "Micro irrigation for Diversification of Agriculture",
+    "continent": "Asia",
+    "country": "India",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "450"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/405.html",
+    "title": "Micro irrigation technologies",
+    "continent": "Asia",
+    "country": "India",
+    "type": "technical advice",
+    "scale": "regional",
+    "identifier": "405"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/471.html",
+    "title": "Multiplying Best Practice in Adaptation to Climate Change",
+    "continent": "South America",
+    "country": "Brazil",
+    "type": "coordination",
+    "scale": "national",
+    "identifier": "471"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/307.html",
+    "title": "Municipal Climate Protection Programme (MCPP)",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "incentive structure",
+    "scale": "local",
+    "identifier": "307"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/439.html",
+    "title": "Nagaland Environment Protection and Economic Development ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "439"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/124.html",
+    "title": "National Environmental Training Program",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "training",
+    "scale": "national",
+    "identifier": "124"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/210.html",
+    "title": "National Forest Program (NFP)",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "technical advice",
+    "scale": "national",
+    "identifier": "210"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/511.html",
+    "title": "National Mission for Green India",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "national",
+    "identifier": "511"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/221.html",
+    "title": "National Strategy for adaptation of Tunisian agriculture and ecosystems to CC",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "assessment report",
+    "scale": "national",
+    "identifier": "221"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/46.html",
+    "title": "National strategy for agriculture, ecosystems and water resources",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "assessment report",
+    "scale": "national",
+    "identifier": "46"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/690.html",
+    "title": "Natural Resource Management Program (ProGRN)",
+    "continent": "Africa",
+    "country": "Mauritania",
+    "type": "communication, natural resource management, regulation / law",
+    "scale": "local",
+    "identifier": "690"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/459.html",
+    "title": "Netherlands Integrated Coastal Zone Management (ICZM) ",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "natural resource management",
+    "scale": "national",
+    "identifier": "459"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/440.html",
+    "title": "North Eastern Region Community Resource Management Project for Upland Areas ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "440"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/562.html",
+    "title": "NREGA (Soil and Water Conservation)",
+    "continent": "Asia",
+    "country": "India",
+    "type": "regulation / law",
+    "scale": "regional",
+    "identifier": "562"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/406.html",
+    "title": "NTFP (Non Timber Forest Products) Enterprises",
+    "continent": "Asia",
+    "country": "India",
+    "type": "coordination",
+    "scale": "regional",
+    "identifier": "406"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/473.html",
+    "title": "Pacific Mangroves Initiative (PMI)",
+    "continent": "Australia / Oceania",
+    "country": "Fiji",
+    "type": "training",
+    "scale": "transboundary",
+    "identifier": "473"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/509.html",
+    "title": "Package of Organic Practices for Arecanut, Ginger, Large Cardamom, Passion fruit and Pineapple",
+    "continent": "Asia",
+    "country": "India",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "509"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/420.html",
+    "title": "Pani Panchayats (Water Council)",
+    "continent": "Asia",
+    "country": "India",
+    "type": "regulation / law",
+    "scale": "local",
+    "identifier": "420"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/132.html",
+    "title": "Participatory learning and community adaptation to climate change for food insecurity ",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "training",
+    "scale": "local",
+    "identifier": "132"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/305.html",
+    "title": "Participatory modelling for assessment of climate change impacts on water resources",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "communication",
+    "scale": "local",
+    "identifier": "305"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/425.html",
+    "title": "Participatory Varietal Selection and Promotion (PVSP)",
+    "continent": "Asia",
+    "country": "India",
+    "type": "technical advice",
+    "scale": "local",
+    "identifier": "425"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/348.html",
+    "title": "Pastoral Risk Management",
+    "continent": "Asia",
+    "country": "China",
+    "type": "regulation / law",
+    "scale": "regional",
+    "identifier": "348"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/186.html",
+    "title": "Pernambuco Sustainable Water",
+    "continent": "South America",
+    "country": "Brazil",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "186"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/248.html",
+    "title": "Pilot adaptation measures to climate change",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "training",
+    "scale": "regional",
+    "identifier": "248"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/346.html",
+    "title": "Piloting Climate Change Adaptation to Protect Human Health",
+    "continent": "Asia",
+    "country": "China",
+    "type": "training",
+    "scale": "global",
+    "identifier": "346"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/198.html",
+    "title": "Plan for management and conservation of Agricultural lands ",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "national",
+    "identifier": "198"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/131.html",
+    "title": "Planting dates and varieties of potatoes and beans as options for adaptation to Climate Change in the province Manco Kapac",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "131"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/437.html",
+    "title": "Polyhouses for Diversification of Agriculture",
+    "continent": "Asia",
+    "country": "India",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "437"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/667.html",
+    "title": "Preserving Biodiversity in the Nyungwe Forest (APRECO)",
+    "continent": "Africa",
+    "country": "Rwanda",
+    "type": "agricultural management, natural resource management, training",
+    "scale": "regional",
+    "identifier": "667"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/193.html",
+    "title": "Program for pastoral improvment of private lands",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "national",
+    "identifier": "193"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/262.html",
+    "title": "Program for the Strengthening of National Capacities to Manage the Impact of Climate Change and Air Pollution (PROCLIM)",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "coordination",
+    "scale": "national",
+    "identifier": "262"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/711.html",
+    "title": "Programme on Integrated Climate Change Adaptation Strategies",
+    "continent": "North America",
+    "country": "Grenada",
+    "type": "coordination, technical advice, training",
+    "scale": "national",
+    "identifier": "711"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/203.html",
+    "title": "Project for management of protected areas (PGAP)",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "national",
+    "identifier": "203"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/228.html",
+    "title": "Project of Integrated Agriculture Development  ",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "228"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/223.html",
+    "title": "Project of Management of  Natural Resources : phase 2",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "223"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/500.html",
+    "title": "Project Sahyog (A Drought Proofing Initiative in The Thar Desert) ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "500"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/217.html",
+    "title": "Promoting Resilient Coastal Development",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "assessment report",
+    "scale": "national",
+    "identifier": "217"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/515.html",
+    "title": "Promotion of Climate Change Adaptation in Semi-Arid and Rainfed Regions",
+    "continent": "Asia",
+    "country": "India",
+    "type": "communication",
+    "scale": "local",
+    "identifier": "515"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/199.html",
+    "title": "Protection of dams against sedimentation (PDAS)",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "national",
+    "identifier": "199"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/707.html",
+    "title": "Providing support to measures for adaptation to climate change in the Mekong region",
+    "continent": "Asia",
+    "country": "Laos; Cambodia; Vietnam; Thailand",
+    "type": "communication, technical advice, training",
+    "scale": "transboundary",
+    "identifier": "707"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/676.html",
+    "title": "Public Investment and Climate Change Adaptation ? IPACC",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "technical advice",
+    "scale": "national",
+    "identifier": "676"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/106.html",
+    "title": "Rainfall collection works and water harvesting",
+    "continent": "Asia",
+    "country": "China",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "106"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/513.html",
+    "title": "Rajasthan Water Sector Restructuring Project (RWSRP)",
+    "continent": "Asia",
+    "country": "India",
+    "type": "technical advice",
+    "scale": "regional",
+    "identifier": "513"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/100.html",
+    "title": "Reconstruction and rehabilitation of social infrastructure with regard to desaster precaution in districts affected by natural desasters",
+    "continent": "Africa",
+    "country": "Mozambique",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "100"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/134.html",
+    "title": "Recovery of tarwi seed (Lupinus mutabilis S.) in four communities",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "training",
+    "scale": "local",
+    "identifier": "134"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/448.html",
+    "title": "Recycling Scrap Tires into Retaining Walls",
+    "continent": "South America",
+    "country": "Brazil",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "448"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/40.html",
+    "title": "Reducing Disaster Risks from Wildfire Hazards Associated with Climate Change ",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "coordination",
+    "scale": "regional",
+    "identifier": "40"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/475.html",
+    "title": "Reducing the impact of flooding caused by sea level rise to promote sustainable agriculture production and ensuring food security ",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "training",
+    "scale": "local",
+    "identifier": "475"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/139.html",
+    "title": "Reforestation of the recharge zones of fresh water sources and recovery of agrobiodiversity of tubers and cereals",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "139"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/267.html",
+    "title": "Regional Project for Adaptation to Climate Change (Agriculture and Water Resources)",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "training",
+    "scale": "transboundary",
+    "identifier": "267"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/328.html",
+    "title": "Rehabilitation of Integrated Tank Management Systems in the Kalivelli Watershed",
+    "continent": "Asia",
+    "country": "India",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "328"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/140.html",
+    "title": "Rescue and transfer of bioindicators of  interandean valleys from a cultural context",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "140"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/152.html",
+    "title": "Research - Action with adaptation measures to climate change",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "152"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/494.html",
+    "title": "Rice-wheat Consortium for the Indo-Gangetic Plains ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "494"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/187.html",
+    "title": "Rio de Janeiro Sustainable Integrated Ecosystem Management in Productive Landscapes of the North-Northwestern Fluminense",
+    "continent": "South America",
+    "country": "Brazil",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "187"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/291.html",
+    "title": "Riparian Habitat Rehabilitation project",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "291"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/298.html",
+    "title": "Risk Assessment (Climate Adaptation Plan of Action)",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "298"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/118.html",
+    "title": "Risk Management Training",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "training",
+    "scale": "local",
+    "identifier": "118"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/421.html",
+    "title": "Roof rain water harvesting Akash Ganga",
+    "continent": "Asia",
+    "country": "India",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "421"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/269.html",
+    "title": "Rural populations and their adaptation to CC: Capacity building - Macroproject",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "training",
+    "scale": "local",
+    "identifier": "269"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/288.html",
+    "title": "Scenario planning to assess the implications of climate change on land and water use within the agricultural sector",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "288"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/472.html",
+    "title": "Sea water level rise scenarios and possible disaster risk reductions",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "assessment report",
+    "scale": "national",
+    "identifier": "472"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/252.html",
+    "title": "Second National Communication on Climate Change of Peru to the UNFCCC (SNC)",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "assessment report",
+    "scale": "national",
+    "identifier": "252"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/310.html",
+    "title": "Sedgefield Desalination Plant",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "310"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/133.html",
+    "title": "Setting up of protection systems for water sources and establishing soil conservation and management practices through reforestation",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "133"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/42.html",
+    "title": "Small-scale Rooibos tea farmers",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "42"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/102.html",
+    "title": "Small-scale wind power",
+    "continent": "Africa",
+    "country": "Zimbabwe",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "102"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/528.html",
+    "title": "Social Forestry Plantation",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "528"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/531.html",
+    "title": "Soil and Water Conservation Programmes",
+    "continent": "Asia",
+    "country": "India",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "531"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/478.html",
+    "title": "Southern Voices Capacity Building",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "communication",
+    "scale": "transboundary",
+    "identifier": "478"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/309.html",
+    "title": "Stakeholder?s engagement to inform and promote climate change community-based adaptation for the city of Johannesburg",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "regulation / law",
+    "scale": "local",
+    "identifier": "309"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/286.html",
+    "title": "Stewardship corridors for climate change adaptation",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "286"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/726.html",
+    "title": "Strategic Program for Climate Resilience (SPCR) - Bangladesh",
+    "continent": "Asia",
+    "country": "Bangladesh",
+    "type": "building / installing structure, communication, training",
+    "scale": "national",
+    "identifier": "726"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/727.html",
+    "title": "Strategic Program for Climate Resilience (SPCR) - Bolivia",
+    "continent": "South America",
+    "country": "Bolivia ",
+    "type": "agricultural management, building / installing structure, training",
+    "scale": "national",
+    "identifier": "727"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/729.html",
+    "title": "Strategic Program for Climate Resilience (SPCR) - Cambodia",
+    "continent": "Asia",
+    "country": "Cambodia",
+    "type": "agricultural management, building / installing structure, technical advice",
+    "scale": "national",
+    "identifier": "729"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/730.html",
+    "title": "Strategic Program for Climate Resilience (SPCR) - Caribbean Region",
+    "continent": "North America",
+    "country": "Dominica; Grenada; Haiti; Jamaica; St Lucia; St Vincent and the Grenadines",
+    "type": "communication, training",
+    "scale": "transboundary",
+    "identifier": "730"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/737.html",
+    "title": "Strategic Program for Climate Resilience (SPCR) - Grenada",
+    "continent": "North America",
+    "country": "Grenada",
+    "type": "building / installing structure, technical advice",
+    "scale": "national",
+    "identifier": "737"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/733.html",
+    "title": "Strategic Program for Climate Resilience (SPCR) - Mozambique",
+    "continent": "Africa",
+    "country": "Mozambique",
+    "type": "building / installing structure, natural resource management, training",
+    "scale": "national",
+    "identifier": "733"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/731.html",
+    "title": "Strategic Program for Climate Resilience (SPCR) - Nepal",
+    "continent": "Asia",
+    "country": "Nepal",
+    "type": "agricultural management, incentive structure, technical advice",
+    "scale": "national",
+    "identifier": "731"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/734.html",
+    "title": "Strategic Program for Climate Resilience (SPCR) - Niger",
+    "continent": "Africa",
+    "country": "Niger",
+    "type": "coordination, natural resource management, training",
+    "scale": "national",
+    "identifier": "734"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/732.html",
+    "title": "Strategic Program for Climate Resilience (SPCR) - Pacific Region",
+    "continent": "Australia / Oceania",
+    "country": "Tonga; Papua New Guinea; Samoa",
+    "type": "natural resource management, technical advice",
+    "scale": "transboundary",
+    "identifier": "732"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/736.html",
+    "title": "Strategic Program for Climate Resilience (SPCR) - St. Lucia",
+    "continent": "North America",
+    "country": "St. Lucia",
+    "type": "building / installing structure, natural resource management",
+    "scale": "national",
+    "identifier": "736"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/725.html",
+    "title": "Strategic Program for Climate Resilience (SPCR) - Tajikistan",
+    "continent": "Asia",
+    "country": "Tajikistan",
+    "type": "building / installing structure, natural resource management, training",
+    "scale": "national",
+    "identifier": "725"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/724.html",
+    "title": "Strategic Program for Climate Resilience (SPCR) - Yemen",
+    "continent": "Asia",
+    "country": "Yemen",
+    "type": "building / installing structure, coordination, training",
+    "scale": "national",
+    "identifier": "724"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/728.html",
+    "title": "Strategic Program for Climate Resilience (SPCR) - Zambia",
+    "continent": "Africa",
+    "country": "Zambia",
+    "type": "building / installing structure, incentive structure, technical advice",
+    "scale": "regional",
+    "identifier": "728"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/483.html",
+    "title": "Strengthening national capacities to respond to climate change in Viet Nam, reducing vulnerability and controlling greenhouse gases emissions",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "coordination",
+    "scale": "national",
+    "identifier": "483"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/567.html",
+    "title": "Strengthening Participatory Irrigation Management",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "567"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/143.html",
+    "title": "Strengthening the capacity and development of strategies for adapting to climate change phenomena in mountain communities",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "143"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/586.html",
+    "title": "Sub-Saharan African Cities: A Five-City Network to Pioneer Climate Adaptation through Participatory Research and Local Action",
+    "continent": "",
+    "country": "null",
+    "type": "assessment report",
+    "scale": "transboundary",
+    "identifier": "586"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/563.html",
+    "title": "Sukhomajri - A case of forest and watershed protection in India",
+    "continent": "Asia",
+    "country": "India",
+    "type": "regulation / law",
+    "scale": "local",
+    "identifier": "563"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/692.html",
+    "title": "Support for the promotion and the broadcasting of underground irrigation using buried diffusers",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "communication, incentive structure, technical advice",
+    "scale": "local",
+    "identifier": "692"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/216.html",
+    "title": "Support of sustainable land management",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "216"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/220.html",
+    "title": "Support the Development of  Conservative Agriculture",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "220"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/691.html",
+    "title": "Supporting the implementation of the United Nations Framework Convention on Climate Change in Tunisia (CCC/GIZ)",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "communication, coordination, technical advice",
+    "scale": "national",
+    "identifier": "691"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/171.html",
+    "title": "Sustainable Agricultural Development Program",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "171"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/496.html",
+    "title": "Sustainable Land , Water and Biodiversity Conservation and Management for Improved Livelihood in Uttarakhand Watershed Sector ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "496"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/427.html",
+    "title": "Sustainable Livelihoods through Organic Farming",
+    "continent": "Asia",
+    "country": "India",
+    "type": "technical advice",
+    "scale": "local",
+    "identifier": "427"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/469.html",
+    "title": "Sustainable Management of Coastal Forest Ecosystems",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "469"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/151.html",
+    "title": "Sustainable Management of Natural Resources",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "151"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/137.html",
+    "title": "Sustainable management of natural resources in local communities",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "137"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/80.html",
+    "title": "Sustainable management of soil and water on hillsides (Masal)",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "80"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/135.html",
+    "title": "Sustainable management of water and soil: knowledge and tools to improve resilience to climate change and to reduce vulnerability",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "135"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/449.html",
+    "title": "Sustainable practices for the cultivation of cherimoya",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "training",
+    "scale": "local",
+    "identifier": "449"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/415.html",
+    "title": "System of Rice Intensification",
+    "continent": "Asia",
+    "country": "India",
+    "type": "technical advice",
+    "scale": "regional",
+    "identifier": "415"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/527.html",
+    "title": "System of Rice Intensification in selected Madhya Pradesh Rural Livelihoods project (MPRLP) districts ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "technical advice",
+    "scale": "local",
+    "identifier": "527"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/506.html",
+    "title": "Tata Kisan Sansar ",
+    "continent": "Asia",
+    "country": "India",
+    "type": "communication",
+    "scale": "regional",
+    "identifier": "506"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/28.html",
+    "title": "Technical advice to adapt SLR",
+    "continent": "Africa",
+    "country": "Tanzania, United Republic of",
+    "type": "technical advice",
+    "scale": "local",
+    "identifier": "28"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/512.html",
+    "title": "The Chouka System -  A soil and moisture conservation technique",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "512"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/381.html",
+    "title": "The Ho Chi Minh City (HCMC) Adaptation to Climate Change  ",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "381"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/558.html",
+    "title": "The Livelihoods Improvement Program for Himalayas-Meghalaya",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "558"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/105.html",
+    "title": "The Radio and Internet Project (RANET)",
+    "continent": "Africa",
+    "country": "Uganda",
+    "type": "communication",
+    "scale": "transboundary",
+    "identifier": "105"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/306.html",
+    "title": "Towards Defining the WRC Research Portfolio on Climate Change for 2008-2013",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "technical advice",
+    "scale": "national",
+    "identifier": "306"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/693.html",
+    "title": "Traditional farming practices in Tunisian cork oak forests and adaptation to climate change",
+    "continent": "Africa",
+    "country": "Tunisia",
+    "type": "assessment report, natural resource management",
+    "scale": "local",
+    "identifier": "693"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/30.html",
+    "title": "Training and Development of a seasonal weather forecast ",
+    "continent": "Africa",
+    "country": "Zambia",
+    "type": "training",
+    "scale": "regional",
+    "identifier": "30"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/160.html",
+    "title": "Training for Farmers in Native Prairie",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "training",
+    "scale": "local",
+    "identifier": "160"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/190.html",
+    "title": "Training Future Experts on Climate Change and Poverty",
+    "continent": "Asia",
+    "country": "Indonesia",
+    "type": "training",
+    "scale": "regional",
+    "identifier": "190"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/318.html",
+    "title": "Treadle Pump Programme",
+    "continent": "Asia",
+    "country": "India",
+    "type": "technical advice",
+    "scale": "regional",
+    "identifier": "318"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/116.html",
+    "title": "Validation of rain water micro capture and micro climate techniques for reforestation",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "natural resource management",
+    "scale": "local",
+    "identifier": "116"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/317.html",
+    "title": "Van Panchayats",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "317"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/436.html",
+    "title": "Vietnam Coastal Zone Vulnerability Assessment and First Steps towards Integrated Coastal Zone Management ",
+    "continent": "Asia",
+    "country": "Viet Nam",
+    "type": "assessment report",
+    "scale": "national",
+    "identifier": "436"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/257.html",
+    "title": "Vulnerability and Adaptation Assessment in the electricity sector and proposals to adapt to CC impacts - SNC",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "assessment report",
+    "scale": "national",
+    "identifier": "257"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/315.html",
+    "title": "Vulnerability and Adaptation experiences from Rajasthan and  Andhra Pradesh",
+    "continent": "Asia",
+    "country": "India",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "315"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/265.html",
+    "title": "Vulnerability and Adaptation Local Integrated Assessment - PROCLIM",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "265"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/565.html",
+    "title": "Vulnerability Assessment and Adaptation to Climate Change-Agriculture Sector",
+    "continent": "Asia",
+    "country": "India",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "565"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/682.html",
+    "title": "Vulnerability Assessment in the Pilot Region of Mostaganem, Algeria",
+    "continent": "Africa",
+    "country": "Algeria",
+    "type": "communication, natural resource management, technical advice",
+    "scale": "regional",
+    "identifier": "682"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/520.html",
+    "title": "Vulnerability Assessment of Kolkata metropolitan area to increased precipitation in a Changing Climate",
+    "continent": "Asia",
+    "country": "India",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "520"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/142.html",
+    "title": "Vulnerability of Andean Communities against climate change",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "assessment report",
+    "scale": "local",
+    "identifier": "142"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/673.html",
+    "title": "Vulnerability to Climate Change and Adaptation Assessment (VCCAA), known as KRAPI (Kajian Risiko dan Adaptasi Perubahan Iklim)",
+    "continent": "Asia",
+    "country": "Indonesia",
+    "type": "assessment report, regulation / law",
+    "scale": "regional",
+    "identifier": "673"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/238.html",
+    "title": "Vulnerability, Coping and Adaptation within the context of climate change and HIV/ AIDS",
+    "continent": "Africa",
+    "country": "South Africa",
+    "type": "natural resource management",
+    "scale": "regional",
+    "identifier": "238"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/418.html",
+    "title": "Wadi program",
+    "continent": "Asia",
+    "country": "India",
+    "type": "technical advice",
+    "scale": "local",
+    "identifier": "418"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/35.html",
+    "title": "Waru waru",
+    "continent": "South America",
+    "country": "Peru",
+    "type": "building / installing structure",
+    "scale": "regional",
+    "identifier": "35"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/167.html",
+    "title": "Water harvesting and forest deferrer (silvopastoral)",
+    "continent": "South America",
+    "country": "Bolivia, Plurinational State of",
+    "type": "building / installing structure",
+    "scale": "local",
+    "identifier": "167"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/723.html",
+    "title": "Water Management Pilot Project: Improved Management of Extreme Events Through Ecosystem-Based Adaptation in Watersheds",
+    "continent": "Asia",
+    "country": "Thailand",
+    "type": "technical advice, training",
+    "scale": "national",
+    "identifier": "723"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/444.html",
+    "title": "Weather based crop Insurance Scheme",
+    "continent": "Asia",
+    "country": "India",
+    "type": "incentive structure",
+    "scale": "regional",
+    "identifier": "444"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/518.html",
+    "title": "Weather Based Crop Insurance Scheme for Kharif crops  (2010)",
+    "continent": "Asia",
+    "country": "India",
+    "type": "incentive structure",
+    "scale": "regional",
+    "identifier": "518"
+  },
+  {
+    "url": "http://www.pik-potsdam.de/~wrobel/ci_2/adaptation_projects/339.html",
+    "title": "Yangtze River Basin climate change vulnerability and adaptation action",
+    "continent": "Asia",
+    "country": "China",
+    "type": "assessment report",
+    "scale": "regional",
+    "identifier": "339"
+  }
+]

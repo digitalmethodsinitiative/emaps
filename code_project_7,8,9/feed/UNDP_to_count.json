@@ -1,0 +1,111 @@
+{
+ "thematic": [
+    "infrastructure",
+    "infrastructure, climate change risk management",
+    "agriculture, food security",
+    "water resources",
+    "natural resource management",
+    "coastal zone development",
+    "disaster risk reduction",
+    "health",
+    "rural development"
+],
+
+ "hazards": [
+    "?",
+    "disease",
+    "drought/water scarcity",
+    "extreme weather events",
+    "flood",
+    "land degradation and deforestation",
+    "public health",
+    "sea level rise",
+    "wildfire"
+],
+
+ "location": [
+    "rural",
+    "unspecified",
+    "urban"
+],
+
+ "level of intervention": [
+    "community",
+    "district",
+    "global",
+    "municipality",
+    "national",
+    "regional"
+],
+
+ "project status": [
+    "under implementation",
+    "completed",
+    "source of funds pipeline"
+],
+
+ "funding source": [
+    "gef-trust fund",
+    "ldcf",
+    "gef-spa",
+    "bilateral finance",
+    "sccf",
+    "the adaptation fund",
+    "decentralized cooperation"
+],
+
+ "key collaborators": [
+    "country office",
+    "local governments",
+    "national governments",
+    "non-governmental organizations",
+    "private sector partners",
+    "unops"
+],
+
+ "agencies & organizations": [
+    "undp",
+    "gef",
+    "the gef small grants programme",
+    "un volunteers",
+    "australian government",
+    "unfccc secretariat",
+    "adaptation fund",
+    "european commission",
+    "pacc",
+    "sprep",
+    "low emission capacity building programme (lecbp)",
+    "government of switzerland",
+    "government of japan",
+    "united nations environment programme (unep)",
+    "government of bangladesh",
+    "world health organization (who)",
+    "uk department for international development (dfid)"
+],
+
+ "geo location": [
+    "samoa",
+    "kazakhstan",
+    "niger",
+    "bangladesh",
+    "morocco",
+    "bolivia",
+    "jamaica",
+    "viet nam",
+    "guatemala",
+    "bhutan",
+    "burkina faso",
+    "democratic republic of the congo",
+    "lao people's democratic republic",
+    "malawi",
+    "solomon islands"
+],
+
+ "financing amount": [
+    "<240502",
+    "240502-480000",
+    "480000-3800000",
+    ">3800000"
+],
+
+}

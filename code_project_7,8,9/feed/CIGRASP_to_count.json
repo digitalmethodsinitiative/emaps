@@ -1,0 +1,132 @@
+{
+
+ "list/type": [
+	"natural resource management",
+	"assessment report",
+	"training",
+	"building / installing structure",
+	"technical advice",
+	"communication",
+	"coordination",
+	"regulation / law",
+	"incentive structure",
+	"agricultural management"
+]
+
+ "project page/overview/stimulus": [
+	"precipitation change",
+	"drought",
+	"temperature change",
+	"sea-level rise",
+	"meterological drought",
+	"hydrological drought"
+]
+
+ "project page/overview/impacts": [
+	"land loss",
+	"water stock reduction",
+	"soil moisture reduction",
+	"agricultural production loss",
+	"rainfed agricultural production loss",
+	"wetland loss",
+	"food loss",
+	"increased forest fire frequency",
+	"migration",
+	"irrigated agricultural production loss",
+	"land-cover conversion",
+	"rural and urban area damages",
+	"other impacts",
+	"livestock production decrease",
+	"urban water supply decrease",
+	"agricultural gdp loss",
+	"relocation"
+]
+
+ "project page/overview/sector": [
+	"agriculture",
+	"city",
+	"coast",
+	"forestry",
+	"water"
+]
+
+ "list/scale": [
+	"global",
+	"local",
+	"national",
+	"regional",
+	"transboundary"
+]
+
+ "page/project_classification/project_status": [
+	"implementation running",
+	"implemented",
+	"planned"
+]
+
+ "page/project_classification/running_time": [
+	"3 years",
+	"2 years",
+	"4 years",
+	"5 years",
+	"12 months",
+	"18 months",
+	"6 years",
+	"1 years",
+	"10 years"
+]
+
+ "page/project_classification/effect_emergence": [
+	"immediate",
+	"not immediate"
+]
+
+ "page/project_classification/effect_persistence": [
+	"between 1 and 10 years",
+	"more than 10 years",
+	"not specified",
+	"up to 1 year"
+]
+
+ "project page/problem_solving_capacity_and reversibility/problem_solving_coverage": [
+	"high",
+	"low",
+	"medium"
+]
+
+ "project page/problem_solving capacity_and_reversibility/reversibility": [
+	"high",
+	"medium",
+	"low"
+]
+
+ "list/continent": [	
+	"Africa",
+	"Asia",
+	"Australia / Oceania",
+	"Europe",
+	"North America",
+	"South America"
+]
+
+ "list/country": [
+	"India",
+	"South Africa",
+	"Viet Nam",
+	"Bolivia, Plurinational State of",
+	"Peru",
+	"Tunisia",
+	"China",
+	"Brazil",
+	"Indonesia",
+	"Philippines"
+]
+
+ "financing amount": [
+	"<116000",
+	"116000-2000000",
+	"2000000-10515000",
+	">10515000"
+]
+
+}
