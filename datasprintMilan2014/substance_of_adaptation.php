@@ -46,31 +46,28 @@ function load_undp() {
 
     $data = json_decode($file);
     foreach ($data as $d) {
-        $obj = new StdClass();
+        $obj = new Fund();
         $obj->source = "undp";
-        $obj->year = "n/a";
-        $obj->donor = "n/a";
-        if (isset($d->data->partners)) {
-            if (is_array($d->data->partners))
-                $obj->donor = implode(",", $d->data->partners);
-            else
-                $obj->donor = $d->data->partners;
-        }
-        $obj->recipient = $d->location;
-        $obj->purpose = "n/a";
-        if (isset($d->data->{'climate-hazards'})) {
-            if (is_array($d->data->{'climate-hazards'}))
-                $obj->purpose = implode(",", $d->data->{'climate-hazards'});
-            else
-                $obj->purpose = $d->data->{'climate-hazards'};
-        }
-        $obj->amount = "n/a";
         if (isset($d->data->normalized_costs))
             $obj->amount = $d->data->normalized_costs;
-        $obj->sector = "n/a";
-        if (!empty($d->theme))
-            $obj->sector = $d->theme;
         $obj->projecttitle = $d->title;
+        if (isset($d->data->partners)) {
+            if (is_array($d->data->partners))
+                $obj->donor = $d->data->partners;
+            else
+                $obj->donor[] = $d->data->partners;
+        }
+        $obj->recipient[] = $d->location;
+        if (isset($d->data->{'climate-hazards'})) {
+            if (is_array($d->data->{'climate-hazards'}))
+                $obj->purpose = $d->data->{'climate-hazards'};
+            else
+                $obj->purpose[] = $d->data->{'climate-hazards'};
+        }
+
+        if (!empty($d->theme))
+            $obj->sector[] = $d->theme;
+
         $jsons[] = $obj;
     }
 }
@@ -92,21 +89,22 @@ function load_ci_grasp() {
 
     $data = json_decode($file);
     foreach ($data as $d) {
-        $obj = new StdClass();
+        $obj = new Fund();
+
         $obj->source = "cigrasp";
-        $obj->year = "n/a";
-        $obj->donor = "n/a";
-        $obj->recipient = $d->country;
-        $obj->purpose = "n/a";
+        $obj->amount = $d->project_costs->normalized_costs;
+        $obj->projecttitle = $d->title;
+
+        $obj->recipient[] = $d->country;
         if (isset($d->overview->stimuli)) {
             if (is_array($d->overview->stimuli))
-                $obj->purpose = implode(",", $d->overview->stimuli);
-            else
                 $obj->purpose = $d->overview->stimuli;
+            else
+                $obj->purpose[] = $d->overview->stimuli;
         }
-        $obj->amount = $d->project_costs->normalized_costs;
-        $obj->sector = $d->overview->sector;
-        $obj->projecttitle = $d->title;
+
+        $obj->sector[] = $d->overview->sector;
+
         $jsons[] = $obj;
     }
 }
@@ -127,17 +125,13 @@ function load_psi() {
     $data = json_decode($file);
     foreach ($data as $d) {
         if ($d->source == "psi") {
-            $obj = new StdClass();
+            $obj = new fund();
             $obj->source = $d->source;
-            $obj->year = "n/a";
-            $obj->donor = "n/a";
-            $obj->recipient = implode(",", $d->countries);
-            $obj->purpose = implode(",", $d->{'climate-hazards'});
-            $obj->amount = "n/a";
-            $obj->sector = "n/a";
-            if (!empty($d->themes))
-                $obj->sector = implode(",", $d->themes);
             $obj->projecttitle = $d->name;
+            $obj->recipient = $d->countries;
+            $obj->purpose = $d->{'climate-hazards'};
+            if (!empty($d->themes))
+                $obj->sector = $d->themes;
             $jsons[] = $obj;
         }
     }
@@ -161,17 +155,13 @@ function load_climate_wise() {
     $data = json_decode($file);
     foreach ($data as $d) {
         if ($d->source == "climatewise") {
-            $obj = new StdClass();
+            $obj = new fund();
             $obj->source = $d->source;
-            $obj->year = "n/a";
-            $obj->donor = "n/a";
-            $obj->recipient = implode(",", $d->countries);
-            $obj->purpose = implode(",", $d->{'climate-hazards'});
-            $obj->amount = "n/a";
-            $obj->sector = "n/a";
-            if (!empty($d->themes))
-                $obj->sector = implode(",", $d->themes);
             $obj->projecttitle = $d->name;
+            $obj->recipient = $d->countries;
+            $obj->purpose = $d->{'climate-hazards'};
+            if (!empty($d->themes))
+                $obj->sector = $d->themes;
             $jsons[] = $obj;
         }
     }
@@ -194,14 +184,14 @@ function load_oecd_riomarkers() {
         $e = explode("|", $file[$i]);
         $climateAdaptation = $e[12];
         if ($climateAdaptation == 2) {
-            $obj = new stdClass();
+            $obj = new fund();
             $obj->source = 'oecd_riomarkers';
             $obj->year = $e[0];
-            $obj->donor = $e[1];
-            $obj->recipient = $e[5];
-            $obj->purpose = $e[7]; // purposeName
+            $obj->donor[] = $e[1];
+            $obj->recipient[] = $e[5];
+            $obj->purpose[] = $e[7]; // purposeName
             $obj->amount = $e[4]; //(String) $e[4]." - ".sprintf("%.17f",$e[4]); // usd_commitment_defl
-            $obj->sector = $e[19];
+            $obj->sector[] = $e[19];
             $obj->projecttitle = $e[23];
             $jsons[] = $obj;
         }
@@ -222,6 +212,19 @@ function load_climatefundsupdate() {
 
 function load_napa() {
     
+}
+
+class fund {
+
+    public $source = "n/a";
+    public $year = "n/a";
+    public $amount = "n/a";
+    public $projecttitle = "n/a";
+    public $donor = array();
+    public $recipient = array();
+    public $purpose = array();
+    public $sector = array();
+
 }
 
 ?>
