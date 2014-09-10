@@ -10,7 +10,7 @@
  * @author Erik Borra <erik@digitalmethods.net>
  */
 
-ini_set('memory_limit', '2G');
+ini_set('memory_limit', '3G');
 date_default_timezone_set('Europe/Amsterdam');
 $datadir = "data";
 
@@ -46,31 +46,32 @@ function load_undp() {
 
     $data = json_decode($file);
     foreach ($data as $d) {
-        $obj = new Fund();
+        $obj = new fund();
         $obj->source = "undp";
         if (isset($d->data->normalized_costs))
-            $obj->amount = $d->data->normalized_costs;
+            $obj->addAmount($d->data->normalized_costs);
         $obj->projecttitle = $d->title;
         if (isset($d->data->partners)) {
-            if (is_array($d->data->partners))
-                $obj->donor = $d->data->partners;
-            else
-                $obj->donor[] = $d->data->partners;
+            if (is_array($d->data->partners)) {
+                foreach ($d->data->partners as $partner)
+                    $obj->addDonor($partner);
+            } else
+                $obj->addDonor($d->data->partners);
         }
-        $obj->recipient[] = $d->location;
+        $obj->addRecipient($d->location);
         if (isset($d->data->{'climate-hazards'})) {
-            if (is_array($d->data->{'climate-hazards'}))
-                $obj->purpose = $d->data->{'climate-hazards'};
-            else
-                $obj->purpose[] = $d->data->{'climate-hazards'};
+            if (is_array($d->data->{'climate-hazards'})) {
+                foreach ($d->data->{'climate-hazards'} as $c)
+                    $obj->addPurpose($c);
+            }else
+                $obj->addPurpose($d->data->{'climate-hazards'});
         }
 
         if (!empty($d->theme)) {
             $sectors = explode("/", $d->theme);
             foreach ($sectors as $s)
-                $obj->sector[] = trim($s);
+                $obj->addSector($s);
         }
-
         $jsons[] = $obj;
     }
 }
@@ -95,20 +96,21 @@ function load_ci_grasp() {
         $obj = new Fund();
 
         $obj->source = "cigrasp";
-        $obj->amount = $d->project_costs->normalized_costs;
+        $obj->addAmount($d->project_costs->normalized_costs);
         $obj->projecttitle = $d->title;
 
-        $obj->recipient[] = $d->country;
+        $obj->addRecipient($d->country);
         if (isset($d->overview->stimuli)) {
-            if (is_array($d->overview->stimuli))
-                $obj->purpose = $d->overview->stimuli;
-            else
-                $obj->purpose[] = $d->overview->stimuli;
+            if (is_array($d->overview->stimuli)) {
+                foreach ($d->overview->stimuli as $s)
+                    $obj->addPurpose($s);
+            } else
+                $obj->addPurpose($d->overview->stimuli);
         }
         if (isset($d->overview->sector)) {
             $sectors = explode(",", $d->overview->sector);
             foreach ($sectors as $s)
-                $obj->sector[] = trim($s);
+                $obj->addSector($s);
         }
 
         $jsons[] = $obj;
@@ -134,13 +136,15 @@ function load_psi() {
             $obj = new fund();
             $obj->source = $d->source;
             $obj->projecttitle = $d->name;
-            $obj->recipient = $d->countries;
-            $obj->purpose = $d->{'climate-hazards'};
+            foreach ($d->countries as $c)
+                $obj->addRecipient($c);
+            foreach ($d->{'climate-hazards'} as $c)
+                $obj->addPurpose($c);
             if (!empty($d->themes)) {
                 foreach ($d->themes as $theme) {
                     $sectors = explode("/", $theme);
                     foreach ($sectors as $s)
-                        $obj->sector[] = trim($s);
+                        $obj->addSector($s);
                 }
             }
             $jsons[] = $obj;
@@ -154,7 +158,7 @@ function load_psi() {
  * methodology, https://docs.google.com/document/d/1aOIi0ofmjfl-haOt-hbHYGZjDnKBPxzxN6-5SpmuH-0/edit
  * json, https://docs.google.com/file/d/0B94tyKAcHuHBWnRscVUzWUpWTDg/edit, 
  * 
- * @todo: old source, add amount of money and year
+ * does not have amount of money and year
  */
 
 function load_climate_wise() {
@@ -169,13 +173,15 @@ function load_climate_wise() {
             $obj = new fund();
             $obj->source = $d->source;
             $obj->projecttitle = $d->name;
-            $obj->recipient = $d->countries;
-            $obj->purpose = $d->{'climate-hazards'};
+            foreach ($d->countries as $c)
+                $obj->addRecipient($c);
+            foreach ($d->{'climate-hazards'} as $c)
+                $obj->addPurpose($c);
             if (!empty($d->themes)) {
                 foreach ($d->themes as $theme) {
                     $sectors = explode("/", $theme);
                     foreach ($sectors as $s)
-                        $obj->sector[] = trim($s);
+                        $obj->addSector($s);
                 }
             }
             $jsons[] = $obj;
@@ -203,11 +209,11 @@ function load_oecd_riomarkers() {
             $obj = new fund();
             $obj->source = 'oecd_riomarkers';
             $obj->year = $e[0];
-            $obj->donor[] = $e[1];
-            $obj->recipient[] = $e[5];
-            $obj->purpose[] = $e[7]; // purposeName
-            $obj->amount = $e[4]; //(String) $e[4]." - ".sprintf("%.17f",$e[4]); // usd_commitment_defl
-            $obj->sector[] = $e[19];
+            $obj->addDonor($e[1]);
+            $obj->addRecipient($e[5]);
+            $obj->addPurpose($e[7]); // purposeName
+            $obj->addAmount($e[4]); //(String) $e[4]." - ".sprintf("%.17f",$e[4]); // usd_commitment_defl
+            $obj->addSector($e[19]);
             $obj->projecttitle = $e[23];
             $jsons[] = $obj;
         }
@@ -223,23 +229,73 @@ function load_climatefundsupdate() {
 }
 
 /*
- * NAPAs (National Adaptation Programs of Action) (http://unfccc.int/adaptation/workstreams/national_adaptation_programmes_of_action/items/4583.php)
+ * NAPAs (National Adaptation Programs of Action)
+ * 
+ * From the NAPA priorities database (http://unfccc.int/adaptation/workstreams/national_adaptation_programmes_of_action/items/4583txt.php) 
+ * the data by sector (http://unfccc.int/files/cooperation_support/least_developed_countries_portal/napa_priorities_database/application/pdf/napa_index_by_sector.pdf) was downloaded and 
+ * parsed into a csv (data/napa-full-categories.csv) with the following 
+ * fields: Title of project, country, indicative cost of project in USD or AUD, order of priority of project, sector component (basically, key words). 
  */
 
 function load_napa() {
-    
+    global $jsons, $datadir;
+
+    $inputfile = "napa-full-categories.csv";
+    $file = file($datadir . "/" . $inputfile);
+    $cf = count($file);
+    for ($i = 1; $i < $cf; $i++) {
+        $e = explode(";", $file[$i]);
+        $obj = new fund();
+        $obj->source = "napa";
+        $obj->projecttitle = $e[4];
+        $obj->recipient = $e[2];
+        if (!empty($e[5]))
+            $obj->addAmount($e[5]); // USD
+        else {
+            $obj->addAmount($e[6]); // AUD
+            $obj->currency = "AUD";
+        }
+        $keywords = explode(",", $e[7]); // official key words
+        foreach ($keywords as $keyword)
+            $obj->addPurpose($keyword);
+        $sectors = explode("/", $e[1]); // category
+        foreach ($sectors as $s)
+            $obj->addSector($s);
+        $jsons[] = $obj;
+    }
 }
 
 class fund {
 
     public $source = "n/a";
+    public $projecttitle = "n/a";
     public $year = "n/a";
     public $amount = "n/a";
-    public $projecttitle = "n/a";
+    public $currency = "USD";
     public $donor = array();
     public $recipient = array();
     public $purpose = array();
     public $sector = array();
+
+    public function addAmount($amount) {
+        $this->amount = trim(str_replace(",", "", $amount));
+    }
+
+    public function addPurpose($purpose) {
+        $this->purpose[] = trim(strtolower($purpose));
+    }
+
+    public function addRecipient($recipient) {
+        $this->recipient[] = trim($recipient);
+    }
+
+    public function addDonor($donor) {
+        $this->donor[] = trim($donor);
+    }
+
+    public function addSector($sector) {
+        $this->sector[] = trim(strtolower($sector));
+    }
 
 }
 
