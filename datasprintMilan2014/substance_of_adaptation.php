@@ -65,8 +65,11 @@ function load_undp() {
                 $obj->purpose[] = $d->data->{'climate-hazards'};
         }
 
-        if (!empty($d->theme))
-            $obj->sector[] = $d->theme;
+        if (!empty($d->theme)) {
+            $sectors = explode("/", $d->theme);
+            foreach ($sectors as $s)
+                $obj->sector[] = trim($s);
+        }
 
         $jsons[] = $obj;
     }
@@ -102,8 +105,11 @@ function load_ci_grasp() {
             else
                 $obj->purpose[] = $d->overview->stimuli;
         }
-
-        $obj->sector[] = $d->overview->sector;
+        if (isset($d->overview->sector)) {
+            $sectors = explode(",", $d->overview->sector);
+            foreach ($sectors as $s)
+                $obj->sector[] = trim($s);
+        }
 
         $jsons[] = $obj;
     }
@@ -130,8 +136,13 @@ function load_psi() {
             $obj->projecttitle = $d->name;
             $obj->recipient = $d->countries;
             $obj->purpose = $d->{'climate-hazards'};
-            if (!empty($d->themes))
-                $obj->sector = $d->themes;
+            if (!empty($d->themes)) {
+                foreach ($d->themes as $theme) {
+                    $sectors = explode("/", $theme);
+                    foreach ($sectors as $s)
+                        $obj->sector[] = trim($s);
+                }
+            }
             $jsons[] = $obj;
         }
     }
@@ -160,8 +171,13 @@ function load_climate_wise() {
             $obj->projecttitle = $d->name;
             $obj->recipient = $d->countries;
             $obj->purpose = $d->{'climate-hazards'};
-            if (!empty($d->themes))
-                $obj->sector = $d->themes;
+            if (!empty($d->themes)) {
+                foreach ($d->themes as $theme) {
+                    $sectors = explode("/", $theme);
+                    foreach ($sectors as $s)
+                        $obj->sector[] = trim($s);
+                }
+            }
             $jsons[] = $obj;
         }
     }
