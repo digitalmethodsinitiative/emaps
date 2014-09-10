@@ -29,7 +29,7 @@ function generateListOfPurposesAndThemes() {
         foreach ($obj->recipient as $r)
             $recipients[$obj->source][] = $r;
     }
-    $handle = fopen($datadir . "/substance_of_adaptation_unique_sources.csv", "w");
+    $handle = fopen($datadir . "/substance_of_adaptation_unique_sectors.csv", "w");
     fwrite($handle, "source,sector\n");
     foreach ($sectors as $source => $s) {
         $ss = array_unique($s);
