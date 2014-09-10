@@ -222,14 +222,50 @@ function load_oecd_riomarkers() {
 
 /*
  * multi-lateral funding (according to the data collected by the website http://www.climatefundsupdate.org/)
+ * 
+ * methodology: https://docs.google.com/document/d/1j-kVvTrRGjgZZ8Dj81IdrZ1RNLF1UWsyhQV36X41Ze4/edit
+ * 
+ * Retrieved data from http://www.climatefundsupdate.org/data
+ * filtered out all projects that were not funded through the MLFs
+ * tagged with categories or key  words: To fill in this data we manually added this information by using the words in the title plus doing some desk research to find project reports and other sources of information to get a sense of what the projects were about.
+ * resulting csv: climatefundsupdate-multilateral.csv
+ * 
  */
 
 function load_climatefundsupdate() {
-    
+    global $jsons, $datadir;
+
+    $inputfile = "climatefundsupdate-multilateral.csv";
+    $file = file($datadir . "/" . $inputfile);
+    $cf = count($file);
+    for ($i = 1; $i < $cf; $i++) {
+        $obj = new fund();
+        $obj->source = "climatefundsupdate";
+
+        $e = explode(";", $file[$i]);
+        $obj->projecttitle = preg_replace("/ - \d+/", "", $e[16]);
+        $obj->addRecipient($e[19]);
+        $obj->addDonor($e[22]);
+        $obj->year = $e[23];
+        $obj->addAmount($e[27]);
+        $sectors = explode("/", $e[12]); // category
+        foreach ($sectors as $s)
+            $obj->addSector($s);
+        if (!empty($e[13])) // checked keyword
+            $obj->addPurpose($e[13]);
+        if (!empty($e[14])) // checked keyword
+            $obj->addPurpose($e[14]);
+        if (!empty($e[15])) // checked keyword
+            $obj->addPurpose($e[15]);
+
+        $jsons[] = $obj;
+    }
 }
 
 /*
  * NAPAs (National Adaptation Programs of Action)
+ * 
+ * methodology: https://docs.google.com/document/d/1j-kVvTrRGjgZZ8Dj81IdrZ1RNLF1UWsyhQV36X41Ze4/edit
  * 
  * From the NAPA priorities database (http://unfccc.int/adaptation/workstreams/national_adaptation_programmes_of_action/items/4583txt.php) 
  * the data by sector (http://unfccc.int/files/cooperation_support/least_developed_countries_portal/napa_priorities_database/application/pdf/napa_index_by_sector.pdf) was downloaded and 
@@ -248,7 +284,7 @@ function load_napa() {
         $obj = new fund();
         $obj->source = "napa";
         $obj->projecttitle = $e[4];
-        $obj->recipient = $e[2];
+        $obj->addRecipient($e[2]);
         if (!empty($e[5]))
             $obj->addAmount($e[5]); // USD
         else {
