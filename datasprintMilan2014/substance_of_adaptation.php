@@ -52,13 +52,12 @@ function load_undp_alm() {
     $file = file_get_contents($datadir . "/" . $inputfile);
 
     $data = json_decode($file);
-    $j = 0;
+    
     foreach ($data as $i => $d) {
         if ($i < 31)
             continue;
-        $j++;
         $obj = new fund();
-        $obj->id = $j;
+        $obj->id = $i+1;
         $obj->source = "undp_alm";
         if (isset($d->data->normalized_costs))
             $obj->addAmount($d->data->normalized_costs);
