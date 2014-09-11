@@ -48,12 +48,12 @@ function generateListOfPurposesAndThemes() {
     }
     fclose($handle);
     $handle = fopen($datadir . "/substance_of_adaptation_unique_recipients.csv", "w");
-    fwrite($handle, "source;recipient\n");
+    fwrite($handle, "source\trecipient\n");
     foreach ($recipients as $source => $r) {
         $rr = array_unique($r);
         sort($rr);
         foreach ($rr as $ri)
-            fwrite($handle, "$source;$ri\n");
+            fwrite($handle, "$source\t$ri\n");
     }
     fclose($handle);
 }
