@@ -18,6 +18,7 @@ load_databases();
 mapSectors();
 mapRecipients();
 file_put_contents($datadir . "/" . "substance_of_adaptation.json", json_encode($jsons, JSON_PRETTY_PRINT));
+writeAsCsv();
 
 //generateListOfPurposesAndThemes();
 
@@ -51,11 +52,13 @@ function load_undp_alm() {
     $file = file_get_contents($datadir . "/" . $inputfile);
 
     $data = json_decode($file);
-    $i = 0;
+    $j = 0;
     foreach ($data as $i => $d) {
         if ($i < 31)
             continue;
+        $j++;
         $obj = new fund();
+        $obj->id = $j;
         $obj->source = "undp_alm";
         if (isset($d->data->normalized_costs))
             $obj->addAmount($d->data->normalized_costs);
@@ -102,9 +105,9 @@ function load_ci_grasp() {
     $file = file_get_contents($datadir . "/" . $inputfile);
 
     $data = json_decode($file);
-    foreach ($data as $d) {
+    foreach ($data as $i => $d) {
         $obj = new Fund();
-
+        $obj->id = $i + 1;
         $obj->source = "cigrasp";
         $obj->addAmount($d->project_costs->normalized_costs);
         $obj->projecttitle = $d->title;
@@ -165,9 +168,12 @@ function load_psi() {
     $file = file_get_contents($datadir . "/" . $inputfile);
 
     $data = json_decode($file);
+    $i = 0;
     foreach ($data as $d) {
         if ($d->source == "psi") {
+            $i++;
             $obj = new fund();
+            $obj->id = $i;
             $obj->source = $d->source;
             $obj->projecttitle = $d->name;
             foreach ($d->countries as $c)
@@ -212,9 +218,12 @@ function load_climate_wise() {
     $file = file_get_contents($datadir . "/" . $inputfile);
 
     $data = json_decode($file);
+    $i = 0;
     foreach ($data as $d) {
         if ($d->source == "climatewise") {
             $obj = new fund();
+            $i++;
+            $obj->id = $i;
             $obj->source = $d->source;
             $obj->projecttitle = $d->name;
             foreach ($d->countries as $c)
@@ -240,6 +249,8 @@ function load_climate_wise() {
  * no special cleaning was done
  * only projects which have climateAdaptation as their primary goal are included in this data
  * 
+ * Note: cat data/RioMarkers_cleaned.txt | grep 'Least Developed Country Fund for Adaptation to Climate Change' | cut -d"|" -f2,4,6,8,20 | wc -l
+  196 => Canada has reported that it spent 0.103124M to 49 countries in 4 categories
  */
 
 function load_oecd_riomarkers() {
@@ -248,11 +259,14 @@ function load_oecd_riomarkers() {
     $inputfile = "RioMarkers_cleaned.txt";
     $file = file($datadir . "/" . $inputfile);
 
+    $j = 0;
     for ($i = 1; $i < count($file); $i++) {
         $e = explode("|", $file[$i]);
         $climateAdaptation = $e[12];
         if ($climateAdaptation == 2) {
             $obj = new fund();
+            $j++;
+            $obj->id = $j;
             $obj->source = 'oecd_riomarkers';
             $obj->year = $e[0];
             $obj->addDonor($e[1]);
@@ -274,6 +288,7 @@ function load_oecd_riomarkers() {
  * Retrieved data from http://www.climatefundsupdate.org/data
  * filtered out all projects that were not funded through the MLFs
  * tagged with categories or keywords: To fill in this data we manually added this information by using the words in the title plus doing some desk research to find project reports and other sources of information to get a sense of what the projects were about.
+ * checked keywords: qualitative analysis to assign napa style categories/sectors to the projects
  * resulting csv: climatefundsupdate-multilateral.csv
  * 
  * * @todo: are keywords same as purpose, are categories same as sector?
@@ -287,6 +302,7 @@ function load_climatefundsupdate() {
     $cf = count($file);
     for ($i = 1; $i < $cf; $i++) {
         $obj = new fund();
+        $obj->id = $i;
         $obj->source = "climatefundsupdate";
 
         $e = explode(";", $file[$i]);
@@ -331,6 +347,7 @@ function load_napa() {
     for ($i = 1; $i < $cf; $i++) {
         $e = explode(";", $file[$i]);
         $obj = new fund();
+        $obj->id = $i;
         $obj->source = "napa";
         $obj->projecttitle = $e[4];
         $obj->addRecipient($e[2]);
@@ -431,8 +448,18 @@ function generateListOfPurposesAndThemes() {
     fclose($handle);
 }
 
+function writeAsCsv() {
+    global $jsons, $datadir;
+    $csv = "source;id;projecttitle;year;amount;currency;donor;recipient;recipient_mapped;purpose;sector;sector_mapped\n";
+    foreach ($jsons as $j) {
+        $csv .= $j->source . ";" . $j->id . ";" . $j->projecttitle . ";" . $j->year . ";" . $j->amount . ";" . $j->currency . ";" . implode(",", $j->donor) . ";" . implode(",", $j->recipient) . ";" . implode(",", $j->recipient_mapped) . ";" . implode(",", $j->purpose) . ";" . implode(",", $j->sector) . ";" . implode(",", $j->sector_mapped) . "\n";
+    }
+    file_put_contents($datadir . "/substance_of_adaptation.csv", $csv);
+}
+
 class fund {
 
+    public $id = 0;
     public $source = "n/a";
     public $projecttitle = "n/a";
     public $year = "n/a";
