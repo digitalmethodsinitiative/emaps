@@ -30,30 +30,30 @@ function generateListOfPurposesAndThemes() {
             $recipients[$obj->source][] = $r;
     }
     $handle = fopen($datadir . "/substance_of_adaptation_unique_sectors.csv", "w");
-    fwrite($handle, "source,sector\n");
+    fwrite($handle, "source;sector\n");
     foreach ($sectors as $source => $s) {
         $ss = array_unique($s);
         sort($ss);
         foreach ($ss as $si)
-            fwrite($handle, "$source,$si\n");
+            fwrite($handle, "$source;$si\n");
     }
     fclose($handle);
     $handle = fopen($datadir . "/substance_of_adaptation_unique_purposes.csv", "w");
-    fwrite($handle, "source,purpose\n");
+    fwrite($handle, "source;purpose\n");
     foreach ($purposes as $source => $p) {
         $pp = array_unique($p);
         sort($pp);
         foreach ($pp as $pi)
-            fwrite($handle, "$source,$pi\n");
+            fwrite($handle, "$source;$pi\n");
     }
     fclose($handle);
     $handle = fopen($datadir . "/substance_of_adaptation_unique_recipients.csv", "w");
-    fwrite($handle, "source\trecipient\n");
+    fwrite($handle, "source;recipient\n");
     foreach ($recipients as $source => $r) {
         $rr = array_unique($r);
         sort($rr);
         foreach ($rr as $ri)
-            fwrite($handle, "$source\t$ri\n");
+            fwrite($handle, "$source;$ri\n");
     }
     fclose($handle);
 }
