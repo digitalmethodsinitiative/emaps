@@ -48,12 +48,12 @@ function generateListOfPurposesAndThemes() {
     }
     fclose($handle);
     $handle = fopen($datadir . "/substance_of_adaptation_unique_recipients.csv", "w");
-    fwrite($handle, "source,recipient\n");
+    fwrite($handle, "source;recipient\n");
     foreach ($recipients as $source => $r) {
         $rr = array_unique($r);
         sort($rr);
         foreach ($rr as $ri)
-            fwrite($handle, "$source,$ri\n");
+            fwrite($handle, "$source;$ri\n");
     }
     fclose($handle);
 }
@@ -73,7 +73,7 @@ function load_databases() {
  * 
  * methodology for project7,8,9 can be found on https://drive.google.com/?usp=folder&authuser=0#folders/0B3e-HpGNh9BwcVpPUHlJNkpnVWs
  * data 
- *      date of retrieval {DATE TO BE DETERMINED} 
+ *      date of retrieval: april 22, 2014
  *      http://www.undp-alm.org/explore was queried with empty fields and the resulting URLs were retrieved to get at the project pages, which were then parsed.
  *      encoded in undp.json  found here https://docs.google.com/file/d/0B3e-HpGNh9BwRnYzQVJpTE5HMjQ/edit
  *      code available at https://github.com/digitalmethodsinitiative/emaps/tree/master/code_project_7%2C8%2C9
