@@ -15,48 +15,11 @@ $datadir = "data";
 
 $jsons = array();
 load_databases();
+mapSectors();
+mapRecipients();
 file_put_contents($datadir . "/" . "substance_of_adaptation.json", json_encode($jsons, JSON_PRETTY_PRINT));
-generateListOfPurposesAndThemes();
 
-function generateListOfPurposesAndThemes() {
-    global $jsons, $datadir;
-    $sectors = $purposes = array();
-    foreach ($jsons as $obj) {
-        foreach ($obj->sector as $s)
-            $sectors[$obj->source][] = $s;
-        foreach ($obj->purpose as $p)
-            $purposes[$obj->source][] = $p;
-        foreach ($obj->recipient as $r)
-            $recipients[$obj->source][] = $r;
-    }
-    $handle = fopen($datadir . "/substance_of_adaptation_unique_sectors.csv", "w");
-    fwrite($handle, "source;sector\n");
-    foreach ($sectors as $source => $s) {
-        $ss = array_unique($s);
-        sort($ss);
-        foreach ($ss as $si)
-            fwrite($handle, "$source;$si\n");
-    }
-    fclose($handle);
-    $handle = fopen($datadir . "/substance_of_adaptation_unique_purposes.csv", "w");
-    fwrite($handle, "source;purpose\n");
-    foreach ($purposes as $source => $p) {
-        $pp = array_unique($p);
-        sort($pp);
-        foreach ($pp as $pi)
-            fwrite($handle, "$source;$pi\n");
-    }
-    fclose($handle);
-    $handle = fopen($datadir . "/substance_of_adaptation_unique_recipients.csv", "w");
-    fwrite($handle, "source;recipient\n");
-    foreach ($recipients as $source => $r) {
-        $rr = array_unique($r);
-        sort($rr);
-        foreach ($rr as $ri)
-            fwrite($handle, "$source;$ri\n");
-    }
-    fclose($handle);
-}
+//generateListOfPurposesAndThemes();
 
 function load_databases() {
     load_undp_alm();
@@ -78,7 +41,7 @@ function load_databases() {
  *      encoded in undp.json  found here https://docs.google.com/file/d/0B3e-HpGNh9BwRnYzQVJpTE5HMjQ/edit
  *      code available at https://github.com/digitalmethodsinitiative/emaps/tree/master/code_project_7%2C8%2C9
  * 
- * @todo The first 31 rows in the UNDP-ALM database were dropped and not used data calculations as they contain different records to the rest of the database and do not include details of projects.  Instead, they outline country-level NAP processes (for 24 countries) and details of P-CBA, at the  country-level (for 7 countries), with varying levels of detail.  They do not contain the same variables as the rest of the database.
+ *      The first 31 rows in the UNDP-ALM database were dropped and not used data calculations as they contain different records to the rest of the database and do not include details of projects.  Instead, they outline country-level NAP processes (for 24 countries) and details of P-CBA, at the  country-level (for 7 countries), with varying levels of detail.  They do not contain the same variables as the rest of the database.
  */
 
 function load_undp_alm() {
@@ -88,7 +51,10 @@ function load_undp_alm() {
     $file = file_get_contents($datadir . "/" . $inputfile);
 
     $data = json_decode($file);
-    foreach ($data as $d) {
+    $i = 0;
+    foreach ($data as $i => $d) {
+        if ($i < 31)
+            continue;
         $obj = new fund();
         $obj->source = "undp_alm";
         if (isset($d->data->normalized_costs))
@@ -274,7 +240,6 @@ function load_climate_wise() {
  * no special cleaning was done
  * only projects which have climateAdaptation as their primary goal are included in this data
  * 
- * @todo usd deflated (or should/could we use actual USD), go from 0. to actual milions
  */
 
 function load_oecd_riomarkers() {
@@ -293,7 +258,7 @@ function load_oecd_riomarkers() {
             $obj->addDonor($e[1]);
             $obj->addRecipient($e[5]);
             $obj->addPurpose($e[7]); // purposeName
-            $obj->addAmount($e[4]); //(String) $e[4]." - ".sprintf("%.17f",$e[4]); // usd_commitment_defl
+            $obj->addAmount(round((float) $e[3] * 1000000));
             $obj->addSector($e[19]);
             $obj->projecttitle = $e[23];
             $jsons[] = $obj;
@@ -329,7 +294,7 @@ function load_climatefundsupdate() {
         $obj->addRecipient($e[19]);
         $obj->addDonor($e[22]);
         $obj->year = $e[23];
-        $obj->addAmount($e[27]);
+        $obj->addAmount((float) trim($e[27]) * 1000000);
         $sectors = explode("/", $e[12]); // category
         foreach ($sectors as $s)
             $obj->addSector($s);
@@ -370,9 +335,9 @@ function load_napa() {
         $obj->projecttitle = $e[4];
         $obj->addRecipient($e[2]);
         if (!empty($e[5]))
-            $obj->addAmount($e[5]); // USD
+            $obj->addAmount(trim(str_replace(",", "", $e[5]))); // USD
         else {
-            $obj->addAmount($e[6]); // AUD
+            $obj->addAmount(trim(str_replace(",", "", $e[6]))); // AUD
             $obj->currency = "AUD";
         }
         $keywords = explode(",", $e[7]); // official key words
@@ -385,6 +350,87 @@ function load_napa() {
     }
 }
 
+function mapRecipients() {
+    global $jsons, $datadir;
+    $file = file($datadir . "/substance_of_adaptation_mapping_of_countries_manual.csv"); // generated by map_countries.php (via Yahoo! Geo encoding) and verifying manually
+    $sc = count($file);
+    for ($i = 1; $i < $sc; $i++) {
+        $e = explode(";", $file[$i]);
+        $source = trim($e[0]);
+        $recipient = trim($e[1]);
+        $recipient_mapped = trim($e[2]);
+        $recipient_mappings[$source][$recipient] = $recipient_mapped;
+    }
+    foreach ($jsons as $k => $obj) {
+        foreach ($obj->recipient as $l => $recipient) {
+            if (empty($recipient))
+                $obj->recipient_mapped[$l] = "Non-specific";
+            else
+                $obj->recipient_mapped[$l] = $recipient_mappings[$obj->source][$recipient];
+            $jsons[$k] = $obj;
+        }
+    }
+}
+
+function mapSectors() {
+    global $jsons, $datadir;
+    $file = file($datadir . "/substance_of_adaptation_mapping_of_sectors.csv"); // generated by manually mapping all sectors to the undp_alm scheme, see also @todo
+    $sc = count($file);
+    for ($i = 1; $i < $sc; $i++) {
+        $e = explode(";", $file[$i]);
+        $source = trim($e[0]);
+        $sector = trim($e[1]);
+        $sector_mapped = trim($e[2]);
+        $sector_mappings[$source][$sector] = $sector_mapped;
+    }
+    foreach ($jsons as $k => $obj) {
+        foreach ($obj->sector as $l => $sector) {
+            $obj->sector_mapped[$l] = $sector_mappings[$obj->source][$sector];
+            $jsons[$k] = $obj;
+        }
+    }
+}
+
+function generateListOfPurposesAndThemes() {
+    global $jsons, $datadir;
+    $sectors = $purposes = array();
+    foreach ($jsons as $obj) {
+        foreach ($obj->sector as $s)
+            $sectors[$obj->source][] = $s;
+        foreach ($obj->purpose as $p)
+            $purposes[$obj->source][] = $p;
+        foreach ($obj->recipient as $r)
+            $recipients[$obj->source][] = $r;
+    }
+    $handle = fopen($datadir . "/substance_of_adaptation_unique_sectors.csv", "w");
+    fwrite($handle, "source;sector\n");
+    foreach ($sectors as $source => $s) {
+        $ss = array_unique($s);
+        sort($ss);
+        foreach ($ss as $si)
+            fwrite($handle, "$source;$si\n");
+    }
+    fclose($handle);
+    $handle = fopen($datadir . "/substance_of_adaptation_unique_purposes.csv", "w");
+    fwrite($handle, "source;purpose\n");
+    foreach ($purposes as $source => $p) {
+        $pp = array_unique($p);
+        sort($pp);
+        foreach ($pp as $pi)
+            fwrite($handle, "$source;$pi\n");
+    }
+    fclose($handle);
+    $handle = fopen($datadir . "/substance_of_adaptation_unique_recipients.csv", "w");
+    fwrite($handle, "source;recipient\n");
+    foreach ($recipients as $source => $r) {
+        $rr = array_unique($r);
+        sort($rr);
+        foreach ($rr as $ri)
+            fwrite($handle, "$source;$ri\n");
+    }
+    fclose($handle);
+}
+
 class fund {
 
     public $source = "n/a";
@@ -394,11 +440,13 @@ class fund {
     public $currency = "USD";
     public $donor = array();
     public $recipient = array();
+    public $recipient_mapped = array();
     public $purpose = array();
     public $sector = array();
+    public $sector_mapped = array();
 
     public function addAmount($amount) {
-        $this->amount = trim(str_replace(",", "", $amount));
+        $this->amount = $amount;
     }
 
     public function addPurpose($purpose) {
