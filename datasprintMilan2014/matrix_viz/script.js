@@ -80,7 +80,7 @@ d3.select("#form").on('submit',function() {
     updateChart();
 });
 
-//updateChart(); // @todo, enable
+updateChart();
 
 function updateChart() {
     
