@@ -15,7 +15,6 @@ d3.select("#select2").style("display","none");
 
 // here the possible selections are defined
 d3.select("#dataset").on("change",function(){
-    // @todo, write title of dataset
     if(this.value == "substance_of_adaptation") {
         dataset = "substance_of_adaptation.json";
         d3.select("#select1").style("display","none");
@@ -52,20 +51,20 @@ d3.select("#dataset").on("change",function(){
             fillOptions("#field2",fields,fieldNames,1);
         } else if(this.value == "oecd") {
             dataset = "oecd.json";
-            fields = ["SectorNameE", "recipientnameE","donornameE", "agencynameE", "purposename_e", "RegionNameE", "IncomeGroupNameE"];
-            fieldNames = ["sectors","recipient countries","donor countries","agency","purposes","regions","income Groups"];
+            fields = ["SectorNameE", "sector_mapped","recipientnameE","donornameE", "agencynameE", "purposename_e", "RegionNameE", "IncomeGroupNameE"];
+            fieldNames = ["sectors","sectors in undp alm scheme","recipient countries","donor countries","agency","purposes","regions","income Groups"];
             fillOptions("#field1",fields,fieldNames,0);
             fillOptions("#field2",fields,fieldNames,1);
         } else if(this.value == "climatefundsupdate") {
             dataset = "climatefundsupdate.json";
-            fields = ["category", "keywords", "Focus", "Financial Instrument", "Country", "Country Income Level", "Region", "Funder", "Implementor"];
-            fieldNames = ["category", "keywords", "Focus", "Financial Instrument", "Country", "Country Income Level", "Region", "Funder", "Implementor"];
+            fields = ["sector","sector_mapped","recipient","focus", "financial_instrument", "recipient_income_level", "region", "donor", "implementor"];
+            fieldNames = ["sectors","sectors in undp alm scheme","recipient countries", "Focus", "Financial Instrument", "Recipient Income Level", "Region", "Funder", "Implementor"];
             fillOptions("#field1",fields,fieldNames,0);
             fillOptions("#field2",fields,fieldNames,1);
-        } else if(this.value == "") {
+        } else if(this.value == "napa") {
             dataset = "napa.json";
-            fields = ["Category","Country", "Keywords"];
-            fieldNames = ["Category","Country", "Keywords"];
+            fields = ["sector","sector_mapped","recipient"];
+            fieldNames = ["sectors","sectors in undp alm scheme","recipient"];
             fillOptions("#field1",fields,fieldNames,0);
             fillOptions("#field2",fields,fieldNames,1);
         }
@@ -88,7 +87,7 @@ function updateChart() {
     target = "";
     
     if(dataset == "substance_of_adaptation.json") {
-        source = "source"; // @todo, can also be something else!!
+        source = "source"; // @todo, can also be something else
         target = "recipient_mapped";
     } else {
         source = d3.select('#field1').node().value;
@@ -150,12 +149,21 @@ function drawChart(orderby,dataset,source,target,filter) {
             if(dsources == "" || dtargets == "")
                 return;
             
-            if(dsources.constructor != Array)
-                dsources = [dsources];
-            if(dtargets.constructor != Array)
-                dtargets = [dtargets];
+            if(dsources.constructor != Array) {
+                if(dataset == "cigrasp.json")
+                    dsources = dsources.split(",");
+                else
+                    dsources = [dsources];
+            }
+            if(dtargets.constructor != Array) {
+                if(dataset == "cigrasp.json")
+                    dtargets = dtargets.split(",");
+                else
+                    dtargets = [dtargets];
+            }
                 
             dsources.forEach(function(s) { 
+                s = s.trim();
                 if(s != 'Non-specific') {
                     var sid = nodeIndex(s,sources);
                     if(sid < 0) {
@@ -166,6 +174,7 @@ function drawChart(orderby,dataset,source,target,filter) {
                     }
                         
                     dtargets.forEach(function(t) { 
+                        t = t.trim();
                         if(t != 'Non-specific') {
                             var tid = nodeIndex(t,targets);
                             if(tid < 0) {

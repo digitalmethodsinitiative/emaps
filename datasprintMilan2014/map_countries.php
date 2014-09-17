@@ -1,6 +1,6 @@
 <?php
 
-$file = file("data/substance_of_adaptation_unique_recipients.csv");
+$file = file("matrix_viz/data/substance_of_adaptation_unique_recipients.csv");
 
 $key = 'ZrWsGszV34FrZ3z7F8_Fw_.H8_HkGdM6zqR4MzL3g6S7BifTjU4cEQOWb48xvA--';
 $apiendpoint = 'http://wherein.yahooapis.com/v1/document';
@@ -41,5 +41,5 @@ for ($i = 1; $i < $cf; $i++) {
     $file_mapped .= $map;
     //sleep(rand(1, 3));
 }
-file_put_contents("data/substance_of_adaptation_mapping_of_countries.csv", $file_mapped);
+file_put_contents("matrix_viz/data/substance_of_adaptation_mapping_of_countries.csv", $file_mapped);
 ?>

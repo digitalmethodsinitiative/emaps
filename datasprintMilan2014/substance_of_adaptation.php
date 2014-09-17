@@ -11,7 +11,7 @@
 
 ini_set('memory_limit', '3G');
 date_default_timezone_set('Europe/Amsterdam');
-$datadir = "data";
+$datadir = "matrix_viz/data";
 
 $jsons = array();
 load_databases();
@@ -19,6 +19,8 @@ mapSectors();
 mapRecipients();
 file_put_contents($datadir . "/" . "substance_of_adaptation.json", json_encode($jsons, JSON_PRETTY_PRINT));
 writeAsCsv();
+
+// source, field, field value, nr of projects per country
 
 //generateListOfPurposesAndThemes();
 
