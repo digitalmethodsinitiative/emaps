@@ -3,22 +3,129 @@
  * Based on http://bost.ocks.org/mike/miserables/
  */
 
-var orderby = "count"; // count or alphabet
+// initialize
 var dataset = "substance_of_adaptation.json";
-drawChart(orderby,dataset);
+var orderby = "count"; // count or alphabet
+var filter = ""; // only for adaptation_projects.json
+d3.selectAll('.radio').on('change', function(){
+    orderby = this.value;
+});
+d3.select("#select1").style("display","none");
+d3.select("#select2").style("display","none");
 
-function drawChart(orderby,dataset) {
+// here the possible selections are defined
+d3.select("#dataset").on("change",function(){
+    // @todo, write title of dataset
+    if(this.value == "substance_of_adaptation") {
+        dataset = "substance_of_adaptation.json";
+        d3.select("#select1").style("display","none");
+        d3.select("#select2").style("display","none");
+    } else {
+        var fields = [],
+        fieldNames = "";
+        if(this.value == "undp") {
+            dataset = "adaptation_projects.json"; 
+            fields = ["themes","countries","climate-hazards","key-collaborators"];
+            fieldNames = ["sectors","countries","climate hazards","key collaborators"];
+            fillOptions("#field1",fields,fieldNames,0);
+            fillOptions("#field2",fields,fieldNames,1);
+            filter = "undp";
+        } else if(this.value == "psi") {
+            dataset = "adaptation_projects.json"; 
+            fields = ["themes","countries","climate-hazards","key-collaborators"];
+            fieldNames = ["sectors","countries","climate hazards","key collaborators"];
+            fillOptions("#field1",fields,fieldNames,0);
+            fillOptions("#field2",fields,fieldNames,1);
+            filter = "psi";
+        } else if(this.value == "climatewise") {
+            dataset = "adaptation_projects.json"; 
+            fields = ["themes","countries","climate-hazards","key-collaborators"];
+            fieldNames = ["sectors","countries","climate hazards","key collaborators"];
+            fillOptions("#field1",fields,fieldNames,0);
+            fillOptions("#field2",fields,fieldNames,1);
+            filter = "climatewise";
+        } else if(this.value == "cigrasp") {
+            dataset = "cigrasp.json";
+            fields = ["overview.sector","country","types","scale","overview.stimuli","overview.impacts","project_classification.project_type","project_classification.project_status","project_classification.running_time","project_classification.spatial_scale","project_classification.effect_emergence","project_classification.effect_persistence","problem_solving_capacity_an_reversibility.problem_solving_coverage","problem_solving_capacity_an_reversibility.reversibility","responsibilities.initiating_agent","responsibilities.executing_agent","responsibilities.funding_source"];
+            fieldNames = ["sectors","countries","types","scale","stimuli","impacts","project type","project status","running time","spatial scale","effect emergence","effect persistence","problem solving coverage","reversibility","initiating agent","executing agent","funding source"];
+            fillOptions("#field1",fields,fieldNames,0);
+            fillOptions("#field2",fields,fieldNames,1);
+        } else if(this.value == "oecd") {
+            dataset = "oecd.json";
+            fields = ["SectorNameE", "recipientnameE","donornameE", "agencynameE", "purposename_e", "RegionNameE", "IncomeGroupNameE"];
+            fieldNames = ["sectors","recipient countries","donor countries","agency","purposes","regions","income Groups"];
+            fillOptions("#field1",fields,fieldNames,0);
+            fillOptions("#field2",fields,fieldNames,1);
+        } else if(this.value == "climatefundsupdate") {
+            dataset = "climatefundsupdate.json";
+            fields = ["category", "keywords", "Focus", "Financial Instrument", "Country", "Country Income Level", "Region", "Funder", "Implementor"];
+            fieldNames = ["category", "keywords", "Focus", "Financial Instrument", "Country", "Country Income Level", "Region", "Funder", "Implementor"];
+            fillOptions("#field1",fields,fieldNames,0);
+            fillOptions("#field2",fields,fieldNames,1);
+        } else if(this.value == "") {
+            dataset = "napa.json";
+            fields = ["Category","Country", "Keywords"];
+            fieldNames = ["Category","Country", "Keywords"];
+            fillOptions("#field1",fields,fieldNames,0);
+            fillOptions("#field2",fields,fieldNames,1);
+        }
+        
+        d3.select("#select1").style("display","block");
+        d3.select("#select2").style("display","block");
+    }    
+});
+d3.select("#form").on('submit',function() {
+    d3.event.preventDefault();
+    d3.event.stopPropagation();
+    updateChart();
+});
+
+//updateChart(); // @todo, enable
+
+function updateChart() {
+    
+    var source = "",
+    target = "";
+    
+    if(dataset == "substance_of_adaptation.json") {
+        source = "source"; // @todo, can also be something else!!
+        target = "recipient_mapped";
+    } else {
+        source = d3.select('#field1').node().value;
+        target = d3.select('#field2').node().value;
+    }
+    
+    drawChart(orderby,dataset,source,target,filter);
+}
+
+function fillOptions(fieldid, fields, fieldNames,index) {
+    d3.select(fieldid).selectAll("option").remove();
+    
+    d3.select(fieldid).selectAll("option")
+    .data(d3.values(fields))
+    .enter()
+    .append("option")
+    .attr("value", function(d,i){
+        return d;
+    })
+    .text(function(d,i){
+        return fieldNames[i];
+    });
+}
+
+function drawChart(orderby,dataset,source,target,filter) {
+    //console.log(orderby + " " + dataset + " " + source + " " + target);
+    d3.select("svg").remove();
     var margin = {
-        top: 30, 
-        right: 0, 
+        top: 140, 
+        right: 140, 
         bottom: 10, 
         left: 140
     },
     width = 720,
-    height = 1200;
+    height = 2000;
 
-    var x = d3.scale.ordinal().rangeBands([0, width]),
-    y = d3.scale.ordinal().rangeBands([0, height]);
+    var x = d3.scale.ordinal().rangeBands([0, width]);
 
     var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -27,45 +134,62 @@ function drawChart(orderby,dataset) {
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.json(dataset, function(datasets) {
+    d3.json("data/"+dataset, function(datasets) {
         var nodes = [],
         links = [],
         sources = [],
         targets = [];
-    
-        if(dataset == "substance_of_adaptation.json") {
-            // compute index per node
-            datasets.forEach(function(d,i) {
-                var sourceId = nodeIndex(d.source,sources);
-                if(sourceId < 0) {
-                    sources.push({
-                        "name":d.source
-                    })
-                    sourceId = nodeIndex(d.source,sources);
-                }
-                d.recipient_mapped.forEach(function(r) {
-                    if(r != 'Non-specific') {
-                        var rid = nodeIndex(r,targets);
-                        if(rid < 0) {
-                            targets.push({
-                                "name":r
-                            });
-                            rid = nodeIndex(r,targets);
-                        }
+        
+        datasets.forEach(function(d,i) {
+            
+            if(filter != "" && d.source != filter)
+                return;
+            
+            var dsources = eval("d."+source);
+            var dtargets = eval("d."+target);
+            if(dsources == "" || dtargets == "")
+                return;
+            
+            if(dsources.constructor != Array)
+                dsources = [dsources];
+            if(dtargets.constructor != Array)
+                dtargets = [dtargets];
                 
-                        var li = linkIndex(sourceId, rid, links);
-                        if(li < 0)
-                            links.push({
-                                "source":sourceId,
-                                "target":rid,
-                                "value":1
-                            });
-                        else
-                            links[li].value++;
+            dsources.forEach(function(s) { 
+                if(s != 'Non-specific') {
+                    var sid = nodeIndex(s,sources);
+                    if(sid < 0) {
+                        sources.push({
+                            "name":s
+                        });
+                        sid = nodeIndex(s,sources);
                     }
-                });
-            });
-        }
+                        
+                    dtargets.forEach(function(t) { 
+                        if(t != 'Non-specific') {
+                            var tid = nodeIndex(t,targets);
+                            if(tid < 0) {
+                                targets.push({
+                                    "name":t
+                                });
+                                tid = nodeIndex(t,targets);
+                            }
+                
+                            var li = linkIndex(sid, tid, links);
+                            if(li < 0)
+                                links.push({
+                                    "source":sid,
+                                    "target":tid,
+                                    "value":1
+                                });
+                            else
+                                links[li].value++;
+                        }
+                    });
+                }
+            }); 
+        });
+        
     
         var matrix = [],
         ntargets = targets.length,
@@ -93,8 +217,10 @@ function drawChart(orderby,dataset) {
             targets[link.target].count += link.value;
             sources[link.source].count += link.value;
         });
-        z = d3.scale.linear().domain([0, max]); // opacity
-    
+        
+        var y = d3.scale.ordinal().rangeBands([0, 10*ntargets]);
+        var z = d3.scale.linear().domain([0, max]);
+        
         // Precompute the orders.
         var sourceOrders = {
             name: d3.range(nsources).sort(function(a, b) {
@@ -137,10 +263,10 @@ function drawChart(orderby,dataset) {
 
         row.append("text")
         .attr("x", -6)
-        .attr("y", y.rangeBand()/2)
+        .attr("y", 2.5) //y.rangeBand()/2)
         .attr("dy", ".12em")
         .attr("transform", function(d, i) {
-            return "translate(0," + y(i)/2 + ")";
+            return "translate(0," + (y(i)+2)/2 + ")";
         })
         .attr("text-anchor", "end")
         .text(function(d, i) {
@@ -152,12 +278,12 @@ function drawChart(orderby,dataset) {
         .enter().append("g")
         .attr("class", "column")
         .attr("transform", function(d, i) {
-            return "translate(" + x(i) + ",-10)";
+            return "translate(" + x(i) + ",-10)rotate(-30)";
         });
 
         column.append("text")
         .attr("x", 6)
-        .attr("y", y.rangeBand() / 2)
+        .attr("y", 2.5) //y.rangeBand() / 2)
         .attr("dy", ".32em")
         .attr("text-anchor", "start")
         .text(function(d, i) {
@@ -196,9 +322,9 @@ function drawChart(orderby,dataset) {
                 return y(d.y)/2;
             })
             .attr("width", function(d) {
-                return z(d.z) * x.rangeBand()
+                return z(d.z) * (x.rangeBand()-5)
             })
-            .attr("height", y.rangeBand()/2)
+            .attr("height", 5) //y.rangeBand()/2)
             .style("fill", function(d,i) {
                 return "rgb(31, 119, 180)";
             })
@@ -206,7 +332,7 @@ function drawChart(orderby,dataset) {
             .on("mouseout", mouseout)
             .append("svg:title")
             .text(function(d) {
-                return d.z;
+                return d.z + " * (" + sources[d.x].name + " + "+targets[d.y].name+")";
             });
         }
 
