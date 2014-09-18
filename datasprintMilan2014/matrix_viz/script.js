@@ -20,6 +20,7 @@ d3.select("#dataset").on("change",function(){
         d3.select("#select1").style("display","none");
         d3.select("#select2").style("display","none");
     } else {
+        //console.log(this.value);
         var fields = [],
         fieldNames = "";
         if(this.value == "undp") {
@@ -57,8 +58,8 @@ d3.select("#dataset").on("change",function(){
             fillOptions("#field2",fields,fieldNames,1);
         } else if(this.value == "climatefundsupdate") {
             dataset = "climatefundsupdate.json";
-            fields = ["sector","sector_mapped","recipient","focus", "financial_instrument", "recipient_income_level", "region", "donor", "implementor"];
-            fieldNames = ["sectors","sectors in undp alm scheme","recipient countries", "Focus", "Financial Instrument", "Recipient Income Level", "Region", "Funder", "Implementor"];
+            fields = ["sector","sector_mapped","recipient","recipient_income_level", "region", "donor", "implementor"];
+            fieldNames = ["sectors","sectors in undp alm scheme","recipient countries", "Recipient Income Level", "Region", "Funder", "Implementor"];
             fillOptions("#field1",fields,fieldNames,0);
             fillOptions("#field2",fields,fieldNames,1);
         } else if(this.value == "napa") {
@@ -144,8 +145,14 @@ function drawChart(orderby,dataset,source,target,filter) {
             if(filter != "" && d.source != filter)
                 return;
             
-            var dsources = eval("d."+source);
-            var dtargets = eval("d."+target);
+            if(source.contains("-"))
+                var dsources = d[source];
+            else 
+                var dsources = eval("d."+source);
+            if(target.contains("-"))
+                var dtargets = d[target];
+            else
+                var dtargets = eval("d."+target);
             if(dsources == "" || dtargets == "")
                 return;
             
