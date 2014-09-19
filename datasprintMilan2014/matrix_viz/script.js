@@ -10,6 +10,10 @@ var filter = ""; // only for adaptation_projects.json
 d3.selectAll('.radio').on('change', function(){
     orderby = this.value;
 });
+var whichdata = 'all';
+d3.selectAll('.radiowhichdata').on('change', function(){
+    whichdata = this.value;
+});
 d3.select("#select1").style("display","none");
 d3.select("#select2").style("display","none");
 
@@ -18,7 +22,7 @@ d3.select("#dataset").on("change",function(){
     if(this.value == "substance_of_adaptation") {
         dataset = "substance_of_adaptation.json";
         d3.select("#select1").style("display","none");
-        d3.select("#select2").style("display","none");
+        d3.select("#select2").style("display","none"); 
     } else {
         //console.log(this.value);
         var fields = [],
@@ -133,7 +137,7 @@ function drawChart(orderby,dataset,source,target,filter) {
     .style("margin-left", -margin.left + "px")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+    console.log(whichdata);
     d3.json("data/"+dataset, function(datasets) {
         var nodes = [],
         links = [],
@@ -168,10 +172,24 @@ function drawChart(orderby,dataset,source,target,filter) {
                 else
                     dtargets = [dtargets];
             }
+            
+            if(whichdata == 'indiabangladesh') {
+                if('countries' in d && !(d.countries =='Bangladesh'||d.countries =='India'))
+                    return;
+                if('country' in d && !(d.country =='Bangladesh'||d.country =='India'))
+                    return;
+                if('recipientnameE' in d && !(d.recipientnameE =='Bangladesh'||d.recipientnameE =='India'))
+                    return;
+                if('recipient' in d && !(d.recipient =='Bangladesh'||d.recipient =='India'))
+                    return;
+                if('recipientMapped' in d && !(d.recipientMapped =='Bangladesh'||d.recipientMapped =='India'))
+                    return;
+            }
                 
             dsources.forEach(function(s) { 
                 s = s.trim();
                 if(s != 'Non-specific') {
+
                     var sid = nodeIndex(s,sources);
                     if(sid < 0) {
                         sources.push({
