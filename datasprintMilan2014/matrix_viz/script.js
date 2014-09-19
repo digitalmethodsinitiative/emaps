@@ -14,69 +14,76 @@ var whichdata = 'all';
 d3.selectAll('.radiowhichdata').on('change', function(){
     whichdata = this.value;
 });
-d3.select("#select1").style("display","none");
-d3.select("#select2").style("display","none");
+d3.select("#select1").style("display","block");
+d3.select("#select2").style("display","block");
+
+// init
+dataset = "substance_of_adaptation.json";
+fields = ["source","recipient_mapped","year","donor","purpose","sector","sector_mapped"];
+fieldNames = ["source","country","year","donor","purpose","sector","sectors in undp alm scheme"];
+fillOptions("#field1",fields,fieldNames,0);
+fillOptions("#field2",fields,fieldNames,1);
 
 // here the possible selections are defined
 d3.select("#dataset").on("change",function(){
+    var fields = [],
+    fieldNames = "";
     if(this.value == "substance_of_adaptation") {
         dataset = "substance_of_adaptation.json";
-        d3.select("#select1").style("display","none");
-        d3.select("#select2").style("display","none"); 
-    } else {
-        //console.log(this.value);
-        var fields = [],
-        fieldNames = "";
-        if(this.value == "undp") {
-            dataset = "adaptation_projects.json"; 
-            fields = ["themes","countries","climate-hazards","key-collaborators"];
-            fieldNames = ["sectors","countries","climate hazards","key collaborators"];
-            fillOptions("#field1",fields,fieldNames,0);
-            fillOptions("#field2",fields,fieldNames,1);
-            filter = "undp";
-        } else if(this.value == "psi") {
-            dataset = "adaptation_projects.json"; 
-            fields = ["themes","countries","climate-hazards","key-collaborators"];
-            fieldNames = ["sectors","countries","climate hazards","key collaborators"];
-            fillOptions("#field1",fields,fieldNames,0);
-            fillOptions("#field2",fields,fieldNames,1);
-            filter = "psi";
-        } else if(this.value == "climatewise") {
-            dataset = "adaptation_projects.json"; 
-            fields = ["themes","countries","climate-hazards","key-collaborators"];
-            fieldNames = ["sectors","countries","climate hazards","key collaborators"];
-            fillOptions("#field1",fields,fieldNames,0);
-            fillOptions("#field2",fields,fieldNames,1);
-            filter = "climatewise";
-        } else if(this.value == "cigrasp") {
-            dataset = "cigrasp.json";
-            fields = ["overview.sector","country","types","scale","overview.stimuli","overview.impacts","project_classification.project_type","project_classification.project_status","project_classification.running_time","project_classification.spatial_scale","project_classification.effect_emergence","project_classification.effect_persistence","problem_solving_capacity_an_reversibility.problem_solving_coverage","problem_solving_capacity_an_reversibility.reversibility","responsibilities.initiating_agent","responsibilities.executing_agent","responsibilities.funding_source"];
-            fieldNames = ["sectors","countries","types","scale","stimuli","impacts","project type","project status","running time","spatial scale","effect emergence","effect persistence","problem solving coverage","reversibility","initiating agent","executing agent","funding source"];
-            fillOptions("#field1",fields,fieldNames,0);
-            fillOptions("#field2",fields,fieldNames,1);
-        } else if(this.value == "oecd") {
-            dataset = "oecd.json";
-            fields = ["SectorNameE", "sector_mapped","recipientnameE","donornameE", "agencynameE", "purposename_e", "RegionNameE", "IncomeGroupNameE"];
-            fieldNames = ["sectors","sectors in undp alm scheme","recipient countries","donor countries","agency","purposes","regions","income Groups"];
-            fillOptions("#field1",fields,fieldNames,0);
-            fillOptions("#field2",fields,fieldNames,1);
-        } else if(this.value == "climatefundsupdate") {
-            dataset = "climatefundsupdate.json";
-            fields = ["sector","sector_mapped","recipient","recipient_income_level", "region", "donor", "implementor"];
-            fieldNames = ["sectors","sectors in undp alm scheme","recipient countries", "Recipient Income Level", "Region", "Funder", "Implementor"];
-            fillOptions("#field1",fields,fieldNames,0);
-            fillOptions("#field2",fields,fieldNames,1);
-        } else if(this.value == "napa") {
-            dataset = "napa.json";
-            fields = ["sector","sector_mapped","recipient"];
-            fieldNames = ["sectors","sectors in undp alm scheme","recipient"];
-            fillOptions("#field1",fields,fieldNames,0);
-            fillOptions("#field2",fields,fieldNames,1);
-        }
+        fields = ["source","recipient_mapped","year","donor","purpose","sector","sector_mapped"];
+        fieldNames = ["source","country","year","donor","purpose","sector","sectors in undp alm scheme"];
+        fillOptions("#field1",fields,fieldNames,0);
+        fillOptions("#field2",fields,fieldNames,1);
+    } else if(this.value == "undp") {
+        dataset = "adaptation_projects.json"; 
+        fields = ["themes","countries","climate-hazards","key-collaborators"];
+        fieldNames = ["sectors","countries","climate hazards","key collaborators"];
+        fillOptions("#field1",fields,fieldNames,0);
+        fillOptions("#field2",fields,fieldNames,1);
+        filter = "undp";
+    } else if(this.value == "psi") {
+        dataset = "adaptation_projects.json"; 
+        fields = ["themes","countries","climate-hazards","key-collaborators"];
+        fieldNames = ["sectors","countries","climate hazards","key collaborators"];
+        fillOptions("#field1",fields,fieldNames,0);
+        fillOptions("#field2",fields,fieldNames,1);
+        filter = "psi";
+    } else if(this.value == "climatewise") {
+        dataset = "adaptation_projects.json"; 
+        fields = ["themes","countries","climate-hazards","key-collaborators"];
+        fieldNames = ["sectors","countries","climate hazards","key collaborators"];
+        fillOptions("#field1",fields,fieldNames,0);
+        fillOptions("#field2",fields,fieldNames,1);
+        filter = "climatewise";
+    } else if(this.value == "cigrasp") {
+        dataset = "cigrasp.json";
+        fields = ["overview.sector","country","types","scale","overview.stimuli","overview.impacts","project_classification.project_type","project_classification.project_status","project_classification.running_time","project_classification.spatial_scale","project_classification.effect_emergence","project_classification.effect_persistence","problem_solving_capacity_an_reversibility.problem_solving_coverage","problem_solving_capacity_an_reversibility.reversibility","responsibilities.initiating_agent","responsibilities.executing_agent","responsibilities.funding_source"];
+        fieldNames = ["sectors","countries","types","scale","stimuli","impacts","project type","project status","running time","spatial scale","effect emergence","effect persistence","problem solving coverage","reversibility","initiating agent","executing agent","funding source"];
+        fillOptions("#field1",fields,fieldNames,0);
+        fillOptions("#field2",fields,fieldNames,1);
+    } else if(this.value == "oecd") {
+        dataset = "oecd.json";
+        fields = ["SectorNameE", "sector_mapped","recipientnameE","donornameE", "agencynameE", "purposename_e", "RegionNameE", "IncomeGroupNameE"];
+        fieldNames = ["sectors","sectors in undp alm scheme","recipient countries","donor countries","agency","purposes","regions","income Groups"];
+        fillOptions("#field1",fields,fieldNames,0);
+        fillOptions("#field2",fields,fieldNames,1);
+    } else if(this.value == "climatefundsupdate") {
+        dataset = "climatefundsupdate.json";
+        fields = ["sector","sector_mapped","recipient","recipient_income_level", "region", "donor", "implementor"];
+        fieldNames = ["sectors","sectors in undp alm scheme","recipient countries", "Recipient Income Level", "Region", "Funder", "Implementor"];
+        fillOptions("#field1",fields,fieldNames,0);
+        fillOptions("#field2",fields,fieldNames,1);
+    } else if(this.value == "napa") {
+        dataset = "napa.json";
+        fields = ["sector","sector_mapped","recipient"];
+        fieldNames = ["sectors","sectors in undp alm scheme","recipient"];
+        fillOptions("#field1",fields,fieldNames,0);
+        fillOptions("#field2",fields,fieldNames,1);
+    }
         
-        d3.select("#select1").style("display","block");
-        d3.select("#select2").style("display","block");
-    }    
+//d3.select("#select1").style("display","block");
+//d3.select("#select2").style("display","block");
+  
 });
 d3.select("#form").on('submit',function() {
     d3.event.preventDefault();
@@ -91,13 +98,8 @@ function updateChart() {
     var source = "",
     target = "";
     
-    if(dataset == "substance_of_adaptation.json") {
-        source = "source"; // @todo, can also be something else
-        target = "recipient_mapped";
-    } else {
-        source = d3.select('#field1').node().value;
-        target = d3.select('#field2').node().value;
-    }
+    source = d3.select('#field1').node().value;
+    target = d3.select('#field2').node().value;
     
     drawChart(orderby,dataset,source,target,filter);
 }
