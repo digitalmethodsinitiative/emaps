@@ -104,15 +104,19 @@ d3.select("#field2").on('change',function() {
 updateChart();
 
 function updateChart() {
-
+    d3.select("body").style("cursor","wait");
+    
     var source = "",
     target = "";
 
     source = d3.select('#field1').node().value;
     target = d3.select('#field2').node().value;
 
-
     drawChart(orderby,dataset,source,target,filter);
+    
+    window.setTimeout(function() { // need for FF
+        d3.select("body").style("cursor","default");
+    },50);
 }
 
 function fillOptions(fieldid, fields, fieldNames,index) {
