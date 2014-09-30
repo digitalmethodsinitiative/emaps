@@ -352,7 +352,7 @@ function drawChart(orderby,dataset,source,target,filter) {
                 tmp = [];
                 tmp.push(targets[t].name.replace(","," /"));
                 sourceOrders.count.forEach(function(s){
-                    tmp.push(matrix[s][t].z); 
+                    tmp.push(matrix[t][s].z); 
                 })
                 csvArray.push(tmp);
             });
@@ -369,7 +369,7 @@ function drawChart(orderby,dataset,source,target,filter) {
                 tmp = [];
                 tmp.push(targets[t].name.replace(","," /"));
                 sourceOrders.name.forEach(function(s){
-                    tmp.push(matrix[s][t].z); 
+                    tmp.push(matrix[t][s].z); 
                 })
                 csvArray.push(tmp);
             });
