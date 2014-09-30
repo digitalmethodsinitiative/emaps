@@ -21,20 +21,18 @@ d3.select("#select2").style("display","block");
 
 // init
 dataset = "adaptation_projects.json";
-fields = ["themes","countries","climate-hazards","key-collaborators"];
-fieldNames = ["sectors","countries","climate hazards","key collaborators"];
+var fields = ["themes","countries","climate-hazards","key-collaborators"];
+var fieldNames = ["sectors","countries","climate hazards","key collaborators"];
 fillOptions("#field1",fields,fieldNames,0);
 fillOptions("#field2",fields,fieldNames,1);
 filter = "undp";
 
 // here the possible selections are defined
 d3.select("#dataset").on("change",function(){
-    var fields = [],
-    fieldNames = "";
     if(this.value == "substance_of_adaptation") {
         dataset = "substance_of_adaptation.json";
-        fields = ["source","recipient_mapped","year","donor","purpose","sector","sector_mapped"];
-        fieldNames = ["source","country","year","donor","purpose","sector","sectors in undp alm scheme"];
+        fields = ["source","recipient_mapped","donor","sector_mapped","purpose","year"];
+        fieldNames = ["source","countries","donor","sectors in undp alm scheme","purpose","year"];
         fillOptions("#field1",fields,fieldNames,0);
         fillOptions("#field2",fields,fieldNames,1);
         filter = "";
@@ -112,7 +110,7 @@ function updateChart() {
     source = d3.select('#field1').node().value;
     target = d3.select('#field2').node().value;
 
-    drawChart(orderby,dataset,source,target,filter);
+    drawChart(orderby,dataset,source,target,filter,fields,fieldNames);
     
     window.setTimeout(function() { // need for FF
         d3.select("body").style("cursor","default");
@@ -134,7 +132,7 @@ function fillOptions(fieldid, fields, fieldNames,index) {
     });
 }
 
-function drawChart(orderby,dataset,source,target,filter) {
+function drawChart(orderby,dataset,source,target,filter,fields,fieldNames) {
     //console.log(orderby + " " + dataset + " " + source + " " + target);
     d3.select("svg").remove();
     var margin = {
@@ -383,7 +381,7 @@ function drawChart(orderby,dataset,source,target,filter) {
         a.innerHTML = "Download CSV of selection";
         a.href     = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csvArray.join('\n'));
         a.target   = '_blank';
-        a.download = dataset.replace(".json","") + "-" + filter + "-" + target + "-" + source + "-" + whichdata + ".csv";
+        a.download = dataset.replace(".json","") + "-" + filter + "-" + fieldNames[fields.indexOf(target)] + "-" + fieldNames[fields.indexOf(source)] + "-" + whichdata + ".csv";
         d3.select('#csv a').remove();
         document.getElementById('csv').appendChild(a);
 
