@@ -159,10 +159,8 @@ function drawChart(orderby,dataset,source,target,filter) {
 
         datasets.forEach(function(d,i) {
 
-
-            if(filter != "" && d.source != filter) {
+            if(filter != "" && d.source != filter)
                 return;
-            }
 
             if(source.indexOf(".")==-1)
                 var dsources = d[source];
@@ -172,29 +170,21 @@ function drawChart(orderby,dataset,source,target,filter) {
                 var dtargets = d[target];
             else
                 var dtargets = eval("d."+target);
-            if(dsources === "" || dtargets === "") {
-
+            if(dsources === "" || dtargets === "")
                 return;
-            }
-
-
 
             if(!(dsources instanceof Array)) {
-
                 if(dataset == "cigrasp.json")
                     dsources = dsources.split(",");
                 else
                     dsources = [dsources];
             }
             if(!(dtargets instanceof Array)) {
-
                 if(dataset == "cigrasp.json")
                     dtargets = dtargets.split(",");
                 else
                     dtargets = [dtargets];
             }
-
-
 
             if(whichdata == 'indiabangladesh') {
                 if('countries' in d && !(d.countries =='Bangladesh'||d.countries =='India'))
@@ -296,7 +286,7 @@ function drawChart(orderby,dataset,source,target,filter) {
             })
         };
 
-        // The default sort order.
+        // The default sort order of the visualization.
         if(orderby == "count") {
             x.domain(sourceOrders.count);
             y.domain(targetOrders.count);
@@ -346,6 +336,52 @@ function drawChart(orderby,dataset,source,target,filter) {
         .text(function(d, i) {
             return d.name;
         });
+        
+        // make csv of selection
+        var csvArray = [], tmp = [];
+        if(orderby == "count") {
+            // header row
+            tmp.push(" ");
+            sourceOrders.count.forEach(function(s){
+                tmp.push(sources[s].name.replace(","," /"));
+            });
+            csvArray.push(tmp);
+            // data rows
+            targetOrders.count.forEach(function(t) {
+                // add data rows
+                tmp = [];
+                tmp.push(targets[t].name.replace(","," /"));
+                sourceOrders.count.forEach(function(s){
+                    tmp.push(matrix[s][t].z); 
+                })
+                csvArray.push(tmp);
+            });
+        } else {
+            // header row
+            tmp.push(" ");
+            sourceOrders.name.forEach(function(s){
+                tmp.push(sources[s].name.replace(","," /"));
+            });
+            csvArray.push(tmp);
+            // data rows
+            targetOrders.name.forEach(function(t) {
+                // add data rows
+                tmp = [];
+                tmp.push(targets[t].name.replace(","," /"));
+                sourceOrders.name.forEach(function(s){
+                    tmp.push(matrix[s][t].z); 
+                })
+                csvArray.push(tmp);
+            });
+        }
+        // put csv in download link
+        var a = document.createElement('a');
+        a.innerHTML = "Download CSV of selection";
+        a.href     = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csvArray.join('\n'));
+        a.target   = '_blank';
+        a.download = dataset.replace(".json","") + "-" + filter + "-" + target + "-" + source + "-" + whichdata + ".csv";
+        d3.select('#csv a').remove();
+        document.getElementById('csv').appendChild(a);
 
         function nodeIndex(name, list) {
             var i;
