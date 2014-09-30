@@ -20,12 +20,17 @@ d3.select("#select1").style("display","block");
 d3.select("#select2").style("display","block");
 
 // init
-dataset = "adaptation_projects.json";
+/*dataset = "adaptation_projects.json";
 var fields = ["themes","countries","climate-hazards","key-collaborators"];
 var fieldNames = ["sectors","countries","climate hazards","key collaborators"];
-fillOptions("#field1",fields,fieldNames,0);
-fillOptions("#field2",fields,fieldNames,1);
 filter = "undp";
+*/
+dataset = "undp.json";
+fields = ["theme","location","data.level-of-intervention","data.key-collaborators","data.thematic-area","data.partners","data.beneficiaries","data.funding-source","data.project-status"];
+fieldNames = ["sectors","countries","level of intervention","key collaborators","thematic areas","partners","beneficiaries","funding source","project status"];
+fillOptions("#field1",fields,fieldNames,1);
+fillOptions("#field2",fields,fieldNames,2);
+
 
 // here the possible selections are defined
 d3.select("#dataset").on("change",function(){
@@ -33,57 +38,61 @@ d3.select("#dataset").on("change",function(){
         dataset = "substance_of_adaptation.json";
         fields = ["source","recipient_mapped","donor","sector_mapped","purpose","year"];
         fieldNames = ["source","countries","donor","sectors in undp alm scheme","purpose","year"];
-        fillOptions("#field1",fields,fieldNames,0);
-        fillOptions("#field2",fields,fieldNames,1);
+        fillOptions("#field1",fields,fieldNames,1);
+        fillOptions("#field2",fields,fieldNames,2);
         filter = "";
     } else if(this.value == "undp") {
-        dataset = "adaptation_projects.json";
+        /*dataset = "adaptation_projects.json";
         fields = ["themes","countries","climate-hazards","key-collaborators"];
         fieldNames = ["sectors","countries","climate hazards","key collaborators"];
-        fillOptions("#field1",fields,fieldNames,0);
-        fillOptions("#field2",fields,fieldNames,1);
         filter = "undp";
+        */
+        dataset = "undp.json";
+        fields = ["theme","location","data.level-of-intervention","data.key-collaborators","data.thematic-area","data.partners","data.beneficiaries","data.funding-source","data.project-status"];
+        fieldNames = ["sectors","countries","level of intervention","key collaborators","thematic areas","partners","beneficiaries","funding source","project status"];
+        fillOptions("#field1",fields,fieldNames,1);
+        fillOptions("#field2",fields,fieldNames,2);
     } else if(this.value == "psi") {
         dataset = "adaptation_projects.json";
         fields = ["themes","countries","climate-hazards","key-collaborators"];
         fieldNames = ["sectors","countries","climate hazards","key collaborators"];
-        fillOptions("#field1",fields,fieldNames,0);
-        fillOptions("#field2",fields,fieldNames,1);
+        fillOptions("#field1",fields,fieldNames,1);
+        fillOptions("#field2",fields,fieldNames,2);
         filter = "psi";
     } else if(this.value == "climatewise") {
         dataset = "adaptation_projects.json";
         fields = ["themes","countries","climate-hazards","key-collaborators"];
         fieldNames = ["sectors","countries","climate hazards","key collaborators"];
-        fillOptions("#field1",fields,fieldNames,0);
-        fillOptions("#field2",fields,fieldNames,1);
+        fillOptions("#field1",fields,fieldNames,1);
+        fillOptions("#field2",fields,fieldNames,2);
         filter = "climatewise";
     } else if(this.value == "cigrasp") {
         dataset = "cigrasp.json";
         fields = ["overview.sector","country","types","scale","overview.stimuli","overview.impacts","project_classification.project_type","project_classification.project_status","project_classification.running_time","project_classification.spatial_scale","project_classification.effect_emergence","project_classification.effect_persistence","problem_solving_capacity_an_reversibility.problem_solving_coverage","problem_solving_capacity_an_reversibility.reversibility","responsibilities.initiating_agent","responsibilities.executing_agent","responsibilities.funding_source"];
         fieldNames = ["sectors","countries","types","scale","stimuli","impacts","project type","project status","running time","spatial scale","effect emergence","effect persistence","problem solving coverage","reversibility","initiating agent","executing agent","funding source"];
-        fillOptions("#field1",fields,fieldNames,0);
-        fillOptions("#field2",fields,fieldNames,1);
+        fillOptions("#field1",fields,fieldNames,1);
+        fillOptions("#field2",fields,fieldNames,2);
         filter = "";
     } else if(this.value == "oecd") {
         dataset = "oecd.json";
         fields = ["SectorNameE", "sector_mapped","recipientnameE","donornameE", "agencynameE", "purposename_e", "RegionNameE", "IncomeGroupNameE"];
         fieldNames = ["sectors","sectors in undp alm scheme","recipient countries","donor countries","agency","purposes","regions","income Groups"];
-        fillOptions("#field1",fields,fieldNames,0);
-        fillOptions("#field2",fields,fieldNames,1);
+        fillOptions("#field1",fields,fieldNames,1);
+        fillOptions("#field2",fields,fieldNames,2);
         filter = "";
     } else if(this.value == "climatefundsupdate") {
         dataset = "climatefundsupdate.json";
         fields = ["sector","sector_mapped","recipient","recipient_income_level", "region", "donor", "implementor"];
         fieldNames = ["sectors","sectors in undp alm scheme","recipient countries", "Recipient Income Level", "Region", "Funder", "Implementor"];
-        fillOptions("#field1",fields,fieldNames,0);
-        fillOptions("#field2",fields,fieldNames,1);
+        fillOptions("#field1",fields,fieldNames,1);
+        fillOptions("#field2",fields,fieldNames,2);
         filter = "";
     } else if(this.value == "napa") {
         dataset = "napa.json";
         fields = ["sector","sector_mapped","recipient"];
         fieldNames = ["sectors","sectors in undp alm scheme","recipient"];
-        fillOptions("#field1",fields,fieldNames,0);
-        fillOptions("#field2",fields,fieldNames,1);
+        fillOptions("#field1",fields,fieldNames,1);
+        fillOptions("#field2",fields,fieldNames,2);
         filter = "";
     }
     updateChart();
@@ -121,7 +130,7 @@ function updateChart() {
     },50);
 }
 
-function fillOptions(fieldid, fields, fieldNames,index) {
+function fillOptions(fieldid, fields, fieldNames, index) {
     d3.select(fieldid).selectAll("option").remove();
 
     d3.select(fieldid).selectAll("option")
@@ -135,10 +144,7 @@ function fillOptions(fieldid, fields, fieldNames,index) {
         return fieldNames[i];
     });
     
-    if(fieldid == "#field1")
-        d3.select(fieldid).select('option').attr("selected","selected");
-    if(fieldid == "#field2")
-        d3.select(fieldid + " option:nth-child(2)").attr("selected","selected");
+    d3.select(fieldid + " option:nth-child(" + index + ")").attr("selected","selected");
     
 }
 
@@ -170,17 +176,22 @@ function drawChart(orderby,dataset,selectedSources,selectedTargets,filter,fields
 
         datasets.forEach(function(d,i) {
 
-            if(filter != "" && d.source != filter) // @todo
+            if(filter != "" && d.source != filter)
                 return;
             
+            // parse varying formats of data from varying jsons and put them in the same format
             var dsources = [],
             dsource = "";
             selectedSources.forEach(function(source){
                 if(source.indexOf(".")==-1)
                     dsource = d[source];
-                else
-                    dsource = eval("d."+source);
-                if(dsource !== "") {
+                else {
+                    var tree = source.split(".");
+                    dsource = d;
+                    for(var i=0;i<tree.length;i++)
+                        dsource = dsource[tree[i]]; // recurse instead of eval, as some object properties have dashes in their name
+                }
+                if(dsource !== "" && dsource !== undefined) {
                     if(!(dsource instanceof Array)) {
                         if(dataset == "cigrasp.json")
                             dsource = dsource.split(",");
@@ -198,9 +209,14 @@ function drawChart(orderby,dataset,selectedSources,selectedTargets,filter,fields
             selectedTargets.forEach(function(target){
                 if(target.indexOf(".")==-1)
                     dtarget = d[target];
-                else
-                    dtarget = eval("d."+target);
-                if(dtarget !== "") {
+                else {
+                    var tree = target.split(".");
+                    dtarget = d;
+                    for(var i=0;i<tree.length;i++)
+                        dtarget = dtarget[tree[i]];
+                }
+                
+                if(dtarget !== "" && dtarget !== undefined) {
                     if(!(dtarget instanceof Array)) {
                         if(dataset == "cigrasp.json")
                             dtarget = dtarget.split(",");
@@ -210,9 +226,11 @@ function drawChart(orderby,dataset,selectedSources,selectedTargets,filter,fields
                     dtargets = dtargets.concat(dtarget);
                 }
             });
+        
             if(dtargets.length < 1)
                 return;
             
+            // possibly filter data so that we only retain Bangladesh and India
             if(whichdata == 'indiabangladesh') {
                 if('countries' in d && !(d.countries =='Bangladesh'||d.countries =='India'))
                     return;
@@ -226,6 +244,7 @@ function drawChart(orderby,dataset,selectedSources,selectedTargets,filter,fields
                     return;
             }
 
+            // construct links between data
             dsources.forEach(function(s) {
                 s = s.trim();
                 if(s != 'Non-specific') {
@@ -265,6 +284,7 @@ function drawChart(orderby,dataset,selectedSources,selectedTargets,filter,fields
         });
 
 
+        // construct matrix of data
         var matrix = [],
         ntargets = targets.length,
         nsources = sources.length;
@@ -322,7 +342,7 @@ function drawChart(orderby,dataset,selectedSources,selectedTargets,filter,fields
             y.domain(targetOrders.name);
         }
 
-
+        // display visualization
         var row = svg.selectAll(".row")
         .data(matrix)
         .enter().append("g")
@@ -332,12 +352,9 @@ function drawChart(orderby,dataset,selectedSources,selectedTargets,filter,fields
         })
         .each(row);
 
-        //row.append("line")
-        //.attr("x2", width);
-
         row.append("text")
         .attr("x", -6)
-        .attr("y", 2.5) //y.rangeBand()/2)
+        .attr("y", 2.5)
         .attr("dy", ".12em")
         .attr("transform", function(d, i) {
             return "translate(0," + (y(i)+2)/2 + ")";
@@ -357,15 +374,15 @@ function drawChart(orderby,dataset,selectedSources,selectedTargets,filter,fields
 
         column.append("text")
         .attr("x", 6)
-        .attr("y", 2.5) //y.rangeBand() / 2)
+        .attr("y", 2.5)
         .attr("dy", ".32em")
         .attr("text-anchor", "start")
         .text(function(d, i) {
             return d.name;
         });
         
+        // make csv of selection
         if(matrix.length > 0) {
-            // make csv of selection
             var csvArray = [], tmp = [];
             if(orderby == "count") {
                 // header row
@@ -425,6 +442,8 @@ function drawChart(orderby,dataset,selectedSources,selectedTargets,filter,fields
             d3.select('#csv a').remove();
             document.getElementById('csv').appendChild(a);
         }
+        
+        // find key for a given value
         function nodeIndex(name, list) {
             var i;
             for(i=0;i<list.length;i++) {
@@ -434,6 +453,7 @@ function drawChart(orderby,dataset,selectedSources,selectedTargets,filter,fields
             return -1;
         }
 
+        // find key for a given value
         function linkIndex(source, target, list) {
             var i;
             for(i=0;i<list.length;i++) {
@@ -443,6 +463,7 @@ function drawChart(orderby,dataset,selectedSources,selectedTargets,filter,fields
             return -1;
         }
 
+        // draw one row of data
         function row(row) {
             var cell = d3.select(this).selectAll(".cell")
             .data(row.filter(function(d) {
