@@ -176,6 +176,9 @@ function drawChart(orderby,dataset,selectedSources,selectedTargets,filter,fields
 
         datasets.forEach(function(d,i) {
 
+            if(d.source == "undp" && i < 31) // The first 31 rows in the UNDP-ALM database were dropped and not used data calculations as they contain different records to the rest of the database and do not include details of projects.  Instead, they outline country-level NAP processes (for 24 countries) and details of P-CBA, at the  country-level (for 7 countries), with varying levels of detail.  They do not contain the same variables as the rest of the database. - see https://drive.google.com/?usp=folder&authuser=0#folders/0B3e-HpGNh9BwcVpPUHlJNkpnVWs
+                return;
+
             if(filter != "" && d.source != filter)
                 return;
             
