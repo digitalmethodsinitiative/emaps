@@ -21,9 +21,9 @@
             text.active {
                 fill: red;
             }
-            text { 
-                font-family: sans-serif; 
-                font-size: 9px; 
+            text {
+                font-family: sans-serif;
+                font-size: 9px;
             }
 
         </style>
@@ -35,9 +35,8 @@
         <header>
             <form name='form' id='form'>
                 <span id='select0'>
-                    Dataset: 
+                    Dataset:
                     <select name="dataset" id="dataset">
-                        <option value="substance_of_adaptation">Combined data set</option>
                         <option value="undp">UNDP Adaptation Learning Mechanism</option>
                         <option value="psi">UNFCCC Private Sector Initiative</option>
                         <option value="climatewise">ClimateWise on Insurance Industry</option>
@@ -45,21 +44,18 @@
                         <option value="oecd">OECD riomarkers</option>
                         <option value="climatefundsupdate">Climate Funds Update (multi-lateral)</option>
                         <option value="napa">National Adaptation Programs of Action</option>
+                        <option value="substance_of_adaptation">Combined data set</option>
                     </select><br>
                 </span>
                 Sort: <input type='radio' name='sort' value='count' checked class='radio'>nr of projects <input type='radio' name='sort' value='alphabetical' class='radio'>alphabetical<br>
                 <span id='select1'>X axis: <select name="field1" id="field1"></select><br></span>
                 <span id='select2'>Y axis: <select name="field2" id="field2"></select><br></span>
                 Data: <input type='radio' name='whichdata' value='all' checked class='radiowhichdata'>all <input type='radio' name='whichdata' value='indiabangladesh' class='radiowhichdata'> Only India and Bangladesh<br/>
-                <input type='submit' value='update chart' id='submit'/>
+                <!--<input type='submit' value='update chart' id='submit'/>-->
             </form>
         </header>
 
         <script src="script.js"></script>
-
-        <footer>
-            The visualization shows number of projects containing both variables on the X and Y axes.
-        </footer>
 
 
     </body>
