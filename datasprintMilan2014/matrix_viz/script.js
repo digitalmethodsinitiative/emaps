@@ -104,13 +104,17 @@ updateChart();
 function updateChart() {
     d3.select("body").style("cursor","wait");
     
-    var source = "",
-    target = "";
+    var selectedSources = [],
+    selectedTargets = [];
 
-    source = d3.select('#field1').node().value;
-    target = d3.select('#field2').node().value;
-
-    drawChart(orderby,dataset,source,target,filter,fields,fieldNames);
+    d3.selectAll('#field1 option:checked').each(function(d){
+        selectedSources.push(d);
+    });
+    d3.selectAll('#field2 option:checked').each(function(d){
+        selectedTargets.push(d);
+    });
+    
+    drawChart(orderby,dataset,selectedSources,selectedTargets,filter,fields,fieldNames);
     
     window.setTimeout(function() { // need for FF
         d3.select("body").style("cursor","default");
@@ -130,10 +134,15 @@ function fillOptions(fieldid, fields, fieldNames,index) {
     .text(function(d,i){
         return fieldNames[i];
     });
+    
+    if(fieldid == "#field1")
+        d3.select(fieldid).select('option').attr("selected","selected");
+    if(fieldid == "#field2")
+        d3.select(fieldid + " option:nth-child(2)").attr("selected","selected");
+    
 }
 
-function drawChart(orderby,dataset,source,target,filter,fields,fieldNames) {
-    //console.log(orderby + " " + dataset + " " + source + " " + target);
+function drawChart(orderby,dataset,selectedSources,selectedTargets,filter,fields,fieldNames) {
     d3.select("svg").remove();
     var margin = {
         top: 140,
@@ -145,7 +154,7 @@ function drawChart(orderby,dataset,source,target,filter,fields,fieldNames) {
     height = 2000;
 
     var x = d3.scale.ordinal().rangeBands([0, width]);
-
+    
     var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -161,33 +170,49 @@ function drawChart(orderby,dataset,source,target,filter,fields,fieldNames) {
 
         datasets.forEach(function(d,i) {
 
-            if(filter != "" && d.source != filter)
+            if(filter != "" && d.source != filter) // @todo
                 return;
-
-            if(source.indexOf(".")==-1)
-                var dsources = d[source];
-            else
-                var dsources = eval("d."+source);
-            if(target.indexOf(".")==-1)
-                var dtargets = d[target];
-            else
-                var dtargets = eval("d."+target);
-            if(dsources === "" || dtargets === "")
+            
+            var dsources = [],
+            dsource = "";
+            selectedSources.forEach(function(source){
+                if(source.indexOf(".")==-1)
+                    dsource = d[source];
+                else
+                    dsource = eval("d."+source);
+                if(dsource !== "") {
+                    if(!(dsource instanceof Array)) {
+                        if(dataset == "cigrasp.json")
+                            dsource = dsource.split(",");
+                        else
+                            dsource = [dsource];
+                    }
+                    dsources = dsources.concat(dsource);
+                }
+            });
+            if(dsources.length < 1)
                 return;
-
-            if(!(dsources instanceof Array)) {
-                if(dataset == "cigrasp.json")
-                    dsources = dsources.split(",");
+            
+            var dtargets = [],
+            dtarget = "";
+            selectedTargets.forEach(function(target){
+                if(target.indexOf(".")==-1)
+                    dtarget = d[target];
                 else
-                    dsources = [dsources];
-            }
-            if(!(dtargets instanceof Array)) {
-                if(dataset == "cigrasp.json")
-                    dtargets = dtargets.split(",");
-                else
-                    dtargets = [dtargets];
-            }
-
+                    dtarget = eval("d."+target);
+                if(dtarget !== "") {
+                    if(!(dtarget instanceof Array)) {
+                        if(dataset == "cigrasp.json")
+                            dtarget = dtarget.split(",");
+                        else
+                            dtarget = [dtarget];
+                    }
+                    dtargets = dtargets.concat(dtarget);
+                }
+            });
+            if(dtargets.length < 1)
+                return;
+            
             if(whichdata == 'indiabangladesh') {
                 if('countries' in d && !(d.countries =='Bangladesh'||d.countries =='India'))
                     return;
@@ -339,52 +364,67 @@ function drawChart(orderby,dataset,source,target,filter,fields,fieldNames) {
             return d.name;
         });
         
-        // make csv of selection
-        var csvArray = [], tmp = [];
-        if(orderby == "count") {
-            // header row
-            tmp.push(" ");
-            sourceOrders.count.forEach(function(s){
-                tmp.push(sources[s].name.replace(","," /"));
-            });
-            csvArray.push(tmp);
-            // data rows
-            targetOrders.count.forEach(function(t) {
-                // add data rows
-                tmp = [];
-                tmp.push(targets[t].name.replace(","," /"));
+        if(matrix.length > 0) {
+            // make csv of selection
+            var csvArray = [], tmp = [];
+            if(orderby == "count") {
+                // header row
+                tmp.push(" ");
                 sourceOrders.count.forEach(function(s){
-                    tmp.push(matrix[t][s].z); 
-                })
+                    tmp.push(sources[s].name.replace(","," /"));
+                });
                 csvArray.push(tmp);
-            });
-        } else {
-            // header row
-            tmp.push(" ");
-            sourceOrders.name.forEach(function(s){
-                tmp.push(sources[s].name.replace(","," /"));
-            });
-            csvArray.push(tmp);
-            // data rows
-            targetOrders.name.forEach(function(t) {
-                // add data rows
-                tmp = [];
-                tmp.push(targets[t].name.replace(","," /"));
+                // data rows
+                targetOrders.count.forEach(function(t) {
+                    // add data rows
+                    tmp = [];
+                    tmp.push(targets[t].name.replace(","," /"));
+                    sourceOrders.count.forEach(function(s){
+                        tmp.push(matrix[t][s].z); 
+                    })
+                    csvArray.push(tmp);
+                });
+            } else {
+                // header row
+                tmp.push(" ");
                 sourceOrders.name.forEach(function(s){
-                    tmp.push(matrix[t][s].z); 
-                })
+                    tmp.push(sources[s].name.replace(","," /"));
+                });
                 csvArray.push(tmp);
+                // data rows
+                targetOrders.name.forEach(function(t) {
+                    // add data rows
+                    tmp = [];
+                    tmp.push(targets[t].name.replace(","," /"));
+                    sourceOrders.name.forEach(function(s){
+                        tmp.push(matrix[t][s].z); 
+                    })
+                    csvArray.push(tmp);
+                });
+            }
+        
+            // put csv in download link
+            var csv_target_name = "", csv_source_name = "";
+            selectedTargets.forEach(function(target){
+                if(csv_target_name === "")
+                    csv_target_name = fieldNames[fields.indexOf(target)];
+                else
+                    csv_target_name = csv_target_name + "_" + fieldNames[fields.indexOf(target)];
             });
+            selectedSources.forEach(function(source){
+                if(csv_source_name === "")
+                    csv_source_name = fieldNames[fields.indexOf(source)];
+                else
+                    csv_source_name = csv_source_name + "_" + fieldNames[fields.indexOf(source)];
+            });
+            var a = document.createElement('a');
+            a.innerHTML = "Download CSV of selection";
+            a.href     = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csvArray.join('\n'));
+            a.target   = '_blank';
+            a.download = dataset.replace(".json","") + "-" + filter + "-" + csv_target_name + "-" + csv_source_name + "-" + whichdata + ".csv";
+            d3.select('#csv a').remove();
+            document.getElementById('csv').appendChild(a);
         }
-        // put csv in download link
-        var a = document.createElement('a');
-        a.innerHTML = "Download CSV of selection";
-        a.href     = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csvArray.join('\n'));
-        a.target   = '_blank';
-        a.download = dataset.replace(".json","") + "-" + filter + "-" + fieldNames[fields.indexOf(target)] + "-" + fieldNames[fields.indexOf(source)] + "-" + whichdata + ".csv";
-        d3.select('#csv a').remove();
-        document.getElementById('csv').appendChild(a);
-
         function nodeIndex(name, list) {
             var i;
             for(i=0;i<list.length;i++) {
