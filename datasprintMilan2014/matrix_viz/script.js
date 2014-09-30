@@ -411,11 +411,16 @@ function drawChart(orderby,dataset,selectedSources,selectedTargets,filter,fields
                 else
                     csv_source_name = csv_source_name + "_" + fieldNames[fields.indexOf(source)];
             });
+            var datasetname = dataset.replace(".json","");
+            if(filter !== "")
+                datasetname = filter;
+            if(datasetname == "substance_of_adaptation")
+                datasetname = "combined_dataset";
             var a = document.createElement('a');
             a.innerHTML = "Download CSV of selection";
             a.href     = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csvArray.join('\n'));
             a.target   = '_blank';
-            a.download = dataset.replace(".json","") + "-" + filter + "-" + csv_target_name + "-" + csv_source_name + "-" + whichdata + ".csv";
+            a.download =  datasetname + "-" + csv_target_name + "-" + csv_source_name + "-" + whichdata + ".csv";
             d3.select('#csv a').remove();
             document.getElementById('csv').appendChild(a);
         }
